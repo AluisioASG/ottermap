@@ -17,6 +17,7 @@ module.exports = (grunt) ->
         options:
           base: 'dist'
           message: 'Update release to v<%= pkg.version %>'
+          add: true
         src: ['**']
 
     # Stage 1 tasks
