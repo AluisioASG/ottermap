@@ -153,7 +153,7 @@ module.exports = (grunt) ->
       'index.html':
         src: 'dist/index.html'
         dest: 'dist/index.html'
-    fixembedcss:
+    fixcsspaths:
       'index.html':
         src: 'dist/index.html'
         dest: 'dist/index.html'
@@ -172,7 +172,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-svgmin'
 
 
-  grunt.registerMultiTask 'fixembedcss', 'Workaround for callumlocke/resource-embedder#15.', ->
+  grunt.registerMultiTask 'fixcsspaths', '.', ->
     @files.forEach (files) ->
       src = files.src[0]
       dest = files.dest
@@ -183,7 +183,9 @@ module.exports = (grunt) ->
 
       contents =
         (grunt.file.read src)
-        .replace /fonts\\glyphicons/g, 'fonts/glyphicons'
+        .replace(/\.\.\/\b/g, '')
+        # Work around callumlocke/resource-embedder#15
+        .replace(/fonts\\glyphicons/g, 'fonts/glyphicons')
       grunt.file.write dest, contents
       grunt.log.writeln "File \"#{dest}\" created."
       return
@@ -251,7 +253,7 @@ module.exports = (grunt) ->
     'requirejs'
     'uglify'
     'embed'
-    'fixembedcss'
+    'fixcsspaths'
   ]
 
   grunt.registerTask 'release', "Release the build to GitHub Pages.", [
