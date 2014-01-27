@@ -1,0 +1,5 @@
+* -text -diff
+
+/.git* text diff
+*.html text
+*.svg text
