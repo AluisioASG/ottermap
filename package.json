@@ -25,6 +25,7 @@
     "grunt-embed": "*",
     "grunt-lsc": "*",
     "grunt-requirejs": "*",
-    "grunt-svgmin": "*"
+    "grunt-svgmin": "*",
+    "grunt-gh-pages": "*"
   }
 }

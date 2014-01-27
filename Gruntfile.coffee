@@ -12,6 +12,12 @@ module.exports = (grunt) ->
       'build': ['build']
       'dist': ['dist/css', 'dist/js']
       'release': ['dist']
+    ghupload:
+      'dist':
+        options:
+          base: 'dist'
+          message: 'Update release to v<%= pkg.version %>'
+        src: ['**']
 
     # Stage 1 tasks
     copy:
@@ -159,9 +165,11 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-embed'
+  grunt.loadNpmTasks 'grunt-gh-pages'
   grunt.loadNpmTasks 'grunt-lsc'
   grunt.loadNpmTasks 'grunt-requirejs'
   grunt.loadNpmTasks 'grunt-svgmin'
+
 
   grunt.registerMultiTask 'fixembedcss', 'Workaround for callumlocke/resource-embedder#15.', ->
     @files.forEach (files) ->
@@ -180,6 +188,7 @@ module.exports = (grunt) ->
       return
     return
 
+
   grunt.registerTask 'buildjquery', "Run jQuery's build system.", ->
     grunt.util.spawn
       grunt: true
@@ -197,6 +206,7 @@ module.exports = (grunt) ->
         cwd: 'vendor/jquery'
         stdio: 'inherit'
     , @async()
+
   grunt.registerTask 'buildleaflet', "Run Leaflet's build system.", ->
     grunt.util.spawn
       cmd: 'jake'
@@ -210,6 +220,23 @@ module.exports = (grunt) ->
     'buildjquery'
     'buildleaflet'
   ]
+
+
+  grunt.renameTask 'gh-pages', 'ghupload'
+
+  grunt.registerTask 'publish', "Send the current release to GitHub Pages.", ->
+    git = require 'grunt-gh-pages/lib/git'
+    done = @async()
+    git(['config', '--get-regexp', '^user\\.']).progress (out) ->
+      gitconfig = {}
+      String(out).trim().split('\n').forEach (entry) ->
+        [key, val...] = entry.split ' '
+        gitconfig[key] = val.join(' ').trim()
+      grunt.config 'ghupload.options.user.name', gitconfig['user.name']
+      grunt.config 'ghupload.options.user.email', gitconfig['user.email']
+      grunt.task.run 'ghupload'
+      done()
+
 
   grunt.registerTask 'dev', "Build all the files required for active development.", [
     'copy'
@@ -226,10 +253,11 @@ module.exports = (grunt) ->
     'fixembedcss'
   ]
 
-  grunt.registerTask 'release', "Prepare the dist directory for deployment.", [
+  grunt.registerTask 'release', "Release the build to GitHub Pages.", [
     'dev'
     'dist'
     'clean:dist'
+    'publish'
   ]
 
   grunt.registerTask 'default', [
