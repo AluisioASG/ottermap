@@ -1,0 +1,15 @@
+{
+  "vars": {},
+  "css": [
+    "type.less",
+    "grid.less",
+    "forms.less",
+    "buttons.less",
+    "glyphicons.less",
+    "alerts.less",
+    "panels.less",
+    "close.less",
+    "utilities.less"
+  ],
+  "js": []
+}

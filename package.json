@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "name": "ottermap",
+  "version": "0.5.0",
+  "description": "Map of the members of the forum thread for xkcd #1190",
+  "author": "Aluísio Augusto Silva Gonçalves <aasg@chirpingmustard.com>",
+  "license": "MPL-2.0",
+  "scripts": {
+    "start": "lsc server.ls"
+  },
+  "dependencies": {
+    "buffet": "*",
+    "connect": "2.x",
+    "LiveScript": "*"
+  },
+  "devDependencies": {
+    "connect-compiler": "*",
+    "grunt": "0.4.x",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-stylus": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-embed": "*",
+    "grunt-lsc": "*",
+    "grunt-requirejs": "*",
+    "grunt-svgmin": "*"
+  }
+}

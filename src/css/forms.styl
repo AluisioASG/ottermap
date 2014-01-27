@@ -1,0 +1,17 @@
+@media (min-width: 460px)
+	#search-form-container
+		float left
+	#update-form-container
+		float right
+	#search-form
+	#update-form
+		input[type=text]
+			width auto
+
+@media (max-width: 640px)
+	#search-form
+	#update-form
+		button[type=submit]
+			width 100%
+			&:after
+				content: ' ' attr(title)

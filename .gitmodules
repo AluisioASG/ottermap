@@ -1,0 +1,22 @@
+[submodule "jQuery"]
+	path = vendor/jquery
+	url = https://github.com/jquery/jquery.git
+	ignore = dirty
+[submodule "Leaflet"]
+	path = vendor/leaflet
+	url = https://github.com/AluisioASG/Leaflet.git
+[submodule "Leaflet.GeoSearch"]
+	path = vendor/leaflet-geosearch
+	url = https://github.com/smeijer/L.GeoSearch.git
+[submodule "Leaflet.markercluster"]
+	path = vendor/leaflet-markercluster
+	url = https://github.com/Leaflet/Leaflet.markercluster.git
+[submodule "Leaflet-providers"]
+	path = vendor/leaflet-providers
+	url = https://github.com/leaflet-extras/leaflet-providers.git
+[submodule "RequireJS"]
+	path = vendor/requirejs
+	url = https://github.com/jrburke/requirejs.git
+[submodule "RequireJS text"]
+	path = vendor/requirejs-text
+	url = https://github.com/requirejs/text.git
