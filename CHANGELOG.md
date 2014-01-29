@@ -1,3 +1,8 @@
+# 0.5.2
+* Made pop-up behavior on Firefox match the expected behavior as in Chrome
+* Added compatibility with Firefox 20
+* Corrected paths to resources in the final HTML file
+
 # 0.5.1
 * Corrected URL of DBAPI server
 
