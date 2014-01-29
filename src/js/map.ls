@@ -109,7 +109,7 @@ populateMarkerLayer = (targetCluster, results, isSearch) ->
       closeButton: false
       closeOnClick: true
     .setContent """
-      <figure>
+      <figure class="avatar">
         <img src="http://178.79.159.24/Time/api/avatar/img/#{slug}/" alt="#{html_username}'s avatar">
         <figcaption class="text-center">#{html_username}</figcaption>
       </figure>

@@ -27,7 +27,7 @@ updateLocationData = (username, latlng, callback) ->
       member.location = [latlng.lat, latlng.lng]
 
 fetchLocationData = (callback) ->
-  $.get MAP_MEMBERS_ENDPOINT
+  $.getJSON MAP_MEMBERS_ENDPOINT
   .fail !->
     $ \#messagebar .trigger \show, [\danger, "
       Oops!  Something prevented us from retrieving the list of members 
@@ -46,7 +46,7 @@ getLocationData = (callback) !->
   | otherwise       => fetchLocationData callback
 
 onRecentCheckin = (username, yes_callback, no_callback, unknown_callback) ->
-  $.get "#{BT_CHECKIN_ENDPOINT}/#{username}"
+  $.getJSON "#{BT_CHECKIN_ENDPOINT}/#{username}"
   .fail (xhr) !->
     if xhr.status is 404
       unknown_callback? username
