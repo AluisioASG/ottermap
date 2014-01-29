@@ -7,6 +7,8 @@
 /.git* text
 /Gruntfile.coffee text
 /package.json text
+/LICENSE text
+/*.md text
 
 # Finally, we tag our source code files.
 *.html text
