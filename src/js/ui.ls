@@ -30,7 +30,7 @@ $submitIcon =
   $submitButton.find 'span.glyphicon'
   .addClass \glyphicon-map-marker
 
-$ \#update-form .one \submit !->
+$updateForm.one \submit !->
   $submitButton.attr \title 'Upload location'
   $submitIcon.toggleClass 'glyphicon-map-marker glyphicon-cloud-upload'
 
