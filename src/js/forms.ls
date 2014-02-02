@@ -1,4 +1,6 @@
-$, dataAPI, mapAPI <-! define <[jquery data map domReady!]>
+$, dataAPI, mapMembersAPI, mapUserAPI <-! define <[
+  jquery data map/members map/user domReady!
+]>
 
 # Text shown in the message bar when a search yield no results.
 const NO_SEARCH_RESULTS_MESSAGE = '
@@ -15,7 +17,7 @@ $ \#search-form .on \submit !->
     results = locationData.filter ->
       ~it.username.toLowerCase!indexOf username
     # If there are no results, at least clear the corresponding layer.
-    mapAPI.displaySearchResults results
+    mapMembersAPI.displaySearchResults results
     if results.length is 0
       $ \#messagebar .trigger \show [\info, NO_SEARCH_RESULTS_MESSAGE]
 
@@ -24,7 +26,7 @@ $ \#update-form
 # Setup marker placement.
 .one \submit !->
   $ '.leaflet-control-geosearch' .fadeIn!
-  g_marker := mapAPI.placeUserMarker getUsername this
+  g_marker := mapUserAPI.placeUserMarker getUsername this
 # Setup user location upload.
 .one \submit !->
   <-! $(this).on \submit
