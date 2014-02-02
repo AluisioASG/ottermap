@@ -107,7 +107,7 @@ module.exports = (grunt) ->
         dest: 'dist/fonts/glyphicons-halflings-regular.svg'
       'marker':
         src: 'src/img/marker.svg'
-        dest: 'build/img/marker.svg'
+        dest: 'build/js/map/marker.svg'
       'src':
         files: [
           expand: yes

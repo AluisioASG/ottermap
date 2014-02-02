@@ -1,5 +1,5 @@
 $, L, dataAPI, markerSVG, domReady <- define <[
-  jquery leaflet data text!../img/marker.svg!strip domReady
+  jquery leaflet data text!map/marker.svg!strip domReady
 ]>
 
 # Initial geographical center of the map.
