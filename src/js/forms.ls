@@ -1,8 +1,4 @@
-$, dataAPI, mapAPI <-! define <[
-  jquery
-  ./data ./map
-  domReady!
-]>
+$, dataAPI, mapAPI <-! define <[jquery data map domReady!]>
 
 # Text shown in the message bar when a search yield no results.
 const NO_SEARCH_RESULTS_MESSAGE = '

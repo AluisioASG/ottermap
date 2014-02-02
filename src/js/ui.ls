@@ -1,4 +1,4 @@
-$ <-! define <[jquery ./messagebar domReady!]>
+$ <-! define <[jquery messagebar domReady!]>
 
 # Minimum height for the map we're going to allow.
 const MINIMUM_MAP_HEIGHT = 320px

@@ -1,1 +1,1 @@
-require <[./ui ./forms ./map]>
+require <[ui forms map]>

@@ -1,7 +1,4 @@
-require, $ <- define <[
-  require jquery
-  ./dbapi-root
-]>
+require, $ <- define <[require jquery dbapi-root]>
 const DBAPI_ROOT = require './dbapi-root'
 const BT_CHECKIN_ENDPOINT = "#{DBAPI_ROOT}/blitzertracker/checkins"
 const MAP_MEMBERS_ENDPOINT = "#{DBAPI_ROOT}/ottmap/members"
