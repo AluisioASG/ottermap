@@ -1,6 +1,7 @@
-$, L, dataAPI, markerSVG <- define <[
+$, L, dataAPI, markerSVG, domReady <- define <[
   jquery leaflet
   ./data text!../img/marker.svg!strip
+  domReady
 ]>
 
 # Initial geographical center of the map.
@@ -201,7 +202,7 @@ getMap = (container) ->
   return map
 
 var g_map
-$ !->
+domReady !->
   # Keep a reference to the jQuerified map container handy.
   $map = $ \#map
 
