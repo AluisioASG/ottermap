@@ -43,6 +43,7 @@ module.exports = (grunt) ->
         files:
           'build/js/require.js': 'vendor/requirejs/require.js'
           'build/js/text.js': 'vendor/requirejs-text/text.js'
+          'build/js/domReady.js': 'vendor/requirejs-domready/domReady.js'
       'src':
         files: [
           expand: yes

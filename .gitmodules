@@ -20,3 +20,6 @@
 [submodule "RequireJS text"]
 	path = vendor/requirejs-text
 	url = https://github.com/requirejs/text.git
+[submodule "RequireJS domReady"]
+	path = vendor/requirejs-domready
+	url = https://github.com/requirejs/domReady.git
