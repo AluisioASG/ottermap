@@ -3,8 +3,8 @@ $ <-! define <[jquery domReady!]>
 # Minimum height for the map we're going to allow.
 const MINIMUM_MAP_HEIGHT = 320px
 
-# Interval between map resizes.
-const RESIZE_TRIGGER_INTERVAL = 125ms
+# Time to wait until the current operation is completed.
+const NEXT_TICK_INTERVAL = 1000ms / 25fps
 
 
 # Prevent the browser from trying to submit the forms.
@@ -60,7 +60,7 @@ $map.on \resize !->
   timer = setTimeout !->
     timer := void
     resizeMap!
-  , RESIZE_TRIGGER_INTERVAL
+  , NEXT_TICK_INTERVAL
 
 
 # Create a style element to hold our dynamically-build styles.
