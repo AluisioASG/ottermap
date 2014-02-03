@@ -8,7 +8,7 @@ const RESIZE_TRIGGER_INTERVAL = 125ms
 
 
 # Setup the message bar, setting it to shadow the panel with the forms.
-messagebar.setup '#topbar .panel'
+messagebar.setup '#topbar'
 
 # Prevent the browser from trying to submit the forms.
 $ \form .on \submit (.preventDefault!)
