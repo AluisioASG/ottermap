@@ -197,13 +197,15 @@ module.exports = (grunt) ->
     grunt.util.spawn
       grunt: true
       args: ['custom:' + [
-        '-ajax/script'
         '-ajax/jsonp'
+        '-ajax/script'
+        '-core/ready'
         '-deprecated'
         '-event/alias'
-        '-offset'
-        '-wrap'
         '-exports/global'
+        '-offset'
+        '-sizzle'
+        '-wrap'
         ].join ','
       ]
       opts:
