@@ -1,5 +1,5 @@
-$, messagebar, dataAPI, mapMembersAPI, mapUserAPI <-! define <[
-  jquery messagebar data map/members map/user domReady!
+$, messagebar, mapMembersAPI, mapUserAPI, syncUserLocation, allUsers <-! define <[
+  jquery messagebar map/members map/user data/sync data/allUsers domReady!
 ]>
 
 # Text shown in the message bar when a search yield no results.
@@ -13,13 +13,11 @@ getUsername = -> $ it .find 'input[name=username]' .val!
 # Setup user search.
 $ \#search-form .on \submit !->
   username = getUsername this .toLowerCase!
-  dataAPI.getLocationData (locationData) ->
-    results = locationData.filter ->
-      ~it.username.toLowerCase!indexOf username
-    # If there are no results, at least clear the corresponding layer.
-    mapMembersAPI.displaySearchResults results
-    if results.length is 0
-      messagebar.show NO_SEARCH_RESULTS_MESSAGE, \info
+  matches = allUsers.select -> (~it.username.toLowerCase!indexOf username)
+  # If there are no results, at least clear the corresponding layer.
+  mapMembersAPI.displaySearchResults matches
+  if matches.length is 0
+    messagebar.show NO_SEARCH_RESULTS_MESSAGE, \info
 
 var g_marker
 $ \#update-form
@@ -36,5 +34,5 @@ $ \#update-form
     $(this).find 'button[type=submit]'
     .removeClass \btn-success
     .addClass \btn-default
-  dataAPI.updateLocationData (getUsername this), g_marker.getLatLng!, !->
+  syncUserLocation (getUsername this), g_marker.getLatLng!, !->
     $uploadButton.toggleClass 'btn-default btn-success'

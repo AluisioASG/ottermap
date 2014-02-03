@@ -1,5 +1,5 @@
-L, dataAPI, map, layerControl, populateMarkerLayer <- define <[
-  leaflet data map map/layers map/markers
+L, layerControl, mapMarkersAPI, map, allUsers <- define <[
+  leaflet map/layers map/markers map data/allUsers
 ]>
 
 
@@ -11,8 +11,11 @@ const SEARCH_RESULT_ZOOM_LEVEL = 10
 membersLayer = new L.MarkerClusterGroup
 map.addLayer membersLayer
 layerControl.addOverlay membersLayer, 'All members'
-dataAPI.getLocationData (locationData) !->
-  populateMarkerLayer membersLayer, locationData
+allUsers.addEventListener \useradd ({detail: user}) !->
+  marker = mapMarkersAPI.buildMemberMarker user
+  membersLayer.addLayer marker
+  user.addEventListener \unperson !->
+    membersLayer.removeLayer marker
 
 # Add a layer for search results.
 searchLayer = new L.MarkerClusterGroup
@@ -24,7 +27,8 @@ layerControl.addOverlay searchLayer, 'Search results'
 return
   # Display search results in their specific layer.
   displaySearchResults: (results) !->
-    populateMarkerLayer searchLayer, results, true
+    markers = results.map -> mapMarkersAPI.buildSearchResultMarker it
+    searchLayer.clearLayers!addLayers markers
     if results.length is 1
       # Zoom to the single result.
       map.setView results[0].location, SEARCH_RESULT_ZOOM_LEVEL,
