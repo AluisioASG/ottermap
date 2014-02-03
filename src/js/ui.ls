@@ -1,4 +1,4 @@
-$, messagebar <-! define <[jquery messagebar domReady!]>
+$ <-! define <[jquery domReady!]>
 
 # Minimum height for the map we're going to allow.
 const MINIMUM_MAP_HEIGHT = 320px
@@ -6,9 +6,6 @@ const MINIMUM_MAP_HEIGHT = 320px
 # Interval between map resizes.
 const RESIZE_TRIGGER_INTERVAL = 125ms
 
-
-# Setup the message bar, setting it to shadow the panel with the forms.
-messagebar.setup '#topbar'
 
 # Prevent the browser from trying to submit the forms.
 $ \form .on \submit (.preventDefault!)

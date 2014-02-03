@@ -3,12 +3,6 @@ $ <- define <[jquery domReady!]>
 var $messagebar, $shadows, lastAlertClass
 
 
-
-# Configure the message bar.  Currently this means only to specify
-# the elements to be hidden when the bar is shown, if any.
-setupMessageBar = (shadows) !->
-  $shadows := $ shadows
-
 # Show the message bar and display a message.  The alert class is the
 # suffix of one of those provided by Bootstrap.
 displayMessage = (message, alertClass) !->
@@ -38,12 +32,15 @@ hideMessageBar = !->
 # Keep a reference to the jQueryfied message bar element.
 $messagebar = $ \#messagebar
 
+# Keep a reference to the elements to be hidden when the bar is shown,
+# if any.
+$shadows = $ \.messagebar-shadow
+
 # Close the message bar when its close button is clicked.
 $messagebar.find \button.close .on \click hideMessageBar
 
 
 # Define the module's API.
 return
-  setup: setupMessageBar
   show: displayMessage
   hide: hideMessageBar
