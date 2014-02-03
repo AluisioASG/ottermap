@@ -11,13 +11,16 @@ const NO_SEARCH_RESULTS_MESSAGE = '
 getUsername = -> $ it .find 'input[name=username]' .val!
 
 # Setup user search.
-$ \#search-form .on \submit !->
+$ \#search-form
+.on \submit !->
   username = getUsername this .toLowerCase!
   matches = allUsers.select -> (~it.username.toLowerCase!indexOf username)
   # If there are no results, at least clear the corresponding layer.
   mapMembersAPI.displaySearchResults matches
   if matches.length is 0
     messagebar.show NO_SEARCH_RESULTS_MESSAGE, \info
+.on \reset !->
+  mapMembersAPI.displaySearchResults []
 
 var g_marker
 $ \#update-form
