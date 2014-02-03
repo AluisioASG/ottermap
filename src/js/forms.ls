@@ -1,5 +1,5 @@
-$, dataAPI, mapMembersAPI, mapUserAPI <-! define <[
-  jquery data map/members map/user domReady!
+$, messagebar, dataAPI, mapMembersAPI, mapUserAPI <-! define <[
+  jquery messagebar data map/members map/user domReady!
 ]>
 
 # Text shown in the message bar when a search yield no results.
@@ -19,7 +19,7 @@ $ \#search-form .on \submit !->
     # If there are no results, at least clear the corresponding layer.
     mapMembersAPI.displaySearchResults results
     if results.length is 0
-      $ \#messagebar .trigger \show [\info, NO_SEARCH_RESULTS_MESSAGE]
+      messagebar.show NO_SEARCH_RESULTS_MESSAGE, \info
 
 var g_marker
 $ \#update-form

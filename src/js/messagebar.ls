@@ -1,26 +1,7 @@
 $ <- define <[jquery domReady!]>
 
-var $shadows, lastAlertClass
+var $messagebar, $shadows, lastAlertClass
 
-
-# Keep a reference to the jQueryfied message bar element.
-$messagebar = $ \#messagebar
-# Setup events to show and hide the message bar.
-.on \show (, type, message) !->
-  # Allow `type` to not be specified.
-  if not message?
-    message = type
-    messageClass = ''
-  else
-    messageClass = "alert-#{type}"
-
-  displayMessage message, messageClass
-.on \hide !->
-  hideMessageBar!
-
-# Close the message bar when its close button is clicked.
-$messagebar.find \button.close .on \click !->
-  $messagebar.trigger \hide
 
 
 # Configure the message bar.  Currently this means only to specify
@@ -31,6 +12,8 @@ setupMessageBar = (shadows) !->
 # Show the message bar and display a message.  The alert class is the
 # suffix of one of those provided by Bootstrap.
 displayMessage = (message, alertClass) !->
+  if alertClass
+    alertClass = "alert-#{alertClass}"
   # Remember the alert class for the last message.
   lastAlertClass := alertClass
 
@@ -52,12 +35,15 @@ hideMessageBar = !->
     $shadows.slideDown!
 
 
-# Handle an one-time message to setup the message bar.
-$messagebar.on \setup (, shadows) !-> setupMessageBar shadows
+# Keep a reference to the jQueryfied message bar element.
+$messagebar = $ \#messagebar
 
-# Allow the user to setup the message bar directly.
-exports = (...args) !-> setupMessageBar void, args * \,
-exports <<<
+# Close the message bar when its close button is clicked.
+$messagebar.find \button.close .on \click hideMessageBar
+
+
+# Define the module's API.
+return
   setup: setupMessageBar
   show: displayMessage
   hide: hideMessageBar

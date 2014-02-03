@@ -1,4 +1,4 @@
-require, $ <- define <[require jquery dbapi-root]>
+require, $, messagebar <- define <[require jquery messagebar dbapi-root]>
 const DBAPI_ROOT = require './dbapi-root'
 const BT_CHECKIN_ENDPOINT = "#{DBAPI_ROOT}/blitzertracker/checkins"
 const MAP_MEMBERS_ENDPOINT = "#{DBAPI_ROOT}/ottmap/members"
@@ -14,10 +14,10 @@ updateLocationData = (username, latlng, callback) ->
     data:
       location: [latlng.lat, latlng.lng]
   .fail !->
-    $ \#messagebar .trigger \show, [\danger, "
+    messagebar.show "
       Oops!  Something prevented us from sending your location 
       to the database.  Do you mind trying again?
-    "]
+    " \danger
   .done callback, !->
     return if not g_locationdata?
     for member in g_locationdata when member.username is username
@@ -26,10 +26,10 @@ updateLocationData = (username, latlng, callback) ->
 fetchLocationData = (callback) ->
   $.getJSON MAP_MEMBERS_ENDPOINT
   .fail !->
-    $ \#messagebar .trigger \show, [\danger, "
+    messagebar.show "
       Oops!  Something prevented us from retrieving the list of members 
       from the database.  Do you mind reloading the page and trying again?
-    "]
+    " \danger
   .then (data) ->
     g_locationdata := data.map (e) ->
       username: e._id
@@ -48,10 +48,10 @@ onRecentCheckin = (username, yes_callback, no_callback, unknown_callback) ->
     if xhr.status is 404
       unknown_callback? username
       return
-    $ \#messagebar .trigger \show [\danger, "
+    messagebar.show "
       Hmm.  Something prevented us from fetching the last checkin timestamp of 
       a member from the database.  The map is still fully functional, though.
-    "]
+    " \danger
   .done ({lastCheckin}) !->
     checkinDate = new Date lastCheckin
     if (Date.now! - checkinDate.getTime!) <= RECENT_CHECKIN_THRESHOLD
