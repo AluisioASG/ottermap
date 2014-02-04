@@ -67,7 +67,7 @@ module.exports = (grunt) ->
         files: [
           expand: yes
           cwd: 'src'
-          src: ['**/*.styl', '**/!_*.styl']
+          src: ['**/*.styl', '!**/_*.styl']
           dest: 'build/'
           rename: changeExt 'styl', 'css'
         ]
