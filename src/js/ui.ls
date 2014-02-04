@@ -101,7 +101,7 @@ document.head.appendChild sheet
 do buildMarkersStylesheet = !->
   sheet.innerHTML = [\
     ".marker-#{type - /\s/g} { #{that} }" \
-    for type in ['default' 'online' 'offline' 'search result']
+    for type in ['default' 'online' 'offline']
     when localStorage["#{type} marker style"]?
   ] * '\n'
 

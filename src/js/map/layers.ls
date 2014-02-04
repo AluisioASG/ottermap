@@ -61,6 +61,3 @@ for provider in TILE_PROVIDERS
     |> map.setZoom
 # Add the control to the map.
 layerControl.addTo map
-
-# Export the layer selection control.
-return layerControl

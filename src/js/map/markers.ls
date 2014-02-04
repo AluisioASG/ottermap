@@ -23,8 +23,6 @@ do ->
   OnlineMemberIcon := buildIcon \marker-online
   # Icon used for members considered inactive.
   OfflineMemberIcon := buildIcon \marker-offline
-  # Marker icon used for search results.
-  SearchResultIcon := buildIcon \marker-searchresult
 
 
 # Escape HTML special characters.
@@ -83,6 +81,3 @@ return
       | \offline  => marker.setIcon OfflineMemberIcon
       | otherwise => marker.setIcon DefaultIcon
     return marker
-  # Create a marker for a search result.
-  buildSearchResultMarker: (user) ->
-    buildMarker user, SearchResultIcon

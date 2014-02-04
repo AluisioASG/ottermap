@@ -1,31 +1,14 @@
-dom, messagebar, events, mapMembersAPI, mapUserAPI, syncUserLocation, allUsers <-! define <[
-  util/dom messagebar util/events map/members map/user data/sync data/allUsers domReady!
+dom, events, mapUserAPI, syncUserLocation <-! define <[
+  util/dom util/events map/user data/sync domReady!
 ]>
 {$id, $sel, $addClass, $removeClass} = dom
 
-
-# Text shown in the message bar when a search yield no results.
-const NO_SEARCH_RESULTS_MESSAGE = '
-  Those who you seek lie beyond our perception… but others await.
-'
 
 # Time to wait until the current operation is completed.
 const NEXT_TICK_INTERVAL = 1000ms / 25fps
 
 
 getUsername = -> (it `$sel` 'input[name=username]') .value
-
-# Setup user search.
-$id \search-form
-  ..addEventListener \submit !->
-    username = getUsername this .toLowerCase!
-    matches = allUsers.select -> (~it.username.toLowerCase!indexOf username)
-    # If there are no results, at least clear the corresponding layer.
-    mapMembersAPI.displaySearchResults matches
-    if matches.length is 0
-      messagebar.show NO_SEARCH_RESULTS_MESSAGE, \info
-  ..addEventListener \reset !->
-    mapMembersAPI.displaySearchResults []
 
 var g_marker
 $id \update-form

@@ -1,8 +1,10 @@
-// Set location of Leaflet's icons.
 .leaflet-control-layers-toggle
 	background-image url('../img/layers.png')
 .leaflet-retina .leaflet-control-layers-toggle
 	background-image url('../img/layers-2x.png')
+.leaflet-popup-content
+	margin auto
+	width auto !important
 
 .leaflet-control-geosearch
 	margin-top 0 !important
@@ -12,6 +14,10 @@
 	// For Safari and Android.
 	-webkit-transition opacity 1.325s ease
 
-.leaflet-popup-content
-	margin auto
-	width auto !important
+.leaflet-control-search
+	&.search-load .search-input
+		background-image url('../img/loader.gif')
+	.search-button
+	.search-cancel
+	.search-button:hover
+		background-image url('../img/search-icon.png')

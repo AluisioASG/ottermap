@@ -30,12 +30,17 @@ module.exports = (grunt) ->
           dest: 'dist/fonts/'
         ]
       'leaflet.img':
-        files: [
+        files: [{
           expand: yes
           cwd: 'vendor/leaflet/dist/images'
           src: ['**']
           dest: 'dist/img/'
-        ]
+        }, {
+          expand: yes
+          cwd: 'vendor/leaflet-search/images'
+          src: ['loader.gif', 'search-icon.png']
+          dest: 'dist/img/'
+        }]
       'jquery.js':
         src: 'vendor/jquery/dist/jquery.js'
         dest: 'build/js/jquery.js'
@@ -88,6 +93,7 @@ module.exports = (grunt) ->
           'vendor/leaflet-geosearch/src/js/l.geosearch.provider.openstreetmap.js'
           'vendor/leaflet-providers/leaflet-providers.js'
           'vendor/leaflet-markercluster/dist/leaflet.markercluster-src.js'
+          'vendor/leaflet-search/dist/leaflet-search.src.js'
         ]
         dest: 'build/js/leaflet.js'
       'all.css':
@@ -98,6 +104,7 @@ module.exports = (grunt) ->
           'vendor/leaflet-geosearch/src/css/l.geosearch.css'
           'vendor/leaflet-markercluster/dist/MarkerCluster.css'
           'vendor/leaflet-markercluster/dist/MarkerCluster.Default.css'
+          'vendor/leaflet-search/dist/leaflet-search.src.css'
           'build/**/*.css'
           '!build/css/all.css'
         ]
