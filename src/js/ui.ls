@@ -1,5 +1,5 @@
 dom, events <-! define <[util/dom util/events domReady!]>
-{$id, $sel, $addClass, $toggleClass} = dom
+{$id, $all, $sel, $addClass, $toggleClass} = dom
 
 
 # Minimum height for the map we're going to allow.
@@ -10,7 +10,7 @@ const NEXT_TICK_INTERVAL = 1000ms / 25fps
 
 
 # Prevent the browser from trying to submit the forms.
-for form in document.getElementsByTagName \form
+for form in $all \form
   form.addEventListener \submit (.preventDefault!)
 
 

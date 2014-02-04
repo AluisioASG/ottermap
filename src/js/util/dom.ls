@@ -4,6 +4,9 @@
 # Alias to `document.getElementById`.
 $id: -> document.getElementById it
 
+# Alias to `document.querySelectorAll`.
+$all: -> document.querySelectorAll it
+
 # Alias to `element.querySelector`, where element is
 # the document itself if left unspecified.
 $sel: ->
