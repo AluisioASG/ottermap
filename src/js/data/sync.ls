@@ -9,7 +9,6 @@ const MAP_MEMBERS_ENDPOINT = "ottmap/members"
 syncUserLocation = (username, latlng, callback) !->
   # Get the user object, if any, and update the local collection.
   user = allUsers.select((.username is username))[0]
-  debugger
   if not user?
     user = new User username
       ..|> allUsers.addUser
