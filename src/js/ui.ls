@@ -1,4 +1,5 @@
-$ <-! define <[jquery domReady!]>
+events <-! define <[util/events domReady!]>
+
 
 # Minimum height for the map we're going to allow.
 const MINIMUM_MAP_HEIGHT = 320px
@@ -8,7 +9,8 @@ const NEXT_TICK_INTERVAL = 1000ms / 25fps
 
 
 # Prevent the browser from trying to submit the forms.
-$ \form .on \submit (.preventDefault!)
+for form in document.getElementsByTagName \form
+  form.addEventListener \submit (.preventDefault!)
 
 
 # The update form can be in one of two states.  At first, the user
@@ -18,39 +20,68 @@ $ \form .on \submit (.preventDefault!)
 #
 # Here, we change the text of the update form's submit button when this
 # state transition happens, i.e. after the first click.
-$updateForm = $ \#update-form
+updateForm = document.getElementById \update-form
 
-$submitButton =
-  $updateForm.find 'button[type=submit]'
-  .attr \title 'Place marker'
-$submitIcon =
-  $submitButton.find 'span.glyphicon'
-  .addClass \glyphicon-map-marker
+submitButton = updateForm.querySelector 'button[type=submit]'
+  ..title = 'Place marker'
+submitIcon = submitButton.querySelector 'span.glyphicon'
+  ..className += '  glyphicon-map-marker'
 
-$updateForm.one \submit !->
-  $submitButton.attr \title 'Upload location'
-  $submitIcon.toggleClass 'glyphicon-map-marker glyphicon-cloud-upload'
+events.listenOnce updateForm, \submit, !->
+  submitButton.title = 'Upload location'
+  submitIcon
+    ..className -= /\bglyphicon-map-marker\b/
+    ..className += '  glyphicon-cloud-upload'
 
 
-# Keep a reference to the jQuerified map container handy.
-$map = $ \#map
+# Keep a reference to the map container handy.
+mapContainer = document.getElementById \map
+
+# Get the height of the element's padding and border.  Subtract
+# from the element's `offsetHeight` to get its content height.
+getExtra = (elem) ->
+  computedElementStyle = window.getComputedStyle elem, null
+  prop = -> parseInt computedElementStyle[it], 10
+
+  (prop \paddingTop) +
+  (prop \paddingBottom) +
+  (prop \borderTopWidth) +
+  (prop \borderBottomWidth)
+
+# Get an element's content size.
+getHeight = (elem) ->
+  elem.offsetHeight - getExtra elem
+
+# Set an element's content size.
+setHeight = (elem, value) !->
+  value -= getExtra elem
+  if value >= 0
+    elem.style.height = "#{value}px"
+
 
 # Set the initial map height.
 do resizeMap = !->
-  currentHeight = $map.height!
-  windowHeight = $ window .height!
-
-  # Compute the new height as roughly the size of the window
-  # sans the top panel.
-  newHeight = windowHeight - ($ \.container .height! - currentHeight)
+  # Get the window's and the map container's heights.
+  currentHeight = getHeight mapContainer
+  windowHeight = document.documentElement.clientHeight
+  # Compute the new height as the current height of the map plus the
+  # difference of height between the page container and the window.
+  newHeight =
+    document.querySelector \.container |> getHeight
+    |> (- currentHeight)
+    |> (windowHeight -)
   # Make sure the new height is acceptable.
   if newHeight < MINIMUM_MAP_HEIGHT
     newHeight = windowHeight
   # Prevent unnecessary resizings.
   unless newHeight is currentHeight
-    $map.height newHeight .trigger \resize
+    setHeight mapContainer, newHeight
+    resizeEvent = document.createEvent \Event
+      ..initEvent \resize false false
+    mapContainer.dispatchEvent resizeEvent
+
 # Resize the map whenever the window is resized.
-$map.on \resize !->
+window.addEventListener \resize !->
   # Schedule the resizing to happen after the specified timespan.
   # If the event is triggered again during that timespan, the handler
   # is rescheduled as before.
