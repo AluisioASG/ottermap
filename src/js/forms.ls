@@ -1,6 +1,7 @@
-messagebar, events, mapMembersAPI, mapUserAPI, syncUserLocation, allUsers <-! define <[
-  messagebar util/events map/members map/user data/sync data/allUsers domReady!
+dom, messagebar, events, mapMembersAPI, mapUserAPI, syncUserLocation, allUsers <-! define <[
+  util/dom messagebar util/events map/members map/user data/sync data/allUsers domReady!
 ]>
+{$id, $sel, $addClass, $removeClass} = dom
 
 
 # Text shown in the message bar when a search yield no results.
@@ -12,10 +13,10 @@ const NO_SEARCH_RESULTS_MESSAGE = '
 const NEXT_TICK_INTERVAL = 1000ms / 25fps
 
 
-getUsername = -> it.querySelector 'input[name=username]' .value
+getUsername = -> (it `$sel` 'input[name=username]') .value
 
 # Setup user search.
-document.getElementById \search-form
+$id \search-form
   ..addEventListener \submit !->
     username = getUsername this .toLowerCase!
     matches = allUsers.select -> (~it.username.toLowerCase!indexOf username)
@@ -27,10 +28,10 @@ document.getElementById \search-form
     mapMembersAPI.displaySearchResults []
 
 var g_marker
-document.getElementById \update-form
+$id \update-form
   # Setup marker placement.
   ..|> events.listenOnce _, \submit, !->
-    geoSearchControl = document.querySelector '.leaflet-control-geosearch'
+    geoSearchControl = $sel '.leaflet-control-geosearch'
     geoSearchControl.style.display = 'block'
     setTimeout !->
       geoSearchControl.style.opacity = '1'
@@ -38,13 +39,10 @@ document.getElementById \update-form
     g_marker := mapUserAPI.placeUserMarker getUsername this
   # Setup user location upload.
   ..|> events.listenOnce _, \submit, !->
-      <-! this.addEventListener \submit
+      <-! @addEventListener \submit
       # Reset the upload button's color now, and set it to indicate success
       # once the upload is completed.
-      uploadButton = this.querySelector 'button[type=submit]'
-        ..className -= /\bbtn-success\b/
-        ..className += ' btn-default'
+      uploadButton = this `$sel` 'button[type=submit]'
+      uploadButton `$removeClass` \btn-success `$addClass` \btn-default
       syncUserLocation (getUsername this), g_marker.getLatLng!, !->
-        uploadButton
-          ..className -= /\bbtn-default\b/
-          ..className += ' btn-success'
+        uploadButton `$removeClass` \btn-default `$addClass` \btn-success

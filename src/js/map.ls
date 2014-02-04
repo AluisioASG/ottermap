@@ -1,4 +1,5 @@
-L <- define <[leaflet domReady!]>
+L, dom, events <- define <[leaflet util/dom util/events domReady!]>
+{$id} = dom
 
 
 # Initial geographical center of the map.
@@ -8,7 +9,7 @@ const MAP_ZOOM_LEVEL = 2
 
 
 # Get the map container, clear it and then create the Leaflet map.
-container = document.getElementById \map
+container = $id \map
 container.textContent = ''
 map = new L.Map container,
   center: MAP_ORIGIN
@@ -26,9 +27,7 @@ container.addEventListener \resize !-> map.invalidateSize!
 # Fit the world on the first container resize (except on
 # WebKit-based browsers).
 if navigator.userAgent isnt /\bAppleWebKit\b/
-  fitWorldOnce = !->
+  events.listenOnce container, \resize, !->
     map.fitWorld!
-    this.removeEventListener \resize fitWorldOnce
-  container.addEventListener \resize fitWorldOnce
 
 return map

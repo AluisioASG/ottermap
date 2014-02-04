@@ -1,4 +1,5 @@
-events <-! define <[util/events domReady!]>
+dom, events <-! define <[util/dom util/events domReady!]>
+{$id, $sel, $addClass, $toggleClass} = dom
 
 
 # Minimum height for the map we're going to allow.
@@ -20,22 +21,20 @@ for form in document.getElementsByTagName \form
 #
 # Here, we change the text of the update form's submit button when this
 # state transition happens, i.e. after the first click.
-updateForm = document.getElementById \update-form
+updateForm = $id \update-form
 
-submitButton = updateForm.querySelector 'button[type=submit]'
+submitButton = updateForm `$sel` 'button[type=submit]'
   ..title = 'Place marker'
-submitIcon = submitButton.querySelector 'span.glyphicon'
-  ..className += '  glyphicon-map-marker'
+submitIcon = submitButton `$sel` 'span.glyphicon'
+  .. `$addClass` \glyphicon-map-marker
 
 events.listenOnce updateForm, \submit, !->
   submitButton.title = 'Upload location'
-  submitIcon
-    ..className -= /\bglyphicon-map-marker\b/
-    ..className += '  glyphicon-cloud-upload'
+  $toggleClass submitIcon, \glyphicon-map-marker \glyphicon-cloud-upload
 
 
 # Keep a reference to the map container handy.
-mapContainer = document.getElementById \map
+mapContainer = $id \map
 
 # Get the height of the element's padding and border.  Subtract
 # from the element's `offsetHeight` to get its content height.
@@ -67,7 +66,7 @@ do resizeMap = !->
   # Compute the new height as the current height of the map plus the
   # difference of height between the page container and the window.
   newHeight =
-    document.querySelector \.container |> getHeight
+    $sel \.container |> getHeight
     |> (- currentHeight)
     |> (windowHeight -)
   # Make sure the new height is acceptable.
