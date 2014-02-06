@@ -51,6 +51,13 @@ module.exports = (grunt) ->
           src: ['**', '!**/*.ls', '!**/*.styl', '!**/*.svg']
           dest: 'dist/'
         ]
+    dbapiroot:
+      options:
+        dest: 'build/js/dbapi-root.js'
+      'dev':
+          url: 'http://localhost:63558'
+      'release':
+          url: 'http://v3.db.aasg.name'
     lsc:
       options:
         bare: true

@@ -3,6 +3,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'dev', "Build all the files required for active development.", [
     'copy'
+    'dbapiroot:dev'
     'lsc'
     'stylus'
     'concat'
@@ -18,6 +19,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'release', "Release the build to GitHub Pages.", [
     'dev'
+    'dbapiroot:release'
     'dist'
     'clean:dist'
     'publish'
