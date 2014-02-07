@@ -1,4 +1,6 @@
-messagebar, allUsers, DBAPI <- define <[messagebar data/allUsers util/dbapi]>
+messagebar, model, allUsers, DBAPI <- define <[
+  messagebar data/model data/allUsers util/dbapi
+]>
 
 
 # Member location database endpoint.
@@ -10,9 +12,11 @@ syncUserLocation = (username, latlng, callback) !->
   # Get the user object, if any, and update the local collection.
   user = allUsers.select((.username is username))[0]
   if not user?
-    user = new User username
+    user = new model.User username
+      ..setLocation [latlng.lat, latlng.lng]
       ..|> allUsers.addUser
-  user.setLocation [latlng.lat, latlng.lng]
+  else
+    user.setLocation [latlng.lat, latlng.lng]
 
   # Synchronize the change with the server.
   DBAPI \PUT, "#{MAP_MEMBERS_ENDPOINT}/#{user.username}",
