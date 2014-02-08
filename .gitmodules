@@ -26,3 +26,6 @@
 [submodule "Leaflet.Control.Search"]
 	path = vendor/leaflet-search
 	url = https://github.com/stefanocudini/leaflet-search.git
+[submodule "CSSAnimEvent"]
+	path = vendor/cssanimevent
+	url = https://github.com/magnetikonline/cssanimevent.git

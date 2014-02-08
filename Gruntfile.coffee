@@ -63,6 +63,15 @@ module.exports = (grunt) ->
           url: 'javascript:"http://" + window.location.hostname + ":63558"'
       'release':
           url: 'http://v3.db.aasg.name'
+    wrap:
+      'cssanimevent.js':
+        options:
+          wrapper: [
+            'define(function () {\n'
+            'return window.CSSAnimEvent;\n});'
+          ]
+        src: 'vendor/cssanimevent/cssanimevent.js'
+        dest: 'build/js/cssanimevent.js'
     lsc:
       options:
         bare: true
@@ -181,6 +190,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-embed'
+  grunt.loadNpmTasks 'grunt-wrap'
   grunt.loadNpmTasks 'grunt-gh-pages'
   grunt.loadNpmTasks 'grunt-lsc'
   grunt.loadNpmTasks 'grunt-requirejs'

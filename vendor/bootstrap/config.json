@@ -2,14 +2,15 @@
   "vars": {},
   "css": [
     "type.less",
-    "grid.less",
     "forms.less",
     "buttons.less",
     "glyphicons.less",
+    "navs.less",
+    "navbar.less",
     "alerts.less",
-    "panels.less",
     "close.less",
-    "utilities.less"
+    "utilities.less",
+    "responsive-utilities.less"
   ],
   "js": []
 }

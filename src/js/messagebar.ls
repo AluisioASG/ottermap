@@ -1,6 +1,7 @@
-$ <- define <[jquery domReady!]>
+dom, CSSAnimEvent <- define <[util/dom cssanimevent domReady!]>
+{$id, $all, $sel, $addClass, $removeClass} = dom
 
-var $messagebar, $shadows, lastAlertClass
+var messagebar, lastAlertClass
 
 
 # Show the message bar and display a message.  The alert class is the
@@ -12,32 +13,25 @@ displayMessage = (message, alertClass) !->
   lastAlertClass := alertClass
 
   # Update the message bar with the given parameters.
-  $messagebar
-  .addClass alertClass
-  .find \p .text message .end!
+  (messagebar `$addClass` alertClass `$sel` \p).textContent = message
 
-  # Only show the message bar after the shadowed elements, if any,
-  # are hidden.
-  $shadows.slideUp!promise!done !->
-    $messagebar.slideDown!
+  # Display the message bar.
+  $removeClass messagebar, \invisible \mb-hide
 
 # Hide the message bar.
 hideMessageBar = !->
-  $messagebar.slideUp !->
-    $messagebar.removeClass lastAlertClass
-    # Show the shadowed elements again once the message bar is hidden.
-    $shadows.slideDown!
+  # First fade the message bar, then mark it as invisible and remove
+  # the alert class.
+  messagebar `$addClass` \mb-hide
+  CSSAnimEvent.onTransitionEnd messagebar, !->
+    messagebar `$addClass` \invisible `$removeClass` lastAlertClass
 
 
-# Keep a reference to the jQueryfied message bar element.
-$messagebar = $ \#messagebar
-
-# Keep a reference to the elements to be hidden when the bar is shown,
-# if any.
-$shadows = $ \.messagebar-shadow
+# Keep a reference to the message bar element.
+messagebar = $id \messagebar
 
 # Close the message bar when its close button is clicked.
-$messagebar.find \button.close .on \click hideMessageBar
+(messagebar `$sel` \button.close).addEventListener \click hideMessageBar
 
 
 # Define the module's API.

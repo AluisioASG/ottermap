@@ -23,9 +23,10 @@
     "grunt-contrib-stylus": "*",
     "grunt-contrib-uglify": "*",
     "grunt-embed": "*",
+    "grunt-gh-pages": "*",
     "grunt-lsc": "*",
     "grunt-requirejs": "*",
     "grunt-svgmin": "*",
-    "grunt-gh-pages": "*"
+    "grunt-wrap": "*"
   }
 }

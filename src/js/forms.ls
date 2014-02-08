@@ -26,6 +26,6 @@ $id \update-form
       # Reset the upload button's color now, and set it to indicate success
       # once the upload is completed.
       uploadButton = this `$sel` 'button[type=submit]'
-      uploadButton `$removeClass` \btn-success `$addClass` \btn-default
+      uploadButton `$removeClass` \btn-success `$addClass` \btn-primary
       syncUserLocation (getUsername this), g_marker.getLatLng!, !->
-        uploadButton `$removeClass` \btn-default `$addClass` \btn-success
+        uploadButton `$removeClass` \btn-primary `$addClass` \btn-success

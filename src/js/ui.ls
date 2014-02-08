@@ -1,5 +1,5 @@
 dom, events <-! define <[util/dom util/events domReady!]>
-{$id, $all, $sel, $addClass, $toggleClass} = dom
+{$id, $all, $sel, $addClass, $removeClass, $toggleClass} = dom
 
 
 # Minimum height for the map we're going to allow.
@@ -24,57 +24,69 @@ for form in $all \form
 updateForm = $id \update-form
 
 submitButton = updateForm `$sel` 'button[type=submit]'
-  ..title = 'Place marker'
+submitText = submitButton `$sel` 'span.button-text'
+  ..textContent = 'Add yourself to the map'
 submitIcon = submitButton `$sel` 'span.glyphicon'
   .. `$addClass` \glyphicon-map-marker
 
 events.listenOnce updateForm, \submit, !->
-  submitButton.title = 'Upload location'
+  submitText.textContent = 'Upload location'
   $toggleClass submitIcon, \glyphicon-map-marker \glyphicon-cloud-upload
+  updateForm `$sel` 'input[name=username]'
+    .. `$removeClass` \hidden
+    ..required = true
+    ..focus!
+    ..select!
+  # Now that the input box is visible, we need the button to collapse
+  # in smaller displays.
+  submitText `$addClass` \hidden-xs
 
 
 # Keep a reference to the map container handy.
 mapContainer = $id \map
 
-# Get the height of the element's padding and border.  Subtract
-# from the element's `offsetHeight` to get its content height.
-getExtra = (elem) ->
+# Helper to get the computed value of a CSS property specified
+# in pixels.
+computedCssLength = (elem, prop, compstyle) ->
+  compstyle ?= window.getComputedStyle elem, null
+  parseInt compstyle[prop], 10
+
+# Get or set an element's content size.
+height = (elem, newValue) ->
+  # Get the height of the element's padding and border.  Subtract
+  # from the element's `offsetHeight` to get its content height.
   computedElementStyle = window.getComputedStyle elem, null
-  prop = -> parseInt computedElementStyle[it], 10
+  prop = -> computedCssLength elem, it, computedElementStyle
 
-  (prop \paddingTop) +
-  (prop \paddingBottom) +
-  (prop \borderTopWidth) +
-  (prop \borderBottomWidth)
+  extraHeight =
+    (prop \paddingTop) +
+    (prop \paddingBottom) +
+    (prop \borderTopWidth) +
+    (prop \borderBottomWidth)
 
-# Get an element's content size.
-getHeight = (elem) ->
-  elem.offsetHeight - getExtra elem
-
-# Set an element's content size.
-setHeight = (elem, value) !->
-  value -= getExtra elem
-  if value >= 0
-    elem.style.height = "#{value}px"
+  if not newValue?
+    return elem.offsetHeight - extraHeight
+  else
+    newValue -= extraHeight
+    if newValue >= 0
+      elem.style.height = "#{newValue}px"
+    return
 
 
 # Set the initial map height.
 do resizeMap = !->
   # Get the window's and the map container's heights.
-  currentHeight = getHeight mapContainer
+  currentHeight = height mapContainer
   windowHeight = document.documentElement.clientHeight
   # Compute the new height as the current height of the map plus the
   # difference of height between the page container and the window.
-  newHeight =
-    $sel \.container |> getHeight
-    |> (- currentHeight)
-    |> (windowHeight -)
+  newHeight = windowHeight - computedCssLength mapContainer, \top
   # Make sure the new height is acceptable.
   if newHeight < MINIMUM_MAP_HEIGHT
     newHeight = windowHeight
   # Prevent unnecessary resizings.
   unless newHeight is currentHeight
-    setHeight mapContainer, newHeight
+    height mapContainer, newHeight
     resizeEvent = document.createEvent \Event
       ..initEvent \resize false false
     mapContainer.dispatchEvent resizeEvent
