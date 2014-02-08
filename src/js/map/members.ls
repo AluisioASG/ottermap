@@ -1,6 +1,7 @@
-L, mapMarkersAPI, map, allUsers <-! define <[
-  leaflet map/markers map data/allUsers
+dom, L, mapMarkersAPI, map, allUsers <-! define <[
+  util/dom leaflet map/markers map data/allUsers
 ]>
+{$sel} = dom
 
 
 # Zoom level after a search with a single result.
@@ -16,8 +17,18 @@ allUsers.addEventListener \useradd ({detail: user}) !->
   user.addEventListener \unperson !->
     membersLayer.removeLayer marker
 
-# Add the search control.
-new L.Control.Search do
+# Tweak and add the search control.
+class SearchControl extends L.Control.Search
+  -> super ...
+  onAdd: ->
+    super ...
+      ..setAttribute \aria-haspopup \true
+      .. `$sel` \.search-input
+        ..type = \search
+      .. `$sel` \.search-cancel
+        ..parentNode.removeChild ..
+
+new SearchControl do
   layer: membersLayer
   circleLocation: false
   initial: false
