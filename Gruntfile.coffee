@@ -41,9 +41,6 @@ module.exports = (grunt) ->
           src: ['loader.gif', 'search-icon.png']
           dest: 'dist/img/'
         }]
-      'jquery.js':
-        src: 'vendor/jquery/dist/jquery.js'
-        dest: 'build/js/jquery.js'
       'require.js':
         files:
           'build/js/require.js': 'vendor/requirejs/require.js'

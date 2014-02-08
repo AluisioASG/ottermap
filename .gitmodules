@@ -1,7 +1,3 @@
-[submodule "jQuery"]
-	path = vendor/jquery
-	url = https://github.com/jquery/jquery.git
-	ignore = dirty
 [submodule "Leaflet"]
 	path = vendor/leaflet
 	url = https://github.com/AluisioASG/Leaflet.git
