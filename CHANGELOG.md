@@ -1,3 +1,8 @@
+# 0.6.0
+* Dropped jQuery
+* Redesigned the page so that the map occupies all available space except for a bar at the top of the page
+* Replaced the search form with an in-map plugin
+
 # 0.5.2
 * Made pop-up behavior on Firefox match the expected behavior as in Chrome
 * Added compatibility with Firefox 20
