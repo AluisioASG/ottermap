@@ -27,6 +27,7 @@
     "grunt-lsc": "*",
     "grunt-requirejs": "*",
     "grunt-svgmin": "*",
-    "grunt-wrap": "*"
+    "grunt-wrap": "*",
+    "stylus": "^0.42"
   }
 }

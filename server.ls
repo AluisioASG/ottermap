@@ -19,7 +19,7 @@ getDevelopmentServer = ->
   .use connect.logger \dev
   .use compiler do
     log_level: \INFO
-    enabled: <[livescript]>
+    enabled: <[livescript stylus]>
     src: SRC_DIR
     dest: BLD_DIR
     options:

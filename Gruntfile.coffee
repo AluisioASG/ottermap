@@ -102,19 +102,21 @@ module.exports = (grunt) ->
           'vendor/leaflet-search/dist/leaflet-search.src.js'
         ]
         dest: 'build/js/leaflet.js'
-      'all.css':
+      'leaflet.css':
         src: [
-          'vendor/bootstrap/css/bootstrap.css'
-          'vendor/bootstrap/css/bootstrap-theme.css'
           'vendor/leaflet/dist/leaflet.css'
           'vendor/leaflet-geosearch/src/css/l.geosearch.css'
           'vendor/leaflet-markercluster/dist/MarkerCluster.css'
           'vendor/leaflet-markercluster/dist/MarkerCluster.Default.css'
           'vendor/leaflet-search/dist/leaflet-search.src.css'
-          'build/**/*.css'
-          '!build/css/all.css'
         ]
-        dest: 'build/css/all.css'
+        dest: 'build/css/leaflet.css'
+      'bootstrap.css':
+        src: [
+          'vendor/bootstrap/css/bootstrap.css'
+          'vendor/bootstrap/css/bootstrap-theme.css'
+        ]
+        dest: 'build/css/bootstrap.css'
     svgmin:
       options:
         plugins: [
@@ -157,11 +159,9 @@ module.exports = (grunt) ->
 
     # Stage 3 (dist) tasks
     cssmin:
-      options:
-        processImport: false
       'all.css':
-        src: 'build/css/all.css'
-        dest: 'dist/css/all.css'
+        src: 'build/css/main.css'
+        dest: 'dist/css/main.css'
     uglify:
       options:
         compress: true
