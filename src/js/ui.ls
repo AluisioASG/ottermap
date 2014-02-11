@@ -2,9 +2,6 @@ dom, events <-! define <[util/dom util/events domReady!]>
 {$id, $all, $sel, $addClass, $removeClass, $toggleClass} = dom
 
 
-# Minimum height for the map we're going to allow.
-const MINIMUM_MAP_HEIGHT = 320px
-
 # Time to wait until the current operation is completed.
 const NEXT_TICK_INTERVAL = 1000ms / 25fps
 
@@ -42,54 +39,24 @@ events.listenOnce updateForm, \submit, !->
   submitText `$addClass` \hidden-xs
 
 
-# Keep a reference to the map container handy.
-mapContainer = $id \map
-
-# Helper to get the computed value of a CSS property specified
-# in pixels.
-computedCssLength = (elem, prop, compstyle) ->
-  compstyle ?= window.getComputedStyle elem, null
-  parseInt compstyle[prop], 10
-
-# Get or set an element's content size.
-height = (elem, newValue) ->
-  # Get the height of the element's padding and border.  Subtract
-  # from the element's `offsetHeight` to get its content height.
-  computedElementStyle = window.getComputedStyle elem, null
-  prop = -> computedCssLength elem, it, computedElementStyle
-
-  extraHeight =
-    (prop \paddingTop) +
-    (prop \paddingBottom) +
-    (prop \borderTopWidth) +
-    (prop \borderBottomWidth)
-
-  if not newValue?
-    return elem.offsetHeight - extraHeight
-  else
-    newValue -= extraHeight
-    if newValue >= 0
-      elem.style.height = "#{newValue}px"
-    return
-
-
 # Set the initial map height.
 do resizeMap = !->
-  # Get the window's and the map container's heights.
-  currentHeight = height mapContainer
+  # Keep a reference to the map container.
+  mapContainer = $id \map
+
+  # Compute the new height as the window height sans the top bar.
+  # The bar is fixed to the top of the document and the (also fixed)
+  # map container's offset is set in the `top` CSS property, so we
+  # just need to subtract this offset from the window's height.
+  #
+  # We assume the map container has no vertical padding or borders,
+  # otherwise we'd need to take them into account.
   windowHeight = document.documentElement.clientHeight
-  # Compute the new height as the current height of the map plus the
-  # difference of height between the page container and the window.
-  newHeight = windowHeight - computedCssLength mapContainer, \top
-  # Make sure the new height is acceptable.
-  if newHeight < MINIMUM_MAP_HEIGHT
-    newHeight = windowHeight
-  # Prevent unnecessary resizings.
-  unless newHeight is currentHeight
-    height mapContainer, newHeight
-    resizeEvent = document.createEvent \Event
-      ..initEvent \resize false false
-    mapContainer.dispatchEvent resizeEvent
+  containerOffset = parseInt (window.getComputedStyle mapContainer)[\top], 10
+  mapContainer.style.height = "#{windowHeight - containerOffset}px"
+  document.createEvent \Event
+    ..initEvent \resize false false
+    mapContainer.dispatchEvent ..
 
 # Resize the map whenever the window is resized.
 window.addEventListener \resize !->
