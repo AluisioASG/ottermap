@@ -39,8 +39,8 @@ events.listenOnce updateForm, \submit, !->
   submitText `$addClass` \hidden-xs
 
 
-# Set the initial map height.
-do resizeMap = !->
+# Define the map container's height.
+resizeMap = !->
   # Keep a reference to the map container.
   mapContainer = $id \map
 
@@ -57,6 +57,11 @@ do resizeMap = !->
   document.createEvent \Event
     ..initEvent \resize false false
     mapContainer.dispatchEvent ..
+
+# Set the map's initial height after a small delay.  We do this
+# because Opera seems to not have loaded the style sheet by the
+# time this code is running.
+setTimeout resizeMap, NEXT_TICK_INTERVAL
 
 # Resize the map whenever the window is resized.
 window.addEventListener \resize !->
