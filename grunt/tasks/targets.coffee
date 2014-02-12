@@ -13,7 +13,6 @@ module.exports = (grunt) ->
   grunt.registerTask 'dist', "Build the files to be deployed.", [
     'cssmin'
     'requirejs'
-    'uglify'
     'embed'
     'fix-embed-css'
   ]

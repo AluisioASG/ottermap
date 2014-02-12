@@ -21,7 +21,6 @@
     "grunt-contrib-copy": "*",
     "grunt-contrib-cssmin": "*",
     "grunt-contrib-stylus": "*",
-    "grunt-contrib-uglify": "*",
     "grunt-embed": "*",
     "grunt-gh-pages": "*",
     "grunt-lsc": "*",

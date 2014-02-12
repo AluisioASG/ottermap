@@ -4,8 +4,8 @@ module.exports =
       mainConfigFile: 'build/js/main.js'
       baseUrl: 'build/js'
       name: 'main'
-      out: 'build/js/all.js'
-      optimize: 'none'
+      out: 'dist/js/main.js'
+      optimize: 'uglify2'
       # Use almond instead of require.js
       almond: true
       replaceRequireScript: [
