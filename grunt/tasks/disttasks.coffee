@@ -1,7 +1,7 @@
 module.exports = (grunt) ->
   'use strict'
 
-  grunt.registerMultiTask 'fixcsspaths', '.', ->
+  grunt.registerMultiTask 'fix-embed-css', 'Fix paths in the HTML-embedded CSS.', ->
     @files.forEach (files) ->
       src = files.src[0]
       dest = files.dest
@@ -20,7 +20,7 @@ module.exports = (grunt) ->
       return
     return
 
-  grunt.registerTask 'publish', "Send the current release to GitHub Pages.", ->
+  grunt.registerTask 'publish', 'Send the current release to GitHub Pages.', ->
     git = require 'grunt-gh-pages/lib/git'
     done = @async()
     git(['config', '--get-regexp', '^user\\.']).progress (out) ->
@@ -28,7 +28,7 @@ module.exports = (grunt) ->
       String(out).trim().split('\n').forEach (entry) ->
         [key, val...] = entry.split ' '
         gitconfig[key] = val.join(' ').trim()
-      grunt.config 'ghupload.options.user.name', gitconfig['user.name']
-      grunt.config 'ghupload.options.user.email', gitconfig['user.email']
-      grunt.task.run 'ghupload'
+      grunt.config 'gh-pages.options.user.name', gitconfig['user.name']
+      grunt.config 'gh-pages.options.user.email', gitconfig['user.email']
+      grunt.task.run 'gh-pages'
       done()

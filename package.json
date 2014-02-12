@@ -28,6 +28,7 @@
     "grunt-requirejs": "*",
     "grunt-svgmin": "*",
     "grunt-wrap": "*",
+    "load-grunt-tasks": "0.3.x",
     "stylus": "^0.42"
   }
 }

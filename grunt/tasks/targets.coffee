@@ -3,7 +3,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'dev', "Build all the files required for active development.", [
     'copy'
-    'dbapiroot:dev'
+    'dbapi-root:dev'
     'wrap'
     'lsc'
     'stylus'
@@ -15,12 +15,12 @@ module.exports = (grunt) ->
     'requirejs'
     'uglify'
     'embed'
-    'fixcsspaths'
+    'fix-embed-css'
   ]
 
   grunt.registerTask 'release', "Release the build to GitHub Pages.", [
     'dev'
-    'dbapiroot:release'
+    'dbapi-root:release'
     'dist'
     'clean:dist'
     'publish'

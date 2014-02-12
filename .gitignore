@@ -9,3 +9,6 @@
 # Editor files
 *~
 *.swp
+
+# User configuration
+/grunt/userconfig/
