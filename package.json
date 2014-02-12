@@ -11,7 +11,7 @@
   "dependencies": {
     "buffet": "*",
     "connect": "2.x",
-    "LiveScript": "*"
+    "LiveScript": "1.2.x"
   },
   "devDependencies": {
     "connect-compiler": "*",
