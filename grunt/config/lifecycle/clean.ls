@@ -1,4 +1,4 @@
 module.exports =
-  'build': ['build']
-  'dist': ['dist/css' 'dist/js']
+  'dev': ['build']
   'release': ['dist']
+  'deploy': ['dist/css' 'dist/js']

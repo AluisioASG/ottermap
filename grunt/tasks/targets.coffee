@@ -1,36 +1,31 @@
 module.exports = (grunt) ->
   'use strict'
 
-  grunt.registerTask 'dev', "Build all the files required for active development.", [
+  grunt.registerTask 'dev', "Build the project in development mode.", [
     'copy'
-    'dbapi-root:dev'
+    'dbapi-root:development'
     'wrap'
     'lsc'
     'stylus'
     'concat'
     'svgmin'
   ]
-  grunt.registerTask 'dist', "Build the files to be deployed.", [
+  grunt.registerTask 'release', "Optimize the project build for release.", [
     'cssmin'
     'requirejs'
     'embed'
     'fix-embed-css'
   ]
 
-  grunt.registerTask 'release', "Release the build to GitHub Pages.", [
+  grunt.registerTask 'deploy', "Build the deployment package.", [
+    'clean'
     'dev'
-    'dbapi-root:release'
-    'dist'
-    'clean:dist'
-    'publish'
+    'dbapi-root:production'
+    'release'
+    'clean:deploy'
   ]
 
   grunt.registerTask 'default', [
     'dev'
-    'dist'
-  ]
-  grunt.registerTask 'rebuild', [
-    'clean'
-    'default'
-    'clean:build'
+    'release'
   ]
