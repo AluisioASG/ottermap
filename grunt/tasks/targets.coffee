@@ -3,7 +3,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'dev', "Build the project in development mode.", [
     'copy'
-    'dbapi-root:development'
+    'db-root:development'
     'wrap'
     'lsc'
     'stylus'
@@ -20,7 +20,7 @@ module.exports = (grunt) ->
   grunt.registerTask 'deploy', "Build the deployment package.", [
     'clean'
     'dev'
-    'dbapi-root:production'
+    'db-root:production'
     'release'
     'clean:deploy'
   ]

@@ -1,7 +1,7 @@
 module.exports = (grunt) ->
   'use strict'
 
-  grunt.registerMultiTask 'dbapi-root', 'Write path to DBAPI root to an AMD module.', ->
+  grunt.registerMultiTask 'db-root', 'Write database URL to an AMD module.', ->
     dest = @options().dest
     url = @data.url
     expr = if /^javascript:/.test url

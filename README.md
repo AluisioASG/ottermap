@@ -44,7 +44,7 @@ _Now_ we're ready.  Run `grunt` to build everything including the final release 
 
 ### Running Your Own _Public_ Instance
 
-I don't know why you'd want to do such a thing, but here's how it's done.  First, you need to specify the address of your production DBAPI server.  For this, copy `grunt/config/dev/dbapi-root.ls` to `grunt/userconfig/dbapi-root.ls` and edit the URL under the `production` key.  Then you can run `grunt deploy` to build the release files in the `dist` directory.  If you're using GitHub Pages to host your map, you can instead issue the command `grunt deploy publish`, which will additionally commit the release files to your `gh-pages` branch and push it to GitHub.
+I don't know why you'd want to do such a thing, but here's how it's done.  First, you need to specify the address of your production DBAPI server.  For this, copy `grunt/config/dev/db-root.ls` to `grunt/userconfig/db-root.ls` and edit the URL under the `production` key.  Then you can run `grunt deploy` to build the release files in the `dist` directory.  If you're using GitHub Pages to host your map, you can instead issue the command `grunt deploy publish`, which will additionally commit the release files to your `gh-pages` branch and push it to GitHub.
 
 
 [OTT]:               http://forums.xkcd.com/viewtopic.php?t=101043
