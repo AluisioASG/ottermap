@@ -1,4 +1,6 @@
-messagebar, events, DBAPI <- define <[messagebar util/events util/dbapi]>
+L, messagebar, events, DBAPI <- define <[
+  leaflet messagebar util/events util/dbapi
+]>
 
 
 # Member check-in database endpoint.
@@ -28,10 +30,11 @@ class User implements events.PausableEventTarget.prototype
   # Set the location property if unset or the new value differs
   # from the current one and dispatch an event informing the change.
   setLocation: (newLocation) !->
-    # Location is always of the form [latitude, longitude].
-    if not @location? or
-       newLocation[0] isnt @location[0] or
-       newLocation[1] isnt @location[1]
+    # Normalize the location into Leaflet's `LatLng` object (note
+    # that the constructor form doesn't support all the different
+    # representations).
+    newLocation = L.latLng newLocation
+    if not newLocation.equals @location
       @updateProperty \location, newLocation, \locationchange
 
   # Set the status property if unset or the new value differs
