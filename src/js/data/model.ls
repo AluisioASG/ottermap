@@ -1,17 +1,11 @@
-L, messagebar, events, DBAPI <- define <[
-  leaflet messagebar util/events util/dbapi
+L, events <- define <[
+  leaflet util/events
 ]>
 
-
-# Member check-in database endpoint.
-const BT_CHECKIN_ENDPOINT = "blitzertracker/checkins"
 
 # Time since the last check-in during which an user is considered
 # to be online.
 const RECENT_CHECKIN_THRESHOLD = 270s * 1000ms
-
-# Interval between database queries for check-in updates.
-const CHECKIN_QUERY_INTERVAL = 90s * 1000ms
 
 
 class User implements events.PausableEventTarget.prototype
@@ -19,9 +13,6 @@ class User implements events.PausableEventTarget.prototype
     events.PausableEventTarget.call this
     # Update the status whenever the last access timestamp changes.
     @addEventListener \lastaccesschange @updateStatusFromLastAccess
-    # Check the last access timestamp now and then.
-    @activityCheckInterval = setInterval @~checkStatus, CHECKIN_QUERY_INTERVAL
-    @checkStatus!
 
   # Set a property and dispatch an event informing the change.
   updateProperty: (name, newValue, eventName) !->
@@ -69,25 +60,6 @@ class User implements events.PausableEventTarget.prototype
     else
       @setStatus \offline
 
-  # Fetch the user's status from the database, updating the status
-  # property accordingly.
-  checkStatus: !->
-    DBAPI \GET, "#{BT_CHECKIN_ENDPOINT}/#{@username}",
-      void
-    , (event) !~>
-      {lastCheckin} = JSON.parse event.target.responseText
-      @setLastAccessTimestamp new Date lastCheckin
-    , (event) !~>
-      @unsetLastAccessTimestamp!
-      if event.target.status is 404
-        # Just stop checking.
-        clearInterval @activityCheckInterval
-      else
-        messagebar.show "
-          Hmm.  Something prevented us from fetching the last check-in 
-          timestamp of a member from the database.  The map is still 
-          fully functional, though.
-        " \danger
 
 class UserCollection implements events.PausableEventTarget.prototype
   ->

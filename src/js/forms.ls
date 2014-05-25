@@ -1,5 +1,5 @@
-dom, events, mapUserAPI, syncUserLocation <-! define <[
-  util/dom util/events map/user data/sync domReady!
+dom, events, mapUserAPI, data <-! define <[
+  util/dom util/events map/user data domReady!
 ]>
 {$id, $sel, $addClass, $removeClass} = dom
 
@@ -27,5 +27,5 @@ $id \update-form
       # once the upload is completed.
       uploadButton = this `$sel` 'button[type=submit]'
       uploadButton `$removeClass` \btn-success `$addClass` \btn-primary
-      syncUserLocation (getUsername this), g_marker.getLatLng!, !->
+      data.syncUserLocation (getUsername this), g_marker.getLatLng!, !->
         uploadButton `$removeClass` \btn-primary `$addClass` \btn-success

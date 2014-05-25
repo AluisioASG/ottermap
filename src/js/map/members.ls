@@ -1,5 +1,5 @@
-dom, L, mapMarkersAPI, map, allUsers <-! define <[
-  util/dom leaflet map/markers map data/allUsers
+dom, L, mapMarkersAPI, map, data <-! define <[
+  util/dom leaflet map/markers map data
 ]>
 {$sel} = dom
 
@@ -11,7 +11,7 @@ const SEARCH_RESULT_ZOOM_LEVEL = 10
 # Fetch all members and add a layer for them.
 membersLayer = new L.MarkerClusterGroup
 map.addLayer membersLayer
-allUsers.addEventListener \useradd ({detail: user}) !->
+data.users.addEventListener \useradd ({detail: user}) !->
   marker = mapMarkersAPI.buildMemberMarker user
   membersLayer.addLayer marker
   user.addEventListener \unperson !->
