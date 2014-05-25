@@ -17,6 +17,9 @@ const CHECKIN_QUERY_INTERVAL = 90s * 1000ms
 class User implements events.PausableEventTarget.prototype
   (@username) ->
     events.PausableEventTarget.call this
+    # Update the status whenever the last access timestamp changes.
+    @addEventListener \lastaccesschange @updateStatusFromLastAccess
+    # Check the last access timestamp now and then.
     @activityCheckInterval = setInterval @~checkStatus, CHECKIN_QUERY_INTERVAL
     @checkStatus!
 
@@ -44,6 +47,28 @@ class User implements events.PausableEventTarget.prototype
        newStatus isnt @status
       @updateProperty \status, newStatus, \statuschange
 
+  # Set the last access timestamp property if unset or the new value
+  # differs from the current one and dispatch an event informing the
+  # change.
+  setLastAccessTimestamp: (newTimestamp) !->
+    if newTimestamp.getTime! isnt @lastAccess?getTime!
+      @updateProperty \lastAccess, newTimestamp, \lastaccesschange
+
+  # Unset the last access timestamp property and dispatch an event
+  # informing the change.
+  unsetLastAccessTimestamp: !->
+    if @lastAccess?
+      @updateProperty \lastAccess, null, \lastaccesschange
+
+  # Update the status property based on the last access timestamp.
+  updateStatusFromLastAccess: !->
+    if not @lastAccess?
+      @setStatus void
+    else if (Date.now! - @lastAccess.getTime!) <= RECENT_CHECKIN_THRESHOLD
+      @setStatus \online
+    else
+      @setStatus \offline
+
   # Fetch the user's status from the database, updating the status
   # property accordingly.
   checkStatus: !->
@@ -51,13 +76,9 @@ class User implements events.PausableEventTarget.prototype
       void
     , (event) !~>
       {lastCheckin} = JSON.parse event.target.responseText
-      @checkinDate = new Date lastCheckin
-      if (Date.now! - @checkinDate.getTime!) <= RECENT_CHECKIN_THRESHOLD
-        @setStatus \online
-      else
-        @setStatus \offline
+      @setLastAccessTimestamp new Date lastCheckin
     , (event) !~>
-      @setStatus \unknown
+      @unsetLastAccessTimestamp!
       if event.target.status is 404
         # Just stop checking.
         clearInterval @activityCheckInterval
