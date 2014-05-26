@@ -1,7 +1,11 @@
-DBAPI_ROOT <- define <[dbapi-root]>
+<- define
 
 
-(method, endpoint, data, successCallback, errorCallback) !->
+var DBAPI_ROOT
+DBAPI.setRoot = (url) !->
+  DBAPI_ROOT := url
+
+function DBAPI (method, endpoint, data, successCallback, errorCallback)
   xhr = new XMLHttpRequest
     ..open method, "#{DBAPI_ROOT}/#{endpoint}", true
     ..addEventListener \load (event) !->

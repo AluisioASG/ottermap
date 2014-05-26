@@ -1,5 +1,5 @@
-messagebar, model, DBAPI <- define <[
-  messagebar data/model util/dbapi
+messagebar, model, dbconf, DBAPI <- define <[
+  messagebar data/model data/config util/dbapi
 ]>
 
 
@@ -13,7 +13,10 @@ const BT_CHECKIN_ENDPOINT = "blitzertracker/checkins"
 const CHECKIN_QUERY_INTERVAL = 90s * 1000ms
 
 
-# Arrange so that the user's last access timestamp is periodically
+# Set the DBAPI root.
+DBAPI.setRoot dbconf.urls.dbapi
+
+# Arrange so that a user's last access timestamp is periodically
 # fetched from the database and updated in the model.
 setupLastAccessCheck = (user) !->
   # Check the last access timestamp now and then.
