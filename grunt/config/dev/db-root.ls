@@ -1,7 +1,10 @@
 module.exports =
   options:
-    dest: 'build/js/dbapi-root.js'
+    dest:
+      'dbapi'    : 'build/js/dbapi-root.js'
   'development':
-    url: 'http://localhost:8000'
+    urls:
+      'dbapi'    : 'http://localhost:8000'
   'production':
-    url: 'http://v3.db.aasg.name'
+    urls:
+      'dbapi'    : 'http://v3.db.aasg.name'
