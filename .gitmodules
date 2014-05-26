@@ -25,3 +25,6 @@
 [submodule "CSSAnimEvent"]
 	path = vendor/cssanimevent
 	url = https://github.com/magnetikonline/cssanimevent.git
+[submodule "Firebase Web Client"]
+	path = vendor/firebase
+	url = https://github.com/firebase/firebase-bower.git
