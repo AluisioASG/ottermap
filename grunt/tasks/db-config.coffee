@@ -3,9 +3,10 @@ module.exports = (grunt) ->
 
   grunt.registerMultiTask 'db-config', 'Write the database config to an AMD module.', ->
     {dest, backends} = @options()
+    backends_str = JSON.stringify backends
     payload = """
       define({
-        backends: #{JSON.stringify backends},
+        backends: #{backends_str},
         urls: {
     """.split '\n'
     for own name, url of @data.urls
@@ -18,6 +19,8 @@ module.exports = (grunt) ->
         }
       });
     """.split '\n'
+    if @data.forceInclude
+      payload.push "require(#{backends_str});"
     grunt.file.write dest, payload.join '\n'
     grunt.log.ok "File \"#{dest}\" created."
     return
