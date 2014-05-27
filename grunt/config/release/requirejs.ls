@@ -1,4 +1,4 @@
-module.exports =
+module.exports = (grunt) ->
   'all.js':
     options:
       mainConfigFile: 'build/js/main.js'
@@ -13,3 +13,6 @@ module.exports =
         module: 'main'
         modulePath: 'js/main'
       ]
+      # Insert the database backend modules even if not directly
+      # requested.
+      include:~ -> grunt.config.get 'db-config.options.backends'
