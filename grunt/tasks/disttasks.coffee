@@ -1,25 +1,6 @@
 module.exports = (grunt) ->
   'use strict'
 
-  grunt.registerMultiTask 'fix-embed-css', 'Fix paths in the HTML-embedded CSS.', ->
-    @files.forEach (files) ->
-      src = files.src[0]
-      dest = files.dest
-
-      if not grunt.file.exists src
-        grunt.log.error "Source file \"#{src}\" not found."
-        return
-
-      contents =
-        (grunt.file.read src)
-        .replace(/\.\.\/\b/g, '')
-        # Work around callumlocke/resource-embedder#15
-        .replace(/fonts\\glyphicons/g, 'fonts/glyphicons')
-      grunt.file.write dest, contents
-      grunt.log.writeln "File \"#{dest}\" created."
-      return
-    return
-
   grunt.registerTask 'publish', 'Send the current release to GitHub Pages.', ->
     git = require 'grunt-gh-pages/lib/git'
     done = @async()
