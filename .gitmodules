@@ -1,6 +1,6 @@
 [submodule "Leaflet"]
 	path = vendor/leaflet
-	url = https://github.com/AluisioASG/Leaflet.git
+	url = https://github.com/Leaflet/Leaflet.git
 [submodule "Leaflet.GeoSearch"]
 	path = vendor/leaflet-geosearch
 	url = https://github.com/smeijer/L.GeoSearch.git
