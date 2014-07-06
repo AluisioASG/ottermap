@@ -47,3 +47,8 @@ module.exports =
       """
     src: 'vendor/firebase/firebase.js'
     dest: 'build/js/firebase.js'
+  'picomodal.js':
+    options:
+      process: (.replace /window\.define/g 'define')
+    files:
+      'build/js/picomodal.js': 'vendor/picomodal/src/picoModal.js'

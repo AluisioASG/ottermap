@@ -37,6 +37,7 @@ Inside your project's working directory, run the following commands to fetch and
     git submodule update --init --recursive
     npm update
     npm --prefix=vendor/leaflet update
+    npm --prefix=vendor/picomodal update
     grunt builddeps
 
 As a last task, specify your database backend by copying `grunt/config/dev/db-config.ls` to `grunt/userconfig/db-config.ls` and editing the `backends` field and the URLs under the `development` and `production` keys accordingly.

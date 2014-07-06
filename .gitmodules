@@ -28,3 +28,6 @@
 [submodule "Firebase Web Client"]
 	path = vendor/firebase
 	url = https://github.com/firebase/firebase-bower.git
+[submodule "PicoModal"]
+	path = vendor/picomodal
+	url = https://github.com/Nycto/PicoModal.git

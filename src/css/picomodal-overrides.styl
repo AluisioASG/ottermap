@@ -1,0 +1,24 @@
+// Styling for modal pop-ups.
+.pico-content
+	// Add a scrollbar if the modal's content overflows.
+	overflow-y auto
+
+	// Cover the whole page on small displays.
+	@media (max-width 767px)
+		width 100% !important
+		height 100% !important
+		top 0 !important
+		left 0 !important
+		margin 0 !important
+
+	// On large displays, fix the modal's width and limit its height so it
+	// doesn't flow beyond the page itself.
+	@media (min-width 768px)
+		width 600px
+		max-height 85%
+		max-height calc(100% - 100px) // 2*top
+
+	// Don't show a background for the close button.
+	.pico-close
+		background transparent !important
+		border-radius 0 !important
