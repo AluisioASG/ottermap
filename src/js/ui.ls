@@ -1,4 +1,4 @@
-dom, events <-! define <[util/dom util/events domReady!]>
+dom, events, picomodal <-! define <[util/dom util/events picomodal domReady!]>
 {$id, $all, $sel, $addClass, $removeClass, $toggleClass} = dom
 
 
@@ -85,3 +85,20 @@ document.createElement \style
     when localStorage["#{type} marker style"]?
   ] * '\n'
   document.head.appendChild ..
+
+
+# Configure the modal dialogs.
+readyModal = (contentId, buttonId) !->
+  # Extract the modal's content node from the DOM tree.
+  contentNode = $id contentId
+    ..parentNode.removeChild ..
+    ..hidden = false
+  # Build the modal.
+  modal = picomodal do
+    content: contentNode
+    closeHtml: '<button type="button" class="close">&times;</button>'
+  # Show the modal when the corresponding button is clicked.
+  $id buttonId .addEventListener \click modal~show
+
+readyModal \about-modal \about-button
+readyModal \settings-modal \settings-button

@@ -17,15 +17,94 @@
 		<form id="update-form" class="form-inline">
 			<input type="text" name="username" placeholder="Username" class="form-control hidden">
 			<button type="submit" class="btn btn-primary navbar-btn">
-				<span class="glyphicon"></span>
+				<span class="glyphicon hidden-xs"></span>
 				<span class="button-text"></span>
 			</button>
 		</form>
+		<div class="pull-right">
+			<button type="button" id="about-button" class="btn btn-default navbar-btn">
+				<span class="glyphicon glyphicon-info-sign"></span>
+				<span class="button-text hidden-xs">About</span>
+			</button>
+			<button type="button" id="settings-button" class="btn btn-default navbar-btn">
+				<span class="glyphicon glyphicon-cog"></span>
+				<span class="button-text hidden-xs">Settings</span>
+			</button>
+		</div>
 	</div>
 </div>
 
 <div id="map">
 	<p class="text-center">Either the page hasn't finished loading yet, or your browser has JavaScript disabled.</p>
 </div>
+
+<aside id="about-modal" hidden>
+	<h2>Not AnOTTer Map v0.5.2+56</h2>
+	<p style="font-style: italic;">
+		<span title="for lawyers: © 2013-2014 Aluísio Augusto Silva Gonçalves">by Aluísio Augusto Silva Gonçalves</span>,
+		<br>
+		<span title="especially lmjb1964">for the OTT community</span>
+	</p>
+
+	<section>
+	<h3>About</h3>
+		<p>This is an interactive map showing the members of the <a href="http://forums.xkcd.com/viewtopic.php?t=101043">discussion thread</a> for the xkcd comic <a href="http://xkcd.com/1190/">#1190: “Time”</a>.
+		<p>This page's source code is publicly available on <a href="https://github.com/AluisioASG/ottermap">GitHub</a> under the terms of the Mozilla Public License, v. 2.0.
+	</section>
+
+	<section>
+		<h3>Credits</h3>
+		<h5>Built with:</h5>
+		<ul>
+			<li><a href="http://gruntjs.com/">Grunt</a> and plugins for build automation
+			<li><a href="http://learnboost.github.io/stylus/">Stylus</a> for style sheet authoring
+			<li><a href="http://livescript.net/">LiveScript</a> for, uh, programming
+			<li><a href="http://requirejs.org/">RequireJS</a> and plugins for code loading optimization
+		</ul>
+		<h5>Using:</h5>
+		<ul>
+			<li><a href="http://getbootstrap.com/">Bootstrap</a> for UI design
+			<li><a href="http://leafletjs.com/">Leaflet</a> and plugins for map drawin
+			<li><a href="http://firebase.com/">Firebase</a> for data storage and synchronization
+			<li><a href="https://github.com/AluisioASG/ottermap/tree/master/vendor/">…and others</a>
+		</ul>
+	</section>
+</aside>
+
+<aside id="settings-modal" hidden>
+	<h2>Map settings</h2>
+	<form spellcheck="false">
+		<fieldset>
+			<legend>Map layers</legend>
+			<p>Here you can define how the map looks (base tiles) and what information is displayed (overlays).  Check out the <a href="http://leaflet-extras.github.io/leaflet-providers/preview/" target="_blank">Leaflet-providers demo</a> for a preview of the available base tiles (radio selectors) and overlays (checkboxes).</p>
+			<div class="form-group">
+				<label for="setting-base-tiles">Base tiles provider</label>
+				<input type="text" name="setting-base-tiles" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="setting-overlays">Overlay providers</label>
+				<textarea name="setting-overlays" spellcheck="false" rows=3 class="form-control"></textarea>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Marker styles</legend>
+			<p>The following are groups of <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Syntax#CSS_declarations" target="_blank">CSS declarations</a> to be applied to users' markers according to their online status.  Declarations must be of valid <a href="http://www.w3.org/TR/SVG/styling.html#SVGStylingProperties" target="_blank">SVG styling properties</a>.</p>
+			<p>Users who have the <a href="http://time.aasg.name/userscripts/OTTerMapHeartbeat.user.js" target="_blank">OTTer Map Heartbeat</a> userscript installed have their online status defined as having visited the OTT in the last four and a half minutes.</p>
+			<div class="form-group">
+				<label for="setting-marker-style-default">Default style (no Heartbeat)</label>
+				<input type="text" name="setting-marker-style-default" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="setting-marker-style-online">Online users</label>
+				<input type="text" name="setting-marker-style-online" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="setting-marker-style-offline">Offline users</label>
+				<input type="text" name="setting-marker-style-offline" class="form-control">
+			</div>
+		</legend>
+	</form>
+</aside>
+
 
 <script src="js/require.js" data-main="js/main"></script>
