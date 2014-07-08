@@ -23,6 +23,27 @@ module.exports =
       'build/js/require.js': 'vendor/requirejs/require.js'
       'build/js/text.js': 'vendor/requirejs-text/text.js'
       'build/js/domReady.js': 'vendor/requirejs-domready/domReady.js'
+  'cssanimevent.js':
+    options:
+      process: -> """
+        define(function () {
+          var CSSAnimEvent;
+          #{it.replace /win(?:dow)?\.CSSAnimEvent/g 'CSSAnimEvent'}
+          return CSSAnimEvent;
+        });
+      """
+    src: 'vendor/cssanimevent/cssanimevent.js'
+    dest: 'build/js/cssanimevent.js'
+  'firebase.js':
+    options:
+      process: -> """
+        define(function () {
+          #{it}
+          return Firebase;
+        });
+      """
+    src: 'vendor/firebase/firebase.js'
+    dest: 'build/js/firebase.js'
   'src':
     files: [
       expand: yes

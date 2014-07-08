@@ -4,7 +4,6 @@ module.exports = (grunt) ->
   grunt.registerTask 'dev', "Build the project in development mode.", [
     'copy'
     'db-config:development'
-    'wrap'
     'lsc'
     'stylus'
     'concat'

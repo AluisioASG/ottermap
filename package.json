@@ -26,7 +26,6 @@
     "grunt-gh-pages": "",
     "grunt-requirejs": "",
     "grunt-svgmin": "",
-    "grunt-wrap": "",
     "load-grunt-tasks": ""
   }
 }
