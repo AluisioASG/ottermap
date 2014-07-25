@@ -1,3 +1,3 @@
 module.exports =
-  'dev': ['build']
-  'release': ['dist']
+  'dev': <[build]>
+  'release': <[dist]>

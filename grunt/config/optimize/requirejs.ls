@@ -1,5 +1,5 @@
 module.exports = (grunt) ->
-  'all.js':
+  'main':
     options:
       mainConfigFile: 'build/js/main.js'
       baseUrl: 'build/js'
@@ -9,7 +9,7 @@ module.exports = (grunt) ->
       # Use almond instead of require.js
       almond: true
       replaceRequireScript: [
-        files: ['dist/index.html']
+        files: <[dist/index.html]>
         module: 'main'
         modulePath: 'js/main'
       ]

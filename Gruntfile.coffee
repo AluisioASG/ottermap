@@ -18,13 +18,24 @@ module.exports = (grunt) ->
     # Merge the loaded targets into the task config.
     for own target, config of targets
       grunt.config.set [task, target], config
+    # Return the task name and the loaded targets.
+    return [task, targets]
 
-  # Assume all files under `grunt/config` and `grunt/userconfig`
-  # are config files.
-  grunt.file.expand(
-    {filter: 'isFile'},
-    ['./grunt/config/**', './grunt/userconfig/**']
-  ).forEach loadTaskConfig
+  # Load the task config files under `grunt/config` and assemble the
+  # build tasks from them.
+  taskSets = {}
+  (grunt.file.expand {filter: 'isFile'}, './grunt/config/**')
+  .forEach (filename) ->
+    [task, targets] = loadTaskConfig filename
+    taskset = path.basename path.dirname filename
+    for own target of targets when target != 'options'
+      (taskSets[taskset] ?= []).push "#{task}:#{target}"
+  for own taskset, subtasks of taskSets
+    grunt.registerTask "auto.#{taskset}", subtasks
+
+  # Load task config overrides from `grunt/userconfig`.
+  (grunt.file.expand {filter: 'isFile'}, './grunt/userconfig/**')
+  .forEach loadTaskConfig
 
   (require 'load-grunt-tasks')(grunt)
   grunt.loadTasks 'grunt/tasks'

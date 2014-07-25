@@ -5,7 +5,7 @@ module.exports =
     files: [
       expand: yes
       cwd: 'src'
-      src: ['**/*.ls']
+      src: <[**/*.ls]>
       dest: 'build/'
       rename: (dest, src) -> dest + src.replace /\.ls$/ '.js'
     ]

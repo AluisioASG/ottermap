@@ -3,26 +3,29 @@ module.exports =
     files: [
       expand: yes
       cwd: 'vendor/bootstrap/fonts'
-      src: ['**']
+      src: <[**]>
       dest: 'dist/fonts/'
     ]
+  # Copy images from Leaflet and its plugins.
   'leaflet.img':
     files: [{
       expand: yes
       cwd: 'vendor/leaflet/dist/images'
-      src: ['**']
+      src: <[**]>
       dest: 'dist/img/'
     }, {
       expand: yes
       cwd: 'vendor/leaflet-search/images'
-      src: ['loader.gif', 'search-icon.png']
+      src: <[loader.gif search-icon.png]>
       dest: 'dist/img/'
     }]
+  # RequireJS and plugins
   'require.js':
     files:
       'build/js/require.js': 'vendor/requirejs/require.js'
       'build/js/text.js': 'vendor/requirejs-text/text.js'
       'build/js/domReady.js': 'vendor/requirejs-domready/domReady.js'
+  # AMDify some of the dependencies
   'cssanimevent.js':
     options:
       process: -> """
@@ -44,10 +47,3 @@ module.exports =
       """
     src: 'vendor/firebase/firebase.js'
     dest: 'build/js/firebase.js'
-  'src':
-    files: [
-      expand: yes
-      cwd: 'src'
-      src: ['**', '!**/*.ls', '!**/*.styl', '!**/*.svg']
-      dest: 'dist/'
-    ]

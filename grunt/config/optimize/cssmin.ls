@@ -1,4 +1,4 @@
 module.exports =
-  'all.css':
+  'main':
     src: 'build/css/main.css'
     dest: 'dist/css/main.css'
