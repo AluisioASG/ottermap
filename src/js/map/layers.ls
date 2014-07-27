@@ -59,5 +59,11 @@ for provider in TILE_PROVIDERS
                       layer.options.minZoom,
                       layer.options.maxZoom
     |> map.setZoom
+# Add to the map and layer control any overlays the user has specified.
+if localStorage['overlay providers']
+  for provider in that.split /\s+/
+    layer = getLayerProvided provider
+    map.addLayer layer
+    layerControl.addOverlay layer, providerIdToLabel provider
 # Add the control to the map.
 layerControl.addTo map
