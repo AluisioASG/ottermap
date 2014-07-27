@@ -1,4 +1,4 @@
-L, map <-! define <[leaflet map]>
+L, map, messagebar <-! define <[leaflet map messagebar]>
 
 
 # Tile providers available for the user to select.  See the
@@ -18,9 +18,19 @@ const DEFAULT_TILE_PROVIDER = \Esri.WorldImagery
 
 # Instantiate a tile layer given a provider ID.
 getLayerProvided = (provider) ->
-  layer = L.tileLayer.provider provider
-  layer <<<
-    _ottmap_layer_provider:  provider
+  try
+    layer = L.tileLayer.provider provider
+    layer <<<
+      _ottmap_layer_provider:  provider
+  catch err # PROVIDER_NOT_FOUND
+    errmsg = "#{err}"
+    errmsg = "#{errmsg[0].toLowerCase!}#{errmsg.substr 1}"
+    messagebar.show "
+      Failed to get tile provider data: #{errmsg}. 
+      Please check your settings and reload the page.
+    " \danger
+    null
+    
 
 # Convert a provider ID into a human-readable name.
 providerIdToLabel = (provider) ->
@@ -50,6 +60,7 @@ if initialProvider not in TILE_PROVIDERS
 layerControl = new L.Control.Layers
 for provider in TILE_PROVIDERS
   layer = getLayerProvided provider
+  continue if not layer?
   layerControl.addBaseLayer layer, providerIdToLabel provider
   if provider is initialProvider
     # Add the layer to the map if it's the default one.
@@ -63,6 +74,7 @@ for provider in TILE_PROVIDERS
 if localStorage['overlay providers']
   for provider in that.split /\s+/
     layer = getLayerProvided provider
+    continue if not layer?
     map.addLayer layer
     layerControl.addOverlay layer, providerIdToLabel provider
 # Add the control to the map.
