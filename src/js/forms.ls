@@ -29,3 +29,17 @@ $id \update-form
       uploadButton `$removeClass` \btn-success `$addClass` \btn-primary
       data.syncUserLocation (getUsername this), g_marker.getLatLng!, !->
         uploadButton `$removeClass` \btn-primary `$addClass` \btn-success
+
+
+# Synchronize a setting input field and the corresponding value in
+# backing storage.
+setupSettingField = (input_name, config_key) !->
+  $sel "[name=#{input_name}]"
+    ..value = localStorage[config_key] ? ''
+    ..addEventListener \change !-> localStorage[config_key] = @value
+
+setupSettingField 'setting-base-tiles'           'last tile provider'
+setupSettingField 'setting-overlays'             'overlay providers'
+setupSettingField 'setting-marker-style-default' 'default marker style'
+setupSettingField 'setting-marker-style-online'  'online marker style'
+setupSettingField 'setting-marker-style-offline' 'offline marker style'
