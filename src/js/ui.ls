@@ -77,20 +77,11 @@ window.addEventListener \resize !->
   , NEXT_TICK_INTERVAL
 
 
-# Create a style element to hold our dynamically-build styles.
-sheet = document.createElement \style
-document.head.appendChild sheet
-
-# Fill the style sheet.
-do buildMarkersStylesheet = !->
-  sheet.innerHTML = [\
+# Apply the user-defined styles to the markers.
+document.createElement \style
+  ..innerHTML = [\
     ".marker-#{type - /\s/g} { #{that} }" \
     for type in ['default' 'online' 'offline']
     when localStorage["#{type} marker style"]?
   ] * '\n'
-
-# Reload the style sheet whenever the `localStorage` keys
-# are updated.
-window.addEventListener \storage (evt) !->
-  if evt.storageArea is localStorage and evt.key is / marker style$/
-    buildMarkersStylesheet!
+  document.head.appendChild ..
