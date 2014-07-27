@@ -89,14 +89,13 @@ document.createElement \style
 
 # Configure the modal dialogs.
 readyModal = (contentId, buttonId) !->
-  # Extract the modal's content node from the DOM tree.
-  contentNode = $id contentId
-    ..parentNode.removeChild ..
-    ..hidden = false
   # Build the modal.
   modal = picomodal do
-    content: contentNode
+    content: $id contentId
     closeHtml: '<button type="button" class="close">&times;</button>'
+  # Unhide the modal content once it's out of the main document tree.
+  modal.afterCreate !->
+    modal.modalElem!firstElementChild.hidden = false
   # Show the modal when the corresponding button is clicked.
   $id buttonId .addEventListener \click modal~show
 
