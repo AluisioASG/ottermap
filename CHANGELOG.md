@@ -1,3 +1,10 @@
+# 0.7.0
+* Warn about invalid tile providers retrieved from the settings
+* Add modal dialogs from project information and settings
+* Add support for specifying overlay layers in `localStorage`
+* Extract JavaScript and CSS out of `index.html`
+* Move to Firebase as the default database backend
+
 # 0.6.0
 * Dropped jQuery
 * Redesigned the page so that the map occupies all available space except for a bar at the top of the page
