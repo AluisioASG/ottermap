@@ -90,9 +90,12 @@ document.createElement \style
 # Configure the modal dialogs.
 readyModal = (contentId, buttonId) !->
   # Build the modal.
+  # The modal's width has to be determined here too, otherwise it
+  # appears too small on Internet Explorer.
   modal = picomodal do
     content: $id contentId
     closeHtml: '<button type="button" class="close">&times;</button>'
+    width: if window.innerWidth < 768px then window.innerWidth else 600px
   # Unhide the modal content once it's out of the main document tree.
   modal.afterCreate !->
     modal.modalElem!firstElementChild.hidden = false
