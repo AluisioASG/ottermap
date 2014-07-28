@@ -2,14 +2,11 @@ module.exports = (grunt) ->
   'use strict'
 
   grunt.registerTask 'buildleaflet', "Run Leaflet's build system.", ->
-    grunt.util.spawn
-      cmd: 'jake'
-      args: ['build[mvs1ju5]']
-      opts:
-        cwd: 'vendor/leaflet'
-        stdio: 'inherit'
-    , @async()
-
+    jake = require '../../vendor/leaflet/node_modules/jake'
+    oldcwd = process.cwd()
+    process.chdir 'vendor/leaflet'
+    jake.run 'build[mvs1ju5]'
+    process.chdir oldcwd
   grunt.registerTask 'builddeps', "Run the dependencies' build systems.", [
     'buildleaflet'
   ]
