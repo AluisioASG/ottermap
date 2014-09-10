@@ -9,3 +9,6 @@ module.exports =
       'dbapi': switch process.env['NODE_ENV']
         | \production => 'http://dbapi.mydomain.invalid'
         | otherwise   => 'http://localhost:8000'
+  'server':
+    host: 'localhost'
+    port: 8080

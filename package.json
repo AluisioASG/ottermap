@@ -13,6 +13,8 @@
     "svgo": "~0.4.5",
     "gh-pages": "0.2",
     "then-fs": "^1.0.6",
-    "promise": "5"
+    "promise": "5",
+    "connect": "^3.2.0",
+    "serve-static": "^1.6.1"
   }
 }

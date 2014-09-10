@@ -1,7 +1,10 @@
 require! {
   fs
+  server: 'connect'
+  serverStatic: 'serve-static'
   Artifacts: '../artifacts'
   Tasks: '../util/tasks'
+  ServerConfig: '../../build-config'.server
 }
 
 
@@ -36,3 +39,17 @@ task 'watch' <[target]> !->
       jake.logger.log "#{dependency} → #{dependents.map (.name) .join ', '}"
     , (err) !->
       jake.logger.error "Couldn't process #{dependency}: #{err}"
+
+task 'serve' <[target]> !->
+  target = jake.Task['target'].value
+  rootDirs = switch target
+    | \dev     => <[build src dist]>
+    | \release => <[dist]>
+
+  server!
+    for dir in rootDirs
+      ..use serverStatic dir, etag: false
+    ..listen ServerConfig.port, ServerConfig.host
+  jake.logger.log "
+    Serving #{target} files at #{ServerConfig.host ? '*'}:#{ServerConfig.port}
+  "

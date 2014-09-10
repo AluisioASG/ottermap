@@ -42,12 +42,9 @@ By last, you'll need to specify your build variables.  Copy the file `build-conf
 
 _Now_ we're ready.  The following are some of the available build targets:
 - `jake target[dev] watch` will result in a non-optimized build tree suitable for live development, watching the source files for changes;
+- `jake target[dev] watch serve` will, in addition to the above, start a HTTP server to serve the development build (defaulting to serve at `localhost:8080`);
 - `jake target[release]` will build everything up to the optimized release files, but won't stay around and watch for changes;
 - `jake clean[build,dist] target[release] publish` will remove the build directories, create the release files anew in the `dist` directory, commit these files to the upstream repository's `gh-pages` branch, and publish the result to GitHub Pages.  Here you can, for example, use the `NODE_ENV` environment variable to change the database URLs: `env NODE_ENV=production jake clean[build,dist] target[release] publish`.
-
-When running a web server to test changes, you'll need to retrieve files from multiple root directories, depending on what target you're testing:
-- In development mode, files are scattered through `build`, `src` and `dist`, which must be looked at in that order.
-- In release mode, all files are under `dist`.
 
 
 [OTT]:               http://forums.xkcd.com/viewtopic.php?t=101043
