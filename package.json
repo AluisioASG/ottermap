@@ -7,7 +7,7 @@
   "license": "MPL-2.0",
   "devDependencies": {
     "LiveScript": "1.2",
-    "stylus": "0.46",
+    "stylus": "0.48",
     "requirejs": "~2.1.10",
     "clean-css": "2.2",
     "svgo": "~0.4.5",
