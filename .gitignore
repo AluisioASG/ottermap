@@ -1,14 +1,14 @@
 # Build artifacts
-/.grunt/
 /build/
 /dist/
 
 # Third-party components
 /node_modules/
 
-# Editor files
+# Editor and others files
 *~
 *.swp
+.fuse_hidden*
 
 # User configuration
-/grunt/userconfig/
+/build-config.ls

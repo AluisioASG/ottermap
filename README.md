@@ -23,9 +23,9 @@ So, you want to play around with the code, maybe submit some patches, or even ju
 
 ### External dependencies
 
-In order to build the map, you'll need [Git][] (obviously), [Node.js][] and the bundled `npm` package manager.  Once you have these, you can install the [Grunt][] task runner, if you don't already have it, by running `npm install -g grunt-cli` from a command shell.
+In order to build the map, you'll need [Git][] (obviously), [Node.js][] and the bundled `npm` package manager.  Once you have these, you can install the [Jake][] build tool, if you don't already have it, by running `npm install -g jake` from a command shell.
 
-You'll also need a database backend, as the official servers won't speak to any instance not hosted in the official domains.  Currently we support two backends: [Firebase][] and [MongoDB][] with the [DBAPI][] REST interface.  You can have different servers for development and production.
+You'll also need a database server, as the official ones won't speak to any instance not hosted in the official domains.  Currently we support two backends: [Firebase][] and [MongoDB][] with the [DBAPI][] REST interface.  You can have different servers for development and production.
 
 
 ### Building the map
@@ -37,19 +37,17 @@ Inside your project's working directory, run the following commands to fetch and
     git submodule update --init --recursive
     npm update
     npm --prefix=vendor/leaflet update
-    npm --prefix=vendor/picomodal update
-    grunt builddeps
 
-As a last task, specify your database backend by copying `grunt/config/dev/db-config.ls` to `grunt/userconfig/db-config.ls` and editing the `backends` field and the URLs under the `development` and `production` keys accordingly.
+By last, you'll need to specify your build variables.  Copy the file `build-config.example.ls` to `build-config.ls` and change it to suit your needs.
 
-_Now_ we're ready.  Run `grunt` to build everything including the final release files.  While you're developing, you can run `grunt dev` once and then `npm start` to launch a web server for the map.  This server will automatically recompile any LiveScript or Stylus files you change.  If you want to see if your changes work in release mode, run `grunt release` followed by `npm start --production`.
+_Now_ we're ready.  The following are some of the available build targets:
+- `jake target[dev] watch` will result in a non-optimized build tree suitable for live development, watching the source files for changes;
+- `jake target[release]` will build everything up to the optimized release files, but won't stay around and watch for changes;
+- `jake clean[build,dist] target[release] publish` will remove the build directories, create the release files anew in the `dist` directory, commit these files to the upstream repository's `gh-pages` branch, and publish the result to GitHub Pages.  Here you can, for example, use the `NODE_ENV` environment variable to change the database URLs: `env NODE_ENV=production jake clean[build,dist] target[release] publish`.
 
-
-### Deploying
-
-I assume you ain't just doing a rip-off of my version :)
-
-Deploying is very simple.  You run `grunt deploy` to build the release files in the `dist` directory, using the production database URL.  If you're using GitHub Pages to host your map, you can instead issue the command `grunt deploy publish`, which will additionally commit the release files to your `gh-pages` branch and push it to GitHub.
+When running a web server to test changes, you'll need to retrieve files from multiple root directories, depending on what target you're testing:
+- In development mode, files are scattered through `build`, `src` and `dist`, which must be looked at in that order.
+- In release mode, all files are under `dist`.
 
 
 [OTT]:               http://forums.xkcd.com/viewtopic.php?t=101043
@@ -59,7 +57,7 @@ Deploying is very simple.  You run `grunt deploy` to build the release files in 
 [The GitHub Way]:    https://help.github.com/articles/fork-a-repo
 [Git]:               http://git-scm.com/
 [Node.js]:           http://nodejs.org/
-[Grunt]:             http://gruntjs.com/
+[Jake]:              http://jakejs.com/
 [MongoDB]:           http://www.mongodb.org/
 [DBAPI]:             https://bitbucket.org/AluisioASG/dbapi/
 [Firebase]:          https://www.firebase.com/
