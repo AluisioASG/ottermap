@@ -1,7 +1,5 @@
 module.exports =
-  'git-path': switch process.platform
-    | \win32    => 'C:/PortableGit/cmd/git.exe'
-    | otherwise => 'git'
+  'git-path': 'git'
   'db-config':
     backends: <[data/firebase data/dbapi]>
     urls:
