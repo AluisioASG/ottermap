@@ -23,9 +23,7 @@ So, you want to play around with the code, maybe submit some patches, or even ju
 
 ### External dependencies
 
-In order to build the map, you'll need [Git][] (obviously), [Node.js][] and the bundled `npm` package manager.  Once you have these, you can install the [Jake][] build tool, if you don't already have it, by running `npm install -g jake` from a command shell.
-
-You'll also need a database server, as the official ones won't speak to any instance not hosted in the official domains.  Currently we support two backends: [Firebase][] and [MongoDB][] with the [DBAPI][] REST interface.  You can have different servers for development and production.
+In order to build the map, you'll need [Git][] (obviously), [Node.js][] and the bundled `npm` package manager.  You'll also need a database server, as the official ones won't speak to any instance not hosted in the official domains.  Currently we support two backends: [Firebase][] and [MongoDB][] with the [DBAPI][] REST interface.  You can have different servers for development and production.
 
 
 ### Building the map
@@ -41,10 +39,10 @@ Inside your project's working directory, run the following commands to fetch and
 By last, you'll need to specify your build variables.  Copy the file `build-config.example.ls` to `build-config.ls` and change it to suit your needs.
 
 _Now_ we're ready.  The following are some of the available build targets:
-- `jake target[dev] watch` will result in a non-optimized build tree suitable for live development, watching the source files for changes;
-- `jake target[dev] watch serve` will, in addition to the above, start a HTTP server to serve the development build (defaulting to serve at `localhost:8080`);
-- `jake target[release]` will build everything up to the optimized release files, but won't stay around and watch for changes;
-- `jake clean[build,dist] target[release] publish` will remove the build directories, create the release files anew in the `dist` directory, commit these files to the upstream repository's `gh-pages` branch, and publish the result to GitHub Pages.  Here you can, for example, use the `NODE_ENV` environment variable to change the database URLs: `env NODE_ENV=production jake clean[build,dist] target[release] publish`.
+- `npm run build -- target[dev] watch` will result in a non-optimized build tree suitable for live development, watching the source files for changes;
+- `npm run build -- target[dev] watch serve` will, in addition to the above, start a HTTP server to serve the development build (defaulting to serve at `localhost:8080`);
+- `npm run build -- target[release]` will build everything up to the optimized release files, but won't stay around and watch for changes;
+- `npm run build -- clean[build,dist] target[release] publish` will remove the build directories, create the release files anew in the `dist` directory, commit these files to the upstream repository's `gh-pages` branch, and publish the result to GitHub Pages.  Here you can, for example, use the `NODE_ENV` environment variable to change the database URLs: `npm --production run build -- clean[build,dist] target[release] publish`.
 
 
 [OTT]:               http://forums.xkcd.com/viewtopic.php?t=101043
@@ -54,7 +52,6 @@ _Now_ we're ready.  The following are some of the available build targets:
 [The GitHub Way]:    https://help.github.com/articles/fork-a-repo
 [Git]:               http://git-scm.com/
 [Node.js]:           http://nodejs.org/
-[Jake]:              http://jakejs.com/
 [MongoDB]:           http://www.mongodb.org/
 [DBAPI]:             https://bitbucket.org/AluisioASG/dbapi/
 [Firebase]:          https://www.firebase.com/

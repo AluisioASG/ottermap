@@ -5,7 +5,11 @@
   "description": "Map of the members of the forum thread for xkcd #1190",
   "author": "Aluísio Augusto Silva Gonçalves <aasg@chirpingmustard.com>",
   "license": "MPL-2.0",
+  "scripts": {
+    "build": "jake"
+  },
   "devDependencies": {
+    "jake": "jakejs/jake#e6173e7",
     "LiveScript": "1.2",
     "stylus": "0.48",
     "requirejs": "~2.1.10",
