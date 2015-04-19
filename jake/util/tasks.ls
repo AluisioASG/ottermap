@@ -4,8 +4,9 @@ require! Promise: promise
 # Resolve the given task name into an actual `Task`, synthesizing it
 # from rules when necessary.
 exports.resolve = (name) ->
-  return &[to]map exports.resolve _ if &length > 1
-  jake.Task[name] ? jake.attemptRule name, jake.defaultNamespace, 1
+  | &length > 1     => [exports.resolve .. for &]
+  | jake.Task[name] => that
+  | otherwise       => jake.attemptRule name, jake.defaultNamespace, 1
 
 # A reverse dependency mapper.
 exports.mapDependents = (queue) ->
@@ -39,4 +40,4 @@ exports.promiseTask = (task) ->
 exports.promiseSequence = (tasks) ->
   tasks.reduce (promise, task) ->
     promise.then -> exports.promiseTask task
-  , Promise.resolve void
+  , Promise.resolve!
