@@ -1,4 +1,4 @@
-require! TaskActions: '../../actions'
+require! '../../actions': TaskActions
 
 
 file 'build/css/leaflet.css' <[

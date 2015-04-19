@@ -1,7 +1,9 @@
 require! {
-  child_process.spawn
-  Promise: 'promise'
-  '../../build-config'.'git-path'
+  'child_process': {spawn}
+
+  'promise': Promise
+
+  '../../build-config': {'git-path': git-path}
 }
 
 

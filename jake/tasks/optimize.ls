@@ -1,11 +1,12 @@
 require! {
-  CleanCSS: 'clean-css'
-  RequireJS: 'requirejs'
-  Promise: 'promise'
-  Artifacts: '../artifacts'
-  TaskActions: '../actions'
-  FileTransforms: '../util/file-transforms'
-  '../../build-config'.'db-config'
+  'promise': Promise
+  'clean-css': CleanCSS
+  'requirejs': RequireJS
+
+  '../artifacts': Artifacts
+  '../actions': TaskActions
+  '../util/file-transforms': FileTransforms
+  '../../build-config': {'db-config': db-config}
 }
 
 

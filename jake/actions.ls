@@ -1,8 +1,9 @@
 require! {
-  fs: 'then-fs'
-  SVGO: 'svgo'
-  Promise: 'promise'
-  FileTransforms: './util/file-transforms'
+  'then-fs': fs
+  'promise': Promise
+  'svgo': SVGO
+
+  './util/file-transforms': FileTransforms
 }
 
 

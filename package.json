@@ -10,15 +10,15 @@
   },
   "devDependencies": {
     "jake": "jakejs/jake#e6173e7",
-    "LiveScript": "1.2",
-    "stylus": "0.48",
+    "LiveScript": "1.3",
+    "stylus": "0 >=0.48",
     "requirejs": "~2.1.10",
     "clean-css": "2.2",
-    "svgo": "~0.4.5",
+    "svgo": "0.5",
     "gh-pages": "0.2",
-    "then-fs": "^1.0.6",
-    "promise": "5",
-    "connect": "^3.2.0",
+    "then-fs": "^1.0.7",
+    "promise": "6",
+    "connect": "^3.2",
     "serve-static": "^1.6.1"
   }
 }

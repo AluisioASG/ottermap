@@ -1,7 +1,9 @@
 require! {
-  fs: 'then-fs'
-  ghpages: 'gh-pages'
-  git: '../util/git'
+  'then-fs': fs
+  'promise': Promise
+  'gh-pages': ghpages
+
+  '../util/git': git
 }
 
 

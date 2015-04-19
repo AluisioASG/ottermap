@@ -1,11 +1,13 @@
 require! {
   path
+
   LiveScript
-  Stylus: stylus
-  Promise: promise
-  Artifacts: '../artifacts'
-  TaskActions: '../actions'
-  FileTransforms: '../util/file-transforms'
+  'stylus': Stylus
+  'promise': Promise
+
+  '../artifacts': Artifacts
+  '../actions': TaskActions
+  '../util/file-transforms': FileTransforms
 }
 
 

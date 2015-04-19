@@ -15,7 +15,7 @@ decodeUsername = decodeURIComponent
 # Centralize the process of extracting the contents out of
 # a data snapshot.
 extractInfo = (snapshot) ->
-  username = decodeUsername snapshot.name!
+  username = decodeUsername snapshot.key!
   data = snapshot.val!
   return [username, data]
 

@@ -1,4 +1,4 @@
-require! Promise: promise
+require! 'promise': Promise
 
 
 # Resolve the given task name into an actual `Task`, synthesizing it

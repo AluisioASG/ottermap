@@ -1,8 +1,10 @@
 require! {
   path
-  fs: 'then-fs'
-  git: '../util/git'
-  '../../build-config'.'db-config'
+
+  'then-fs': fs
+
+  '../util/git': git
+  '../../build-config': {'db-config': db-config}
 }
 
 

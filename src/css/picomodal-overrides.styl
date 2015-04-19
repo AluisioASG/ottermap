@@ -18,7 +18,9 @@
 		max-height 85%
 		max-height calc(100% - 100px) // 2*top
 
-	// Don't show a background for the close button.
 	.pico-close
+		// Don't show a background for the close button.
 		background transparent !important
 		border-radius 0 !important
+		// Also align its right edge with the content's.
+		right 20px !important

@@ -1,6 +1,6 @@
 require! {
-  fs: 'then-fs'
-  Promise: 'promise'
+  'then-fs': fs
+  'promise': Promise
 }
 
 

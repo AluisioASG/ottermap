@@ -1,4 +1,4 @@
-require! TaskActions: '../../actions'
+require! '../../actions': TaskActions
 
 
 file 'dist/fonts/glyphicons-halflings-regular.ttf' <[

@@ -1,12 +1,13 @@
 require! {
   fs
-  server: 'connect'
-  serverStatic: 'serve-static'
-  Artifacts: '../artifacts'
-  Tasks: '../util/tasks'
-  ServerConfig: '../../build-config'.server
-}
 
+  'connect': server
+  'serve-static': serverStatic
+
+  '../artifacts': Artifacts
+  '../util/tasks': Tasks
+  '../../build-config': {'server': ServerConfig}
+}
 
 task 'target' (target) ->
   fail "No target specified" if not target?

@@ -1,7 +1,8 @@
 require! {
   stream
-  LeafletBuild: '../../../vendor/leaflet/build/build'
-  TaskActions: '../../actions'
+
+  '../../../vendor/leaflet/build/build': LeafletBuild
+  '../../actions': TaskActions
 }
 
 
