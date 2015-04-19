@@ -10,6 +10,7 @@ require! {
 
 task 'target' (target) ->
   fail "No target specified" if not target?
+  fail "Invalid target '#{target}'" if target not in <[dev release]>
   tasks = Tasks.resolve ...Artifacts[target] 
   Tasks.promiseSequence tasks .then -> target
 
