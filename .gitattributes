@@ -9,6 +9,7 @@
 /package.json text
 /LICENSE text
 /*.md text
+/vendor/VERSIONS text
 
 # Finally, we tag our source code files.
 *.html text

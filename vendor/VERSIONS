@@ -1,0 +1,13 @@
+almond: 0.3.0
+bootstrap: 3.2.0
+cssanimevent: #master
+firebase: 1.0.21
+leaflet: 0.7.3
+leaflet-geosearch: #9ead730
+leaflet-markercluster: #master
+leaflet-providers: 1.0.10
+leaflet-search: 1.5.5
+picomodal: 2.0.1
+requirejs: 2.1.15
+requirejs-domready: 2.0.1
+requirejs-text: 2.0.12
