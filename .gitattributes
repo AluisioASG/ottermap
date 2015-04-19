@@ -5,7 +5,7 @@
 # Now we mark the .git* files and other non-source text files at the
 # root of the repository.
 /.git* text
-/Gruntfile.coffee text
+/Jakefile.coffee text
 /package.json text
 /LICENSE text
 /*.md text
