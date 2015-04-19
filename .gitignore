@@ -9,6 +9,7 @@
 *~
 *.swp
 .fuse_hidden*
+npm-debug.log
 
 # User configuration
 /build-config.ls
