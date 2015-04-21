@@ -1,3 +1,9 @@
+# 8.0.0
+* Revamped the default list of tile providers to include only those with HTTPS servers
+* Added support for linking to a user from the URL, permalink style
+* Added a Contact section to the About modal
+* Fixed issue with the marker SVG's title being left in the final build
+
 # 0.7.0
 * Added warning for invalid tile providers in the settings
 * Added modal dialogs for project information and settings
