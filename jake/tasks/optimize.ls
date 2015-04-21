@@ -22,6 +22,7 @@ file 'dist/css/main.css' Artifacts.css, ->
     processImport: true
     relativeTo: 'build/css'
   .minify "#{buffer}"
+  .styles
 
 # Concatenate and minify all AMD modules.
 file 'dist/js/main.js' Artifacts.js, ->
