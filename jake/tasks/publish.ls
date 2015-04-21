@@ -1,4 +1,6 @@
 require! {
+  path
+
   'then-fs': fs
   'promise': Promise
   'gh-pages': ghpages
