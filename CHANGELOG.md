@@ -1,9 +1,9 @@
 # 0.7.0
-* Warn about invalid tile providers retrieved from the settings
-* Add modal dialogs from project information and settings
-* Add support for specifying overlay layers in `localStorage`
-* Extract JavaScript and CSS out of `index.html`
-* Move to Firebase as the default database backend
+* Added warning for invalid tile providers in the settings
+* Added modal dialogs for project information and settings
+* Added persistence of overlay layers in `localStorage`
+* Moved JavaScript and CSS out of `index.html`
+* Switched to Firebase as the default database backend
 
 # 0.6.0
 * Dropped jQuery
