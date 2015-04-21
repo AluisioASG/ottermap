@@ -5,11 +5,9 @@ L, map, messagebar <-! define <[leaflet map messagebar]>
 # leaflet-providers plugin's documentation for available providers
 # and required configuration.
 TILE_PROVIDERS = <[
-  Esri.NatGeoWorldMap
+  OpenStreetMap.Mapnik
   Esri.WorldImagery
-  OpenStreetMap.DE
-  Stamen.Toner
-  Stamen.Watercolor
+  NASAGIBS.ViirsEarthAtNight2012
 ]>
 
 # Tile provider to be used if the user hasn't selected one before.
