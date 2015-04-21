@@ -3,6 +3,7 @@ require! {
 
   'connect': server
   'serve-static': serverStatic
+  'morgan': serverLogger
 
   '../artifacts': Artifacts
   '../util/tasks': Tasks
@@ -49,6 +50,7 @@ task 'serve' <[target]> !->
     | \release => <[dist]>
 
   server!
+    ..use serverLogger \dev
     for dir in rootDirs
       ..use serverStatic dir, etag: false
     ..listen ServerConfig.port, ServerConfig.host
