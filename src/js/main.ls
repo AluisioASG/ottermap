@@ -1,5 +1,5 @@
 # Load the whole application except for the data.
-require <[ui forms map map/layers map/members map/user]>
+require <[ui forms map map/layers map/members map/user focus]>
 
 
 # Now try to select the database backend.

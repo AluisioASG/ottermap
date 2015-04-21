@@ -22,6 +22,7 @@ exports.js = <[
   forms.js
   messagebar.js
   ui.js
+  focus.js
   main.js
 
   almond.js
