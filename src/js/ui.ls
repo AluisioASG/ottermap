@@ -104,3 +104,9 @@ readyModal = (contentId, buttonId) !->
 
 readyModal \about-modal \about-button
 readyModal \settings-modal \settings-button
+
+
+# Remove the “no JavaScript” message once the map has been loaded.
+events.listenOnce ($id \map), \DOMSubtreeModified, !->
+  msg = $id \noscript-msg
+  msg.parentNode.removeChild msg
