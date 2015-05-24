@@ -8,6 +8,7 @@ TILE_PROVIDERS = <[
   OpenStreetMap.Mapnik
   Esri.WorldImagery
   NASAGIBS.ViirsEarthAtNight2012
+  Stamen.Watercolor
 ]>
 
 # Tile provider to be used if the user hasn't selected one before.
