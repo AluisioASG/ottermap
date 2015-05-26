@@ -9,7 +9,7 @@
     "build": "jake"
   },
   "devDependencies": {
-    "jake": "AluisioASG/jake#2cff463",
+    "jake": "jakejs/jake#4fe2230af7",
     "livescript": "1.4",
     "stylus": "0 >=0.48",
     "requirejs": "~2.1.10",
