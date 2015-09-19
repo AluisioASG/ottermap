@@ -9,6 +9,10 @@ file 'dist/fonts/glyphicons-halflings-regular.woff' <[
   vendor/bootstrap/fonts/glyphicons-halflings-regular.woff
 ]> TaskActions.copy
 
+file 'dist/fonts/glyphicons-halflings-regular.woff2' <[
+  vendor/bootstrap/fonts/glyphicons-halflings-regular.woff2
+]> TaskActions.copy
+
 file 'dist/img/layers.png' <[
   vendor/leaflet/dist/images/layers.png
 ]> TaskActions.copy

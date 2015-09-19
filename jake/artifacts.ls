@@ -58,6 +58,7 @@ exports.css = <[
 vendor_dist = <[
   fonts/glyphicons-halflings-regular.ttf
   fonts/glyphicons-halflings-regular.woff
+  fonts/glyphicons-halflings-regular.woff2
   img/layers.png
   img/layers-2x.png
   img/marker-icon.png
