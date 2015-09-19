@@ -80,3 +80,7 @@ file 'build/js/text.js' <[
 file 'build/js/domReady.js' <[
   vendor/requirejs-domready/domReady.js
 ]> TaskActions.copy
+
+file 'build/js/picomodal.js' <[
+  vendor/picomodal/src/picoModal.js
+]> TaskActions.copy
