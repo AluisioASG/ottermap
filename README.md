@@ -9,7 +9,7 @@ The official live instance runs at http://ottermap.chirpingmustard.com/.
 
 All source code available in this package is, unless otherwise noted below, subject to the terms of the Mozilla Public License, v. 2.0.  These terms are set forth in the `LICENSE` file.
 
-The “[Otter Track][]” graphic at `src/img/marker.svg` was designed by Katie M Westbrook from [The Noun Project][] collection.
+The “[Otter Track]” graphic at `src/img/marker.svg` was designed by Katie M Westbrook from [The Noun Project] collection.
 
 The “chirpingmustard.com logo” graphic at `src/img/logo.svg` was designed by Owen Evans and adapted by Aluísio Augusto Silva Gonçalves.
 
@@ -18,12 +18,12 @@ The files located under the `vendor` subdirectory are property of their respecti
 
 ## Contributing, or: Running Your Own Instance
 
-So, you want to play around with the code, maybe submit some patches, or even just see how this works, uh?  Well, be welcome!  If don't intend to contribute anything, just clone this repository and follow the instructions below.  Otherwise, I hope you're familiar with [The GitHub Way][].
+So, you want to play around with the code, maybe submit some patches, or even just see how this works, uh?  Well, be welcome!  If don't intend to contribute anything, just clone this repository and follow the instructions below.  Otherwise, I hope you're familiar with [The GitHub Way].
 
 
 ### External dependencies
 
-In order to build the map, you'll need [Git][] (obviously), [Node.js][] and the bundled `npm` package manager.  You'll also need a database server, as the official ones won't speak to any instance not hosted in the official domains.  Currently we support two backends: [Firebase][] and [MongoDB][] with the [DBAPI][] REST interface.  You can have different servers for development and production.
+In order to build the map, you'll need [Git] (obviously), [Node.js] and the bundled `npm` package manager.  You'll also need a database server, as the official ones won't speak to any instance not hosted in the official domains.  Currently we support two backends: [Firebase] and [MongoDB] with the [DBAPI] REST interface.  You can have different servers for development and production.
 
 
 ### Building the map
@@ -34,7 +34,7 @@ Inside your project's working directory, run the following commands to fetch and
 
     git submodule update --init --recursive
     npm update
-    npm --prefix=vendor/leaflet update
+    npm --prefix vendor/leaflet update
 
 By last, you'll need to specify your build variables.  Copy the file `build-config.example.ls` to `build-config.ls` and change it to suit your needs.
 
