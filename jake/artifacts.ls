@@ -27,6 +27,7 @@ exports.js = <[
 
   almond.js
   leaflet.js
+  leaflet-providers.js
   firebase.js
   picomodal.js
   cssanimevent.js

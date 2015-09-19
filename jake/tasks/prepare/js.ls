@@ -29,12 +29,11 @@ file 'vendor/leaflet/dist/leaflet-src.js', leafletSources, async: true, !->
     complete!
   , LEAFLET_BUILD_CONFIGURATION
 
-# Whenever we look for Leaflet, we mean its plugins too.
+# Whenever we look for Leaflet, we mean its non-AMD plugins too.
 file 'build/js/leaflet.js' <[
   vendor/leaflet/dist/leaflet-src.js
   vendor/leaflet-geosearch/src/js/l.control.geosearch.js
   vendor/leaflet-geosearch/src/js/l.geosearch.provider.openstreetmap.js
-  vendor/leaflet-providers/leaflet-providers.js
   vendor/leaflet-markercluster/dist/leaflet.markercluster-src.js
   vendor/leaflet-search/dist/leaflet-search.src.js
 ]> TaskActions.concat ';'
@@ -83,4 +82,8 @@ file 'build/js/domReady.js' <[
 
 file 'build/js/picomodal.js' <[
   vendor/picomodal/src/picoModal.js
+]> TaskActions.copy
+
+file 'build/js/leaflet-providers.js' <[
+  vendor/leaflet-providers/leaflet-providers.js
 ]> TaskActions.copy

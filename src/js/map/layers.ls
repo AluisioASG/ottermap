@@ -1,4 +1,4 @@
-L, map, messagebar <-! define <[leaflet map messagebar]>
+L, map, messagebar <-! define <[leaflet map messagebar leaflet-providers]>
 
 
 # Tile providers available for the user to select.  See the
