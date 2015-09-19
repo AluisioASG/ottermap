@@ -1,5 +1,4 @@
 {
-  "vars": {},
   "css": [
     "type.less",
     "forms.less",
@@ -12,5 +11,5 @@
     "close.less"
   ],
   "js": [],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=9f22720cf644b4f2a65e"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=81dc6ef86ba786e8cc83"
 }

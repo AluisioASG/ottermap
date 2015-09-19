@@ -15,9 +15,9 @@
     "requirejs": "~2.1.10",
     "clean-css": "^3.2.2",
     "svgo": "0.5",
-    "gh-pages": "0.3",
-    "then-fs": "^1.0.7",
-    "promise": "6",
+    "gh-pages": "0.4",
+    "then-fs": "2",
+    "promise": "7",
     "connect": "^3.2",
     "serve-static": "^1.6.1",
     "morgan": "^1.5.2"

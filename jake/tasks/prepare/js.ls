@@ -51,13 +51,6 @@ file 'build/js/firebase.js' <[
     });
   """
 
-# PicoModal looks for `window.define`, which the RequireJS optimizer
-# doesn't recognize.
-file 'build/js/picomodal.js' <[
-  vendor/picomodal/src/picoModal.js
-]> TaskActions.transform ->
-  "#{it}".replace /window\.(define)/g '$1'
-
 # CSSAnimEvent can be easily constrained to a local scope and then
 # exported from there.
 file 'build/js/cssanimevent.js' <[
