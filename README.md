@@ -47,12 +47,12 @@ _Now_ we're ready.  The following are some of the available build targets:
 
 
 [OTT]:               http://forums.xkcd.com/viewtopic.php?t=101043
-[OTC]:               http://xkcd.com/1190/
-[Otter Track]:       http://thenounproject.com/term/otter-track/3498/
-[The Noun Project]:  http://thenounproject.com/
+[OTC]:               https://xkcd.com/1190/
+[Otter Track]:       https://thenounproject.com/term/otter-track/3498/
+[The Noun Project]:  https://thenounproject.com/
 [The GitHub Way]:    https://help.github.com/articles/fork-a-repo
-[Git]:               http://git-scm.com/
-[Node.js]:           http://nodejs.org/
-[MongoDB]:           http://www.mongodb.org/
+[Git]:               https://git-scm.com/
+[Node.js]:           https://nodejs.org/
+[MongoDB]:           https://www.mongodb.org/
 [DBAPI]:             https://bitbucket.org/AluisioASG/dbapi/
 [Firebase]:          https://www.firebase.com/
