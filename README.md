@@ -34,7 +34,8 @@ Inside your project's working directory, run the following commands to fetch and
 
     git submodule update --init --recursive
     npm update
-    npm --prefix vendor/leaflet update
+    (cd vendor/leaflet && npm update)
+    (cd vendor/leaflet-markercluster && npm update)
 
 By last, you'll need to specify your build variables.  Copy the file `build-config.example.ls` to `build-config.ls` and change it to suit your needs.
 

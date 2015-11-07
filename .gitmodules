@@ -8,6 +8,7 @@
 [submodule "Leaflet.markercluster"]
 	path = vendor/leaflet-markercluster
 	url = https://github.com/Leaflet/Leaflet.markercluster.git
+	ignore = dirty
 [submodule "Leaflet-providers"]
 	path = vendor/leaflet-providers
 	url = https://github.com/leaflet-extras/leaflet-providers.git

@@ -2,6 +2,7 @@ require! {
   stream
 
   '../../../vendor/leaflet/build/build': LeafletBuild
+  '../../../vendor/leaflet-markercluster/build/build': MarkerClusterBuild
   '../../actions': TaskActions
 }
 
@@ -28,6 +29,15 @@ file 'vendor/leaflet/dist/leaflet-src.js', leafletSources, async: true, !->
     process.chdir oldwd
     complete!
   , LEAFLET_BUILD_CONFIGURATION
+# And the same for leaflet-markercluster's.
+const MARKERCLUSTER_BUILD_CONFIGURATION = '7'
+markerClusterSources = silence ->
+  MarkerClusterBuild.getFiles MARKERCLUSTER_BUILD_CONFIGURATION .map ('vendor/leaflet-markercluster/' +)
+file 'vendor/leaflet-markercluster/dist/leaflet.markercluster-src.js', markerClusterSources, !->
+  oldwd = process.cwd!
+  process.chdir 'vendor/leaflet-markercluster'
+  MarkerClusterBuild.build MARKERCLUSTER_BUILD_CONFIGURATION
+  process.chdir oldwd
 
 # Whenever we look for Leaflet, we mean its non-AMD plugins too.
 file 'build/js/leaflet.js' <[
