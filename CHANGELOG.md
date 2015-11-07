@@ -1,3 +1,6 @@
+# 8.0.1
+* Updated dependencies and build process
+
 # 8.0.0
 * Revamped the default list of tile providers to include only those with HTTPS servers
 * Added support for linking to a user from the URL, permalink style
