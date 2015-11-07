@@ -1,11 +1,11 @@
 almond: 0.3.1
-!!!bootstrap: 3.3.4
+bootstrap: 3.3.5
 cssanimevent: #master
-firebase: 2.2.9
-leaflet: 0.7.5
+firebase: 2.3.1
+leaflet: 0.7.7
 leaflet-geosearch: #master
 leaflet-markercluster: #master
-leaflet-providers: 1.1.2
+leaflet-providers: 1.1.6
 leaflet-search: 1.8.4
 picomodal: 2.2.0
 requirejs: 2.1.20

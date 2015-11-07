@@ -15,7 +15,7 @@
     "requirejs": "~2.1.10",
     "clean-css": "^3.2.2",
     "svgo": "0.5",
-    "gh-pages": "0.4",
+    "gh-pages": "0.5",
     "then-fs": "2",
     "promise": "7",
     "connect": "^3.2",
