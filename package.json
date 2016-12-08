@@ -9,17 +9,17 @@
     "build": "jake"
   },
   "devDependencies": {
-    "jake": "jakejs/jake#4fe2230af7",
-    "livescript": "1.4",
-    "stylus": "0 >=0.48",
-    "requirejs": "~2.1.10",
     "clean-css": "^3.2.2",
-    "svgo": "0.5",
-    "gh-pages": "0.5",
-    "then-fs": "2",
-    "promise": "7",
     "connect": "^3.2",
+    "gh-pages": "^0.12.0",
+    "jake": "~8.0.14",
+    "livescript": "1.4",
+    "morgan": "^1.5.2",
+    "promise": "7",
+    "requirejs": "~2.3.0",
     "serve-static": "^1.6.1",
-    "morgan": "^1.5.2"
+    "stylus": "0 >=0.48",
+    "svgo": "^0.7.0",
+    "then-fs": "2"
   }
 }
