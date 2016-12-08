@@ -5,11 +5,8 @@
 # Third-party components
 /node_modules/
 
-# Editor and others files
-*~
-*.swp
-.fuse_hidden*
-npm-debug.log
+# Logs
+*.log
 
 # User configuration
 /build-config.ls
