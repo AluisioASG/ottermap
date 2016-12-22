@@ -4,7 +4,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Map of the members of the forum thread for xkcd #1190">
 	<title>Not AnOTTer Map</title>
-	<link rel="stylesheet" href="css/main.css">
 </head>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -13,7 +12,7 @@
 		<p></p>
 	</div>
 	<div class="container">
-		<img id="logo" src="img/logo.svg" alt="chirpingmustard.com logo" class="navbar-brand hidden-xs">
+		<%= require('html!./logo.html') %>
 		<form id="update-form" class="form-inline">
 			<input type="text" name="username" placeholder="Username" class="form-control hidden">
 			<button type="submit" class="btn btn-primary navbar-btn">
@@ -38,7 +37,7 @@
 <p id="noscript-msg">Either the page hasn't finished loading yet, or your browser has JavaScript disabled.</p>
 
 <aside id="about-modal" hidden>
-	<h2>Not AnOTTer Map {{VERSION}}</h2>
+	<h2>Not AnOTTer Map <%= htmlWebpackPlugin.options.packageVersion %></h2>
 	<p style="font-style: italic;">
 		<span title="for lawyers: © 2013-2015 Aluísio Augusto Silva Gonçalves">by Aluísio Augusto Silva Gonçalves</span>,
 		<br>
@@ -111,6 +110,3 @@
 		</legend>
 	</form>
 </aside>
-
-
-<script src="js/require.js" data-main="js/main"></script>

@@ -1,0 +1,9 @@
+figure.avatar {
+	width: 128px;
+}
+
+figure.avatar img {
+		width: 128px;
+		border-top-left-radius: 12px;
+		border-top-right-radius: 12px;
+}

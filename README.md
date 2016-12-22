@@ -9,7 +9,7 @@ The official live instance runs at http://ottermap.chirpingmustard.com/.
 
 All source code available in this package is, unless otherwise noted below, subject to the terms of the Mozilla Public License, v. 2.0.  These terms are set forth in the `LICENSE` file.
 
-The “[Otter Track]” graphic at `src/img/marker.svg` was designed by Katie M Westbrook from [The Noun Project] collection.
+The “[Otter Track]” graphic at `src/js/map/marker.svg` was designed by Katie M Westbrook from [The Noun Project] collection.
 
 The “chirpingmustard.com logo” graphic at `src/img/logo.svg` was designed by Owen Evans and adapted by Aluísio Augusto Silva Gonçalves.
 
@@ -23,10 +23,14 @@ So, you want to play around with the code, maybe submit some patches, or even ju
 
 ### External dependencies
 
+[TODO: Update for v>8]
+
 In order to build the map, you'll need [Git] (obviously), [Node.js] and the bundled `npm` package manager.  You'll also need a database server, as the official ones won't speak to any instance not hosted in the official domains.  Currently we support two backends: [Firebase] and [MongoDB] with the [DBAPI] REST interface.  You can have different servers for development and production.
 
 
 ### Building the map
+
+[TODO: Update for v>8]
 
 Once the build dependencies are installed, we can now install the _code_ dependencies, a mostly automated process.
 

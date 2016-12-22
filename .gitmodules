@@ -15,18 +15,6 @@
 [submodule "Leaflet.Control.Search"]
 	path = vendor/leaflet-search
 	url = https://github.com/stefanocudini/leaflet-search.git
-[submodule "RequireJS"]
-	path = vendor/requirejs
-	url = https://github.com/jrburke/requirejs.git
-[submodule "RequireJS text"]
-	path = vendor/requirejs-text
-	url = https://github.com/requirejs/text.git
-[submodule "RequireJS domReady"]
-	path = vendor/requirejs-domready
-	url = https://github.com/requirejs/domReady.git
-[submodule "almond"]
-	path = vendor/almond
-	url = https://github.com/jrburke/almond.git
 [submodule "CSSAnimEvent"]
 	path = vendor/cssanimevent
 	url = https://github.com/magnetikonline/cssanimevent.git
