@@ -1,0 +1,32 @@
+{
+	"rules": {
+    "adjacent-overload-signatures": true,
+    "no-namespace": [true, "allow-declarations"],
+    "no-var-requires": true,
+    "array-type": [true, "array-simple"],
+    "class-name": true,
+    "no-angle-bracket-type-assertion": true,
+
+    "prefer-for-of": true,
+    "no-var-keyword": true,
+    "no-require-imports": true,
+    "prefer-const": true,
+
+    "no-construct": true,
+    "no-switch-case-fall-through": true,
+    "no-unsafe-finally": true,
+    "triple-equals": [true, "allow-null-check"],
+    "use-isnan": true,
+    "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
+    "new-parens": true,
+    "object-literal-key-quotes": [true, "consistent"],
+    "one-line": [true, "check-catch", "check-finally", "check-else", "check-open-brace", "check-whitespace"],
+    "quotemark": [true, "double", "avoid-escape"],
+    "semicolon": [true, "never"],
+    "whitespace": [true, "check-branch", "check-decl", "check-operator", "check-module", "check-type", "check-typecast"],
+
+    "radix": true,
+    "no-console": true,
+    "no-debugger": true
+	}
+}
