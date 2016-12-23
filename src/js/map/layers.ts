@@ -69,7 +69,7 @@ if (!~TILE_PROVIDERS.indexOf(initialProvider)) {
 // `L.Control.Layers.Provided` supplied by `leaflet-providers`, but we need
 // to record the provider's name so we can save and restore it later.
 const layerControl = new L.Control.Layers()
-for (let provider of TILE_PROVIDERS) {
+for (const provider of TILE_PROVIDERS) {
   const layer = getLayerProvided(provider)
   if (!layer) continue
   layerControl.addBaseLayer(layer, providerIdToLabel(provider))
@@ -82,7 +82,7 @@ for (let provider of TILE_PROVIDERS) {
 }
 // Add to the map and layer control any overlays the user has specified.
 if (localStorage["overlay providers"]) {
-  for (let provider of localStorage["overlay providers"].split(/\s+/)) {
+  for (const provider of localStorage["overlay providers"].split(/\s+/)) {
     const layer = getLayerProvided(provider)
     if (!layer) continue
     map.addLayer(layer)

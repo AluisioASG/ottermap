@@ -1,5 +1,5 @@
 import "cssanimevent"
-import {$id, $all, $sel, $addClass, $removeClass} from "./util/dom"
+import {$id, $sel, $addClass, $removeClass} from "./util/dom"
 
 
 // Keep a reference to the message bar element.

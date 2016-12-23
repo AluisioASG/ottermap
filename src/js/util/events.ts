@@ -56,7 +56,7 @@ export class SimpleEventTarget {
     const listeners = this.eventListeners[type]
     if (listeners != null) {
       const listenerIdx = listeners.indexOf(listener)
-      if (listenerIdx != -1) {
+      if (listenerIdx !== -1) {
         delete listeners[listenerIdx]
       }
     }
@@ -69,9 +69,7 @@ export class SimpleEventTarget {
    */
   dispatchEvent(event: SimpleEvent): boolean | null {
     event.target = this
-    ;(this.eventListeners[event.type] || []).forEach(listener =>
-      listener.call(this, event)
-    )
+    ;(this.eventListeners[event.type] || []).forEach(listener => listener.call(this, event))
     return !event.defaultPrevented
   }
 }
@@ -87,7 +85,7 @@ export class PausableEventTarget extends SimpleEventTarget {
     //event listener added to this event type, process the event buffer for
     // events of this type.
     if (this.eventDispatchPaused === null && this.eventListeners[type].length === 1) {
-      const newBuffer = new Queue
+      const newBuffer = new Queue()
       for (let event = this.eventBuffer.dequeue(); event != null; event = this.eventBuffer.dequeue()) {
         if (event.type === type) {
           super.dispatchEvent(event)
@@ -138,7 +136,7 @@ export function listenOnce(
   target: EventTarget,
   eventType: string,
   listener: EventListenerOrEventListenerObject,
-  useCapture?: boolean
+  useCapture?: boolean,
 ): void
 export function listenOnce(
   target: SimpleEventTarget,
@@ -149,9 +147,9 @@ export function listenOnce(
   target: EventTarget | SimpleEventTarget,
   eventType: string,
   listener: EventListenerOrEventListenerObject | SimpleEventListener,
-  useCapture?: boolean
+  useCapture?: boolean,
 ): void {
-  let wrapper = function(this: typeof target) {
+  const wrapper = function(this: typeof target) {
     if (target instanceof SimpleEventTarget) {
       target.removeEventListener(eventType, wrapper)
       ;(listener as SimpleEventListener).apply(this, arguments)

@@ -1,5 +1,8 @@
 export default {
   urls: {
-    ["firebase"]: "https://ottermap-db.firebaseio.com",
-  }
+    get dbapi(): string {
+      throw new Error("Unsupported data backend 'dbapi'")
+    },
+    firebase: "https://ottermap-db.firebaseio.com",
+  },
 }

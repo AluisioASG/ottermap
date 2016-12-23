@@ -8,7 +8,7 @@ const NEXT_TICK_INTERVAL = 40 /* 1000ms / 25fps */
 
 
 // Prevent the browser from trying to submit the forms.
-for (let form of $all("form")) {
+for (const form of $all("form")) {
   form.addEventListener("submit", evt => evt.preventDefault())
 }
 
@@ -106,7 +106,7 @@ function readyModal(contentId: string, buttonId: string): void {
   const modal = picomodal({
     content: $id(contentId) || undefined,
     closeHtml: `<button type="button" class="close">&times;</button>`,
-    width: window.innerWidth < 768 ? window.innerWidth : 600
+    width: window.innerWidth < 768 ? window.innerWidth : 600,
   })
   // Unhide the modal content once it's out of the main document tree.
   modal.afterCreate(() => { (modal.modalElem().firstElementChild as HTMLElement).hidden = false })

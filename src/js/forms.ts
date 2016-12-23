@@ -1,3 +1,4 @@
+import * as L from "leaflet"
 import {syncUserLocation} from "./data"
 import * as MapUser from "./map/user"
 import {$id, $sel, $addClass, $removeClass} from "./util/dom"

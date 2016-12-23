@@ -32,7 +32,7 @@ export function $removeClass(elem: Element, ...classNames: string[]): Element {
   return elem
 }
 export function $toggleClass(elem: Element, ...classNames: string[]): Element {
-  for (let className of classNames) {
+  for (const className of classNames) {
     if (new RegExp(`\\b${className}\\b`).test(elem.className)) {
       $removeClass(elem, className)
     } else {

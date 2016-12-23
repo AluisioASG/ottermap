@@ -7,7 +7,7 @@ interface DataBackend {
     this: model.UserCollection,
     username: string,
     latlng: {lat: number, lng: number},
-    callback: () => void
+    callback: () => void,
   ): void
 }
 
@@ -39,7 +39,7 @@ export function setBackend(backend: DataBackend): void {
 export function syncUserLocation(
   username: string,
   latlng: {lat: number, lng: number},
-  callback: () => void
+  callback: () => void,
 ): void {
   g_backend.syncUserLocation.apply(users, arguments)
 }

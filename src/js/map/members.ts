@@ -23,9 +23,13 @@ users.addEventListener("useradd", ({detail: user}) => {
 
 // Tweak and add the search control.
 class SearchControl extends L.Control.Search {
-  onAdd() {
-    const marker = super.onAdd.apply(this, arguments)
-    marker.setAttribute("aria-haspopup", true)
+  constructor(options: any) {
+    super(options)
+  }
+
+  onAdd(): HTMLDivElement {
+    const marker = super.onAdd.apply(this, arguments) as HTMLDivElement
+    marker.setAttribute("aria-haspopup", "true")
     ;($sel(marker, ".search-input")! as HTMLInputElement).type = "search"
     const cancel = $sel(marker, ".search-cancel")!
     cancel.parentNode!.removeChild(cancel)

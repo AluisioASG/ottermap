@@ -51,7 +51,7 @@ function setupLastAccessCheck(user: model.User): void {
             fully functional, though.
           `, undefined, " "), "danger")
         }
-      }
+      },
     )
   }
 }
@@ -69,7 +69,7 @@ function fetchUsers(this: model.UserCollection): void {
     event => {
       const xhr = event.target as XMLHttpRequest
       const data = JSON.parse(xhr.responseText)
-      for (let e of data) {
+      for (const e of data) {
         const user = new model.User(e._id)
         user.setLocation(e.location)
         setupLastAccessCheck(user)
@@ -81,7 +81,7 @@ function fetchUsers(this: model.UserCollection): void {
         Oops!  Something prevented us from retrieving the list of members
         from the database.  Do you mind reloading the page and trying again?
       `, undefined, " "), "danger")
-    }
+    },
   )
 }
 
@@ -92,7 +92,7 @@ function syncUserLocation(
    this: model.UserCollection,
    username: string,
    latlng: {lat: number, lng: number},
-   callback: () => void
+   callback: () => void,
  ): void {
   // Get the user object, if any, and update the local collection.
   let user = this.select(user => user.username === username)[0]
@@ -108,14 +108,14 @@ function syncUserLocation(
   DBAPI(
     "PUT",
     `${MAP_MEMBERS_ENDPOINT}/${user.username}`,
-    {location: [user.location.lat, user.location.lng]},
+    {location: [latlng.lat, latlng.lng]},
     callback,
     () => {
       messagebar.show(trimIndent(`
         Oops!  Something prevented us from sending your location
         to the database.  Do you mind trying again?
       `, undefined, " "), "danger")
-    }
+    },
   )
 }
 

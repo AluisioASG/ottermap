@@ -65,7 +65,7 @@ export function trimIndent(
   s: string,
   expandTabsBy?: number,
   joinLinesWith: string = "\n",
-  trimRight: boolean = true
+  trimRight: boolean = true,
 ): string {
   // Don't bother processing empty strings.
   if (s.trim() === "") return ""

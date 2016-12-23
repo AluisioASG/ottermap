@@ -17,7 +17,7 @@ export default function request(
   endpoint: string,
   data: any,
   successCallback: XhrCallback,
-  errorCallback: XhrCallback
+  errorCallback: XhrCallback,
 ) {
   const xhr = new XMLHttpRequest()
   xhr.open(method, `${DBAPI_ROOT}/${endpoint}`, true)

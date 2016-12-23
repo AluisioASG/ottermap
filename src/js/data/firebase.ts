@@ -69,7 +69,7 @@ function syncUserLocation(
   this: model.UserCollection,
   username: string,
   latlng: {lat: number, lng: number},
-  callback: () => void
+  callback: () => void,
 ): void {
   // All we need to do is to update the Firebase, and our listeners in
   // `allUsers` will resync the local collection.
@@ -85,7 +85,7 @@ function syncUserLocation(
       } else {
         callback()
       }
-    }
+    },
   )
 }
 

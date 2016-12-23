@@ -48,7 +48,7 @@ export class User extends events.PausableEventTarget {
    * current one and dispatch an event informing the change.
    */
   setStatus(newStatus: "online" | "offline" | null): void {
-    if (this.status == null || newStatus != this.status) {
+    if (this.status == null || newStatus !== this.status) {
       this.updateProperty("status", newStatus, "statuschange")
     }
   }
@@ -58,8 +58,9 @@ export class User extends events.PausableEventTarget {
    * from the current one and dispatch an event informing the change.
    */
   setLastAccessTimestamp(newTimestamp: Date): void {
-    if (this.lastAccess == null || newTimestamp.getTime() != this.lastAccess.getTime())
+    if (this.lastAccess == null || newTimestamp.getTime() !== this.lastAccess.getTime()) {
       this.updateProperty("lastAccess", newTimestamp, "lastaccesschange")
+    }
   }
 
   /**
