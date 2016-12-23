@@ -45,7 +45,7 @@ function slugify(s: string): string {
  */
 function buildPopup(username: string): L.Popup {
   const htmlUsername = htmlify(username)
-  const avatarUrl = `http://178.79.159.24/Time/api/avatar/img/${slugify(username)}/`
+  const avatarUrl = `http://upperattic.at/Time/api/avatar/img/${slugify(username)}/`
   return new L.Popup({
     closeButton: false,
     closeOnClick: true,
