@@ -18,13 +18,13 @@ declare namespace CSSAnimEvent {
      * `cssanimactive`, removed upon animation completion which can be used as
      * a CSS styling hook.
      */
-    function onAnimationEnd(element: Element, handler: Handler, data?: any): void
+    export function onAnimationEnd(element: Element, handler: Handler, data?: any): void
 
     /**
      * Cancels a 'one shot' event handler set by {@link onAnimationEnd} on the
      * given DOM `element`.
      */
-    function cancelAnimationEnd(element: Element): void
+    export function cancelAnimationEnd(element: Element): void
 
     /**
      * Adds a 'one shot' event handler to the given DOM `element`, with
@@ -35,23 +35,23 @@ declare namespace CSSAnimEvent {
      * `cssanimactive`, removed upon transition completion which can be used as
      * a CSS styling hook.
      */
-    function onTransitionEnd(element: Element, handler: Handler, data?: any): void
+    export function onTransitionEnd(element: Element, handler: Handler, data?: any): void
 
     /**
      * Cancels a 'one shot' event handler set by {@link onTransitionEnd} on the
      * given DOM `element`.
      */
-    function cancelTransitionEnd(element: Element): void
+    export function cancelTransitionEnd(element: Element): void
 
     /**
      * Returns `true` if CSS animation support is detected.
      */
-    function animationSupport(): boolean
+    export function animationSupport(): boolean
 
     /**
      * Returns `true` if CSS transition support is detected.
      */
-    function transitionSupport(): boolean
+    export function transitionSupport(): boolean
 
     /**
      * Adds `animationstart` native event handlers to DOM elements.  Provides a
@@ -60,7 +60,7 @@ declare namespace CSSAnimEvent {
      *
      * @returns `true` where supported, `false` otherwise.
      */
-    function addAnimationStart(element: Element, handler: EventListener): boolean
+    export function addAnimationStart(element: Element, handler: EventListener): boolean
 
     /**
      * Adds `animationiteration` native event handlers to DOM elements.
@@ -69,7 +69,7 @@ declare namespace CSSAnimEvent {
      *
      * @returns `true` where supported, `false` otherwise.
      */
-    function addAnimationIteration(element: Element, handler: EventListener): boolean
+    export function addAnimationIteration(element: Element, handler: EventListener): boolean
 
     /**
      * Adds `animationend` native event handlers to DOM elements.  Provides a
@@ -78,7 +78,7 @@ declare namespace CSSAnimEvent {
      *
      * @returns `true` where supported, `false` otherwise.
      */
-    function addAnimationEnd(element: Element, handler: EventListener): boolean
+    export function addAnimationEnd(element: Element, handler: EventListener): boolean
 
     /**
      * Removes `animationstart` native event handlers added through
@@ -86,7 +86,7 @@ declare namespace CSSAnimEvent {
      *
      * @returns `true` where supported, `false` otherwise.
      */
-    function removeAnimationStart(element: Element, handler: EventListener): boolean
+    export function removeAnimationStart(element: Element, handler: EventListener): boolean
 
     /**
      * Removes `animationiteration` native event handlers added through
@@ -94,7 +94,7 @@ declare namespace CSSAnimEvent {
      *
      * @returns `true` where supported, `false` otherwise.
      */
-    function removeAnimationIteration(element: Element, handler: EventListener): boolean
+    export function removeAnimationIteration(element: Element, handler: EventListener): boolean
 
     /**
      * Removes `animationend` native event handlers added through
@@ -102,7 +102,7 @@ declare namespace CSSAnimEvent {
      *
      * @returns `true` where supported, `false` otherwise.
      */
-    function removeAnimationEnd(element: Element, handler: EventListener): boolean
+    export function removeAnimationEnd(element: Element, handler: EventListener): boolean
 
     /**
      * Adds `transitionend` native event handlers to DOM elements.  Provides a
@@ -111,7 +111,7 @@ declare namespace CSSAnimEvent {
      *
      * @returns `true` on success/support, `false` otherwise.
      */
-    function addTransitionEnd(element: Element, handler: EventListener): boolean
+    export function addTransitionEnd(element: Element, handler: EventListener): boolean
 
     /**
      * Removes `transitionend` native event handlers added through
@@ -119,5 +119,5 @@ declare namespace CSSAnimEvent {
      *
      * @returns `true` where supported, otherwise `false`.
      */
-    function removeAnimationEnd(element: Element, handler: EventListener): boolean
+    export function removeTransitionEnd(element: Element, handler: EventListener): boolean
 }

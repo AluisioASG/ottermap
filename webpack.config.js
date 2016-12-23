@@ -18,6 +18,7 @@ module.exports = {
     modulesDirectories: ['vendor'],
     alias: {
       'bootstrap': 'bootstrap/css',
+      'cssanimevent': 'cssanimevent/cssanimevent',
       'leaflet.style': 'leaflet/dist',
       'leaflet-geosearch.js': 'leaflet-geosearch/src/js',
     },

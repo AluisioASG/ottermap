@@ -1,4 +1,4 @@
-import CSSAnimEvent from "cssanimevent/cssanimevent"
+import "cssanimevent"
 import {$id, $all, $sel, $addClass, $removeClass} from "./util/dom"
 
 
