@@ -104,12 +104,12 @@ function readyModal(contentId: string, buttonId: string): void {
   // The modal's width has to be determined here too, otherwise it appears
   // too small on Internet Explorer.
   const modal = picomodal({
-    content: $id(contentId),
+    content: $id(contentId) || undefined,
     closeHtml: `<button type="button" class="close">&times;</button>`,
     width: window.innerWidth < 768 ? window.innerWidth : 600
   })
   // Unhide the modal content once it's out of the main document tree.
-  modal.afterCreate(() => modal.modalElem().firstElementChild.hidden = false)
+  modal.afterCreate(() => { (modal.modalElem().firstElementChild as HTMLElement).hidden = false })
   // Show the modal when the corresponding button is clicked.
   $id(buttonId)!.addEventListener("click", () => modal.show())
 }
