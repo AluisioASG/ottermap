@@ -12,12 +12,14 @@ interface UserDocument {
 
 // Our database model is: local first, synced to remote.
 const db = new PouchDB("ottermap") as PouchDB.Database<UserDocument>
-db.sync(dbConfig.urls.pouchdb, {live: true, retry: true}).on("error", err => {
-  messagebar.show(trimIndent(`
-    We have lost connection with the mothership.
-    Please reload to see new changes and upload your location.
-  `, undefined, " "), "danger")
-})
+if (dbConfig.urls.pouchdb != null) {
+  db.sync(dbConfig.urls.pouchdb, {live: true, retry: true}).on("error", err => {
+    messagebar.show(trimIndent(`
+      We have lost connection with the mothership.
+      Please reload to see new changes and upload your location.
+    `, undefined, " "), "danger")
+  })
+}
 
 
 // Make our life simpler when looking for an user.
