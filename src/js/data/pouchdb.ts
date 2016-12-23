@@ -14,8 +14,8 @@ interface UserDocument {
 const db = new PouchDB("ottermap") as PouchDB.Database<UserDocument>
 db.sync(dbConfig.urls.pouchdb, {live: true, retry: true}).on("error", err => {
   messagebar.show(trimIndent(`
-    Um, it seems our connection to the database was severed!
-    Please reload to see new changes.
+    We have lost connection with the mothership.
+    Please reload to see new changes and upload your location.
   `, undefined, " "), "danger")
 })
 
@@ -111,7 +111,7 @@ function syncUserLocation(
     addOrUpdateUser(this, newDoc)
     return db.put(newDoc)
   }, err => {
-    if (err.error !== "not_found") throw err
+    if (err.status !== 404) throw err
     const doc = {
       _id: username,
       location: latlng,
