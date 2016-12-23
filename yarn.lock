@@ -177,6 +177,10 @@ ansi-styles@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-2.2.1.tgz#b432dd3358b634cf75e1e4664368240533c1ddbe"
 
+ansi-styles@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-1.0.0.tgz#cb102df1c56f5123eab8b67cd7b98027a0279178"
+
 ansi@^0.3.0, ansi@~0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/ansi/-/ansi-0.3.1.tgz#0c42d4fb17160d5a9af1e484bace1c66922c1b21"
@@ -260,7 +264,7 @@ async-each@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/async-each/-/async-each-1.0.1.tgz#19d386a1d9edc6e7c1c85d388aedbcc56d33602d"
 
-async@^0.9.0:
+async@0.9.x, async@^0.9.0:
   version "0.9.2"
   resolved "https://registry.yarnpkg.com/async/-/async-0.9.2.tgz#aea74d5e61c1f899613bf64bda66d4c78f2fd17d"
 
@@ -463,6 +467,14 @@ center-align@^0.1.1:
   dependencies:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
+
+chalk@0.4.x:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-0.4.0.tgz#5199a3ddcd0c1efe23bc08c1b027b06176e0c64f"
+  dependencies:
+    ansi-styles "~1.0.0"
+    has-color "~0.1.0"
+    strip-ansi "~0.1.0"
 
 chalk@^1.0.0, chalk@^1.1.0, chalk@^1.1.1, chalk@^1.1.3:
   version "1.1.3"
@@ -1021,11 +1033,24 @@ fastparse@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.1.tgz#d1e2643b38a94d7583b479060e6c4affc94071f8"
 
+faye-websocket@>=0.6.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/faye-websocket/-/faye-websocket-0.11.0.tgz#d9ccf0e789e7db725d74bc4877d23aa42972ac50"
+  dependencies:
+    websocket-driver ">=0.5.1"
+
 file-loader@^0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-0.9.0.tgz#1d2daddd424ce6d1b07cfe3f79731bed3617ab42"
   dependencies:
     loader-utils "~0.2.5"
+
+filelist@0.0.x:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/filelist/-/filelist-0.0.6.tgz#58a641ad1f57574a27fe87a440ef318834b55719"
+  dependencies:
+    minimatch "^3.0.3"
+    utilities "^0.0.37"
 
 filename-regex@^2.0.0:
   version "2.0.0"
@@ -1050,6 +1075,12 @@ findup-sync@~0.3.0:
   resolved "https://registry.yarnpkg.com/findup-sync/-/findup-sync-0.3.0.tgz#37930aa5d816b777c03445e1966cc6790a4c0b16"
   dependencies:
     glob "~5.0.0"
+
+firebase@2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/firebase/-/firebase-2.4.2.tgz#4e1119ec0396ca561d8a7acbff1630feac6c0a31"
+  dependencies:
+    faye-websocket ">=0.6.0"
 
 flatten@^1.0.2:
   version "1.0.2"
@@ -1261,6 +1292,10 @@ has-ansi@^2.0.0:
   resolved "https://registry.yarnpkg.com/has-ansi/-/has-ansi-2.0.0.tgz#34f5049ce1ecdf2b0649af3ef24e45ed35416d91"
   dependencies:
     ansi-regex "^2.0.0"
+
+has-color@~0.1.0:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/has-color/-/has-color-0.1.7.tgz#67144a5260c34fc3cca677d041daf52fe7b78b2f"
 
 has-flag@^1.0.0:
   version "1.0.0"
@@ -1576,6 +1611,16 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
+jake@^8.0.15:
+  version "8.0.15"
+  resolved "https://registry.yarnpkg.com/jake/-/jake-8.0.15.tgz#f0da7d58e790ac1a8f86e6ee0f193e5d9230eabb"
+  dependencies:
+    async "0.9.x"
+    chalk "0.4.x"
+    filelist "0.0.x"
+    minimatch "3.x"
+    utilities "1.0.x"
+
 jodid25519@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/jodid25519/-/jodid25519-1.0.2.tgz#06d4912255093419477d425633606e0e90782967"
@@ -1657,6 +1702,20 @@ lazy-cache@^1.0.3:
 lazy-req@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/lazy-req/-/lazy-req-1.1.0.tgz#bdaebead30f8d824039ce0ce149d4daa07ba1fac"
+
+leaflet-providers@^1.1.16:
+  version "1.1.16"
+  resolved "https://registry.yarnpkg.com/leaflet-providers/-/leaflet-providers-1.1.16.tgz#f01a8d8e0dcbf169d07c4f166a280a1e14f206e8"
+
+leaflet-search@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/leaflet-search/-/leaflet-search-2.7.0.tgz#d64ddb80f44016db658eacd225d89f832b7e599a"
+  dependencies:
+    leaflet "*"
+
+leaflet@*:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.0.2.tgz#fa4fbcb7844944fc2bfb0bcf9ca0dea13463ca21"
 
 level-codec@6.2.0:
   version "6.2.0"
@@ -1824,7 +1883,7 @@ mime-types@^2.1.12, mime-types@~2.1.7:
   dependencies:
     mime-db "~1.25.0"
 
-"minimatch@2 || 3", minimatch@3, minimatch@^3.0.0, minimatch@^3.0.2:
+"minimatch@2 || 3", minimatch@3, minimatch@3.x, minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.3.tgz#2a4e4090b96b2db06a9d7df01055a62a77c9b774"
   dependencies:
@@ -2112,6 +2171,10 @@ path-is-absolute@^1.0.0:
 pbkdf2-compat@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/pbkdf2-compat/-/pbkdf2-compat-2.0.1.tgz#b6e0c8fa99494d94e0511575802a59a5c142f288"
+
+picomodal@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/picomodal/-/picomodal-3.0.0.tgz#facd30f4fbf34a809c1e04ea525f004f399c0b82"
 
 pinkie-promise@^2.0.0:
   version "2.0.1"
@@ -2883,6 +2946,10 @@ strip-ansi@^3.0.0, strip-ansi@^3.0.1:
   dependencies:
     ansi-regex "^2.0.0"
 
+strip-ansi@~0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-0.1.1.tgz#39e8a98d044d150660abe4a6808acf70bb7bc991"
+
 strip-json-comments@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-1.0.4.tgz#1e15fbcac97d3ee99bf2d73b4c656b082bbafb91"
@@ -3152,6 +3219,14 @@ utila@~0.4:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/utila/-/utila-0.4.0.tgz#8a16a05d445657a3aea5eecc5b12a4fa5379772c"
 
+utilities@1.0.x:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/utilities/-/utilities-1.0.4.tgz#0c7bd13257cb3fad62c385c1a62ba66de213f150"
+
+utilities@^0.0.37:
+  version "0.0.37"
+  resolved "https://registry.yarnpkg.com/utilities/-/utilities-0.0.37.tgz#a3470d0a7f688142d9e8a57cee1128f12e19e196"
+
 uuid@^2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
@@ -3225,6 +3300,16 @@ webpack@^1.14.0:
     uglify-js "~2.7.3"
     watchpack "^0.2.1"
     webpack-core "~0.6.9"
+
+websocket-driver@>=0.5.1:
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/websocket-driver/-/websocket-driver-0.6.5.tgz#5cb2556ceb85f4373c6d8238aa691c8454e13a36"
+  dependencies:
+    websocket-extensions ">=0.1.1"
+
+websocket-extensions@>=0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.1.tgz#76899499c184b6ef754377c2dbb0cd6cb55d29e7"
 
 whet.extend@~0.9.9:
   version "0.9.9"
