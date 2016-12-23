@@ -1,7 +1,7 @@
 import Queue from "./queue"
 
 
-interface EventListener {
+interface SimpleEventListener {
   (this: SimpleEventTarget, event: SimpleEvent): void
 }
 
@@ -43,16 +43,16 @@ export class SimpleEvent {
  * A very simple implementation of the DOM's EventTarget interface.
  */
 export class SimpleEventTarget {
-  protected readonly eventListeners: {[type: string]: EventListener[]} = {}
+  protected readonly eventListeners: {[type: string]: SimpleEventListener[]} = {}
 
-  addEventListener(type: string, listener: EventListener) {
+  addEventListener(type: string, listener: SimpleEventListener) {
     if (this.eventListeners[type] === undefined) {
       this.eventListeners[type] = []
     }
     this.eventListeners[type].push(listener)
   }
 
-  removeEventListener(type: string, listener: EventListener) {
+  removeEventListener(type: string, listener: SimpleEventListener) {
     const listeners = this.eventListeners[type]
     if (listeners != null) {
       const listenerIdx = listeners.indexOf(listener)
@@ -81,7 +81,7 @@ export class PausableEventTarget extends SimpleEventTarget {
   protected eventBuffer: Queue = new Queue()
   protected eventDispatchPaused: boolean | null = null
 
-  addEventListener(type: string, listener: EventListener) {
+  addEventListener(type: string, listener: SimpleEventListener) {
     super.addEventListener(type, listener)
     // If event dispatching wasn't explicitly configured and this is the first
     //event listener added to this event type, process the event buffer for
@@ -143,21 +143,25 @@ export function listenOnce(
 export function listenOnce(
   target: SimpleEventTarget,
   eventType: string,
-  listener: EventListener
+  listener: SimpleEventListener,
 ): void
 export function listenOnce(
   target: EventTarget | SimpleEventTarget,
   eventType: string,
-  listener: EventListener | EventListenerOrEventListenerObject,
+  listener: EventListenerOrEventListenerObject | SimpleEventListener,
   useCapture?: boolean
 ): void {
   let wrapper = function(this: typeof target) {
     if (target instanceof SimpleEventTarget) {
       target.removeEventListener(eventType, wrapper)
-      ;(listener as EventListener).apply(this, arguments)
+      ;(listener as SimpleEventListener).apply(this, arguments)
     } else {
       target.removeEventListener(eventType, wrapper)
-      ;(listener as EventListenerOrEventListenerObject).apply(this, arguments)
+      if (typeof listener === "function") {
+        ;(listener as EventListener).apply(this, arguments)
+      } else {
+        ;(listener as EventListenerObject).handleEvent.call(this, arguments)
+      }
     }
   }
   if (target instanceof SimpleEventTarget) {
