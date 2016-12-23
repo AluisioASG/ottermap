@@ -23,7 +23,6 @@ module.exports = {
       'leaflet-geosearch.js': 'leaflet-geosearch/src/js',
     },
   },
-  devtool: 'source-map',
 
   module: {
     loaders: [
