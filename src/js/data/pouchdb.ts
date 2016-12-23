@@ -1,5 +1,5 @@
 import * as PouchDB from "pouchdb"
-import dbConfig from "../site-local/config"
+import {dbUrl} from "./backend"
 import * as messagebar from "../messagebar"
 import {trimIndent} from "../util/strings"
 import * as model from "./model"
@@ -12,8 +12,8 @@ interface UserDocument {
 
 // Our database model is: local first, synced to remote.
 const db = new PouchDB("ottermap") as PouchDB.Database<UserDocument>
-if (dbConfig.urls.pouchdb != null) {
-  db.sync(dbConfig.urls.pouchdb, {live: true, retry: true}).on("error", err => {
+if (dbUrl != null) {
+  db.sync(dbUrl, {live: true, retry: true}).on("error", err => {
     messagebar.show(trimIndent(`
       We have lost connection with the mothership.
       Please reload to see new changes and upload your location.

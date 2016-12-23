@@ -1,4 +1,4 @@
-import dbConfig from "../site-local/config"
+import {dbUrl} from "./backend"
 import * as messagebar from "../messagebar"
 import DBAPI, {setRoot as setDbApiRoot} from "../util/dbapi"
 import {trimIndent} from "../util/strings"
@@ -16,7 +16,7 @@ const CHECKIN_QUERY_INTERVAL = 90000
 
 
 /** Set the DBAPI root. */
-setDbApiRoot(dbConfig.urls.dbapi)
+setDbApiRoot(dbUrl)
 
 
 /**

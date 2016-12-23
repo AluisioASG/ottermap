@@ -1,12 +1,12 @@
 import "firebase"
-import dbConfig from "../site-local/config"
+import {dbUrl} from "./backend"
 import * as messagebar from "../messagebar"
 import {trimIndent} from "../util/strings"
 import * as model from "./model"
 
 
 // Keep a global reference to the Firebase root.
-const root = new Firebase(dbConfig.urls.firebase)
+const root = new Firebase(dbUrl)
 
 // Usernames may need to be escaped for Firebase.
 function encodeUsername(username: string): string {

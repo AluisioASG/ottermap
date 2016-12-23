@@ -7,6 +7,6 @@ import "./map/user"
 import "./focus"
 
 import * as data from "./data"
-import backend from "./site-local/data-backend"
+import backend from "./data/backend"
 data.setBackend(backend)
 data.fetchUsers()
