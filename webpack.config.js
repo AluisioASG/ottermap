@@ -15,7 +15,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.ts', '.js', '.styl', '.css'],
-    modulesDirectories: ['vendor'],
+    modulesDirectories: ['vendor', 'node_modules'],
     alias: {
       'bootstrap': 'bootstrap/css',
       'cssanimevent': 'cssanimevent/cssanimevent',

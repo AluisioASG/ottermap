@@ -1,1 +1,1 @@
-export {default} from "../data/firebase"
+export {default} from "../data/pouchdb"
