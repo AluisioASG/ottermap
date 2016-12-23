@@ -20,34 +20,38 @@ The files located under the `vendor` subdirectory are property of their respecti
 
 So, you want to play around with the code, maybe submit some patches, or even just see how this works, uh?  Well, be welcome!  If don't intend to contribute anything, just clone this repository and follow the instructions below.  Otherwise, I hope you're familiar with [The GitHub Way].
 
+### Prerequisites
 
-### External dependencies
+To build the map, you'll need [Git] (obviously), [Node.js] and the bundled `npm` package manager (you can also use [Yarn]).
 
-[TODO: Update for v>8]
+After cloning this repository, run `npm install` and then `npm run deps` to fetch and build all dependencies.
 
-In order to build the map, you'll need [Git] (obviously), [Node.js] and the bundled `npm` package manager.  You'll also need a database server, as the official ones won't speak to any instance not hosted in the official domains.  Currently we support two backends: [Firebase] and [MongoDB] with the [DBAPI] REST interface.  You can have different servers for development and production.
+### Configuring
 
+There are a few choices for where user data is stored.  These are set through the `src/js/data/backend.ts`, which looks like this:
 
-### Building the map
+    export const dbUrl = "https://example.com/db"
+    export {default} from "./backend-module"
 
-[TODO: Update for v>8]
+The first line sets the address of a remote database, which depends on the backend you choose; we'll refer to that as the _database URL_.  The second line re-exports the API of a _data backend_, in this case named `backend-module`.
 
-Once the build dependencies are installed, we can now install the _code_ dependencies, a mostly automated process.
+- To use a local, in-browser database only, use the `pouchdb` backend and set the database URL to `null`.
+- On top of that, you can instead set the database URL to a [CouchDB-compatible][PouchDB/HTTP] database and sync with it.
+- The `firebase` backend, last updated back when it was not a Google product, allowed one to view changes in real time from a [Firebase] database.
+- The old `dbapi` backend is… well, we'll rather not talk about it.
 
-Inside your project's working directory, run the following commands to fetch and build all managed dependencies.  This will have to be done whenever dependencies are added or updated.
+#### Building and running
 
-    git submodule update --init --recursive
-    npm update
-    (cd vendor/leaflet && npm update)
-    (cd vendor/leaflet-markercluster && npm update)
+Now that we're all set, let's build the map proper.  Run
 
-By last, you'll need to specify your build variables.  Copy the file `build-config.example.ls` to `build-config.ls` and change it to suit your needs.
+    npm start
 
-_Now_ we're ready.  The following are some of the available build targets:
-- `npm run build -- target[dev] watch` will result in a non-optimized build tree suitable for live development, watching the source files for changes;
-- `npm run build -- target[dev] watch serve` will, in addition to the above, start a HTTP server to serve the development build (defaulting to serve at `localhost:8080`);
-- `npm run build -- target[release]` will build everything up to the optimized release files, but won't stay around and watch for changes;
-- `npm run build -- clean[build,dist] target[release] publish` will remove the build directories, create the release files anew in the `dist` directory, commit these files to the upstream repository's `gh-pages` branch, and publish the result to GitHub Pages.  Here you can, for example, use the `NODE_ENV` environment variable to change the database URLs: `npm --production run build -- clean[build,dist] target[release] publish`.
+and once it finishes, fire up a web server into the `build` directory.  Ta-da!
+
+You can also pass options to Webpack separating them with a `--`, for example:
+
+    npm start -- --watch  # watch for and rebuild on changes
+    npm start -- -p  # production/optimization mode
 
 
 [OTT]:               http://forums.xkcd.com/viewtopic.php?t=101043
@@ -57,6 +61,6 @@ _Now_ we're ready.  The following are some of the available build targets:
 [The GitHub Way]:    https://help.github.com/articles/fork-a-repo
 [Git]:               https://git-scm.com/
 [Node.js]:           https://nodejs.org/
-[MongoDB]:           https://www.mongodb.org/
-[DBAPI]:             https://bitbucket.org/AluisioASG/dbapi/
+[Yarn]:              https://yarnpkg.com/
+[PouchDB/HTTP]:      https://pouchdb.com/adapters.html#pouchdb_over_http
 [Firebase]:          https://www.firebase.com/
