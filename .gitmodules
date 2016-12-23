@@ -9,18 +9,6 @@
 	path = vendor/leaflet-markercluster
 	url = https://github.com/Leaflet/Leaflet.markercluster.git
 	ignore = dirty
-[submodule "Leaflet-providers"]
-	path = vendor/leaflet-providers
-	url = https://github.com/leaflet-extras/leaflet-providers.git
-[submodule "Leaflet.Control.Search"]
-	path = vendor/leaflet-search
-	url = https://github.com/stefanocudini/leaflet-search.git
 [submodule "CSSAnimEvent"]
 	path = vendor/cssanimevent
 	url = https://github.com/magnetikonline/cssanimevent.git
-[submodule "Firebase Web Client"]
-	path = vendor/firebase
-	url = https://github.com/firebase/firebase-bower.git
-[submodule "PicoModal"]
-	path = vendor/picomodal
-	url = https://github.com/Nycto/PicoModal.git

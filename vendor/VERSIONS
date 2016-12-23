@@ -1,9 +1,5 @@
 bootstrap: 3.3.5
 cssanimevent: #master
-firebase: 2.4.2
 leaflet: 0.7.7
 leaflet-geosearch: #master
 leaflet-markercluster: #master
-leaflet-providers: 1.1.6
-leaflet-search: 2.7.0
-picomodal: 2.2.0
