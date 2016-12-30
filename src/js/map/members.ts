@@ -15,6 +15,7 @@ const SEARCH_RESULT_ZOOM_LEVEL = 10
 // Fetch all members and add a layer for them.
 const membersLayer = new L.MarkerClusterGroup()
 map.addLayer(membersLayer)
+// tslint:disable-next-line:arrow-parens
 users.addEventListener("useradd", ({detail: user}) => {
   const marker = buildMemberMarker(user)
   membersLayer.addLayer(marker)

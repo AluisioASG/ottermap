@@ -13,7 +13,7 @@ interface UserDocument {
 // Our database model is: local first, synced to remote.
 const db = new PouchDB("ottermap") as PouchDB.Database<UserDocument>
 if (dbUrl != null) {
-  db.sync(dbUrl, {live: true, retry: true}).on("error", err => {
+  db.sync(dbUrl!, {live: true, retry: true}).on("error", err => {
     messagebar.show(trimIndent(`
       We have lost connection with the mothership.
       Please reload to see new changes and upload your location.

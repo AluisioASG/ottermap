@@ -21,6 +21,7 @@ window.addEventListener("hashchange", () => {
 // they are added to the user list.
 const targetUser = window.location.hash.slice(1)
 if (targetUser) {
+  // tslint:disable-next-line:arrow-parens
   listenOnce(users, "useradd", ({detail: user}) => {
     if (user.username === targetUser) {
       map.setView(user.location, FOCUS_ZOOM_LEVEL)

@@ -96,9 +96,11 @@ map.attributionControl.addAttribution(MARKER_ICON_ATTRIBUTION)
  */
 export function buildMemberMarker(user: User) {
   const marker = buildMarker(user, DefaultIcon)
+  // tslint:disable-next-line:arrow-parens
   user.addEventListener("locationchange", ({detail}) => {
     marker.setLatLng(detail.newValue)
   })
+  // tslint:disable-next-line:arrow-parens
   user.addEventListener("statuschange", ({detail}) => {
     switch (detail.newValue) {
       case "online":
