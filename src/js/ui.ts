@@ -1,3 +1,4 @@
+import debounce = require("lodash.debounce")
 import * as picomodal from "picomodal"
 import {$id, $all, $sel, $addClass, $removeClass, $toggleClass} from "./util/dom"
 import {listenOnce} from "./util/events"
@@ -70,21 +71,7 @@ function resizeMap() {
 setTimeout(resizeMap, NEXT_TICK_INTERVAL)
 
 // Resize the map whenever the window is resized.
-window.addEventListener("resize", () => {
-  // Schedule the resizing to happen after the specified timespan.  If the
-  // event is triggered again during that timespan, the handler is
-  // rescheduled as before.
-  //
-  // Based on Lo-Dash's `debounce` function.
-  let timer: number | null = null
-  if (timer != null) {
-    clearTimeout(timer)
-  }
-  timer = setTimeout(() => {
-    timer = null
-    resizeMap()
-  }, NEXT_TICK_INTERVAL)
-})
+window.addEventListener("resize", debounce(resizeMap, NEXT_TICK_INTERVAL))
 
 
 // Apply the user-defined styles to the markers.

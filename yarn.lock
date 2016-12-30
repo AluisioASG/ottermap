@@ -6,6 +6,16 @@
   version "2.4.30"
   resolved "https://registry.yarnpkg.com/@types/firebase/-/firebase-2.4.30.tgz#bb40403f91ba41040221e3a04464a20839d963a9"
 
+"@types/lodash.debounce@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/lodash.debounce/-/lodash.debounce-4.0.0.tgz#630f543ddee00c65a6efd5ba49ca36e78438fdb7"
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.14.45"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.45.tgz#db20238f23fa195d6fb8f9ff7988e8651fc8c302"
+
 "@types/node@*":
   version "6.0.52"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.52.tgz#1ac3a99b42320f9e463482f25af4c2359473aaa6"
