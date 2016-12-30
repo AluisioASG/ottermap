@@ -4,7 +4,7 @@ const MarkerClusterBuild = require('./vendor/leaflet-markercluster/build/build')
 
 function pushdAsync(wd) {
   const oldwd = process.cwd()
-  process.chdir('vendor/leaflet')
+  process.chdir(wd)
   return () => {
     process.chdir(oldwd)
     complete()
@@ -25,9 +25,12 @@ task('build-leaflet', ['fetchdeps-leaflet'], {async: true}, () => {
 })
 
 desc('Build Leaflet.markercluster')
-task('build-leaflet-markercluster', ['fetchdeps-leaflet-markercluster'], {async: true}, () => {
+task('build-leaflet-markercluster', ['fetchdeps-leaflet-markercluster'], () => {
   console.log('.. Building Leaflet.markercluster ..')
-  MarkerClusterBuild.build(pushdAsync('vendor/leaflet-markercluster'), '7')
+  const oldwd = process.cwd()
+  process.chdir('vendor/leaflet-markercluster')
+  MarkerClusterBuild.build('7')
+  process.chdir(oldwd)
 })
 
 desc('Build dependencies')
