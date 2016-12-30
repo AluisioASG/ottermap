@@ -5,10 +5,6 @@ import {$id, $sel, $addClass, $removeClass} from "./util/dom"
 import {listenOnce} from "./util/events"
 
 
-/** Time to wait until the current operation is completed. */
-const NEXT_TICK_INTERVAL = 40 /* 1000ms / 25fps */
-
-
 function getUsername(form: HTMLElement): string {
   return ($sel(form, "input[name=username]")! as HTMLInputElement).value
 }
@@ -17,9 +13,6 @@ let g_marker: L.Marker
 const updateForm = $id("update-form")
 // Setup marker placement.
 listenOnce(updateForm as EventTarget, "submit", function(this: HTMLFormElement) {
-  const geoSearchControl = $sel(".leaflet-control-geosearch")!
-  geoSearchControl.style.display = "block"
-  setTimeout(() => geoSearchControl.style.opacity = "1" , NEXT_TICK_INTERVAL)
   g_marker = MapUser.placeUserMarker(getUsername(this))
 })
 // Setup user location upload.

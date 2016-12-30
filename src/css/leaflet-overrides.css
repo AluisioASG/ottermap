@@ -9,12 +9,10 @@
 	width: auto !important;
 }
 
-.leaflet-control-geosearch {
-	margin-top: 0 !important;
-	display: none;
-	opacity: 0;
-	transition: opacity 1.325s ease;
-	-webkit-transition: opacity 1.325s ease;  /* For Safari and Android. */
+/* Hide the CSS-made icon in the geosearch button. */
+.leaflet-control-geosearch a.leaflet-bar-part:before, .leaflet-control-geosearch a.leaflet-bar-part::after {
+	border: none;
+	transform: none;
 }
 
 .leaflet-control-search {

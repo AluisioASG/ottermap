@@ -1,7 +1,7 @@
 @import url('~leaflet.style/leaflet.css');
 @import url('~leaflet-search/dist/leaflet-search.src.css');
 @import url('~leaflet-search/dist/leaflet-search.mobile.src.css');
-@import url('~leaflet-geosearch/src/css/l.geosearch');
+@import url('~leaflet-geosearch/assets/css/leaflet.css');
 @import url('~leaflet-markercluster/dist/MarkerCluster');
 @import url('~leaflet-markercluster/dist/MarkerCluster.Default');
 @import url('~bootstrap/bootstrap');

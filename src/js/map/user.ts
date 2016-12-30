@@ -1,23 +1,33 @@
 import * as L from "leaflet"
-import "leaflet-geosearch"
+import {GeoSearchControl, OpenStreetMapProvider} from "leaflet-geosearch"
 import map from "../map"
+import {$sel, $addClass} from "../util/dom"
 
 
-// Zoom level after geosearch.
-const GEOSEARCH_ZOOM_LEVEL = 15
+class CustomGeoSearchControl extends GeoSearchControl {
+  constructor(options: GeoSearch.GeoSearchControlOptions) {
+    super(options)
+  }
 
-// Geosearch provider.  See the L.GeoSearch plugin's documentation for
-// available providers and required configuration.
-const GEOSEARCH_PROVIDER = "OpenStreetMap"
-import "leaflet-geosearch.js/l.geosearch.provider.openstreetmap"
-
+  onAdd(): HTMLDivElement {
+    const container = super.onAdd.apply(this, arguments) as HTMLDivElement
+    const button = $sel(container, "a.leaflet-bar-part")! as HTMLAnchorElement
+    // Tell screen readers that the search button has a popup.
+    container.setAttribute("aria-haspopup", "true")
+    // Set an icon to the search button.
+    button.innerHTML = '<span class="glyphicon glyphicon-road"/>'
+    // Better describe the button.
+    button.title = "Search by address"
+    return container
+  }
+}
 
 // Add the search control to the map.
-new L.Control.GeoSearch({
-  provider: new L.GeoSearch.Provider[GEOSEARCH_PROVIDER](),
-  zoomLevel: GEOSEARCH_ZOOM_LEVEL,
+map.addControl(new CustomGeoSearchControl({
+  provider: new OpenStreetMapProvider(),
+  style: "button",
   showMarker: false,
-}).addTo(map)
+}))
 
 
 /**

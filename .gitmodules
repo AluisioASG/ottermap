@@ -2,9 +2,6 @@
 	path = vendor/leaflet
 	url = https://github.com/Leaflet/Leaflet.git
 	ignore = dirty
-[submodule "Leaflet.GeoSearch"]
-	path = vendor/leaflet-geosearch
-	url = https://github.com/smeijer/L.GeoSearch.git
 [submodule "Leaflet.markercluster"]
 	path = vendor/leaflet-markercluster
 	url = https://github.com/Leaflet/Leaflet.markercluster.git

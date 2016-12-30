@@ -21,7 +21,6 @@ module.exports = {
       'bootstrap': 'bootstrap/css',
       'cssanimevent': 'cssanimevent/cssanimevent',
       'leaflet.style': 'leaflet/dist',
-      'leaflet-geosearch.js': 'leaflet-geosearch/src/js',
     },
   },
 
