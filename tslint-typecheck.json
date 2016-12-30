@@ -7,6 +7,7 @@
     "class-name": true,
     "no-angle-bracket-type-assertion": true,
 
+    "arrow-parens": [true, "ban-single-arg-parens"],
     "prefer-for-of": true,
     "no-for-in-array": true,
     "no-var-keyword": true,
@@ -14,6 +15,7 @@
     "prefer-const": true,
 
     "no-construct": true,
+    "no-string-throw": true,
     "no-switch-case-fall-through": true,
     "no-unsafe-finally": true,
     "restrict-plus-operands": true,
