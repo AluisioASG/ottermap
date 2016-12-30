@@ -13,13 +13,11 @@
     "lint-full": "tslint --project . --config tslint-typecheck.json --type-check"
   },
   "devDependencies": {
-    "@types/firebase": "^2.4.30",
     "@types/lodash.debounce": "^4.0.0",
     "@types/pouchdb": "^5.4.28",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
-    "firebase": "2.4.2",
     "git-describe": "^4.0.1",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.24.1",

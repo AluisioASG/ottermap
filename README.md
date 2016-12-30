@@ -35,10 +35,7 @@ There are a few choices for where user data is stored.  These are set through th
 
 The first line sets the address of a remote database, which depends on the backend you choose; we'll refer to that as the _database URL_.  The second line re-exports the API of a _data backend_, in this case named `backend-module`.
 
-- To use a local, in-browser database only, use the `pouchdb` backend and set the database URL to `null`.
-- On top of that, you can instead set the database URL to a [CouchDB-compatible][PouchDB/HTTP] database and sync with it.
-- The `firebase` backend, last updated back when it was not a Google product, allowed one to view changes in real time from a [Firebase] database.
-- The old `dbapi` backend is… well, we'll rather not talk about it.
+Currently, only one backend is maintained: `pouchdb`.  It uses a local, in-browser database which can be synchronized with a [CouchDB-compatible][PouchDB/HTTP] database by setting the database URL appropriately.
 
 #### Building and running
 
@@ -63,4 +60,3 @@ You can also pass options to Webpack separating them with a `--`, for example:
 [Node.js]:           https://nodejs.org/
 [Yarn]:              https://yarnpkg.com/
 [PouchDB/HTTP]:      https://pouchdb.com/adapters.html#pouchdb_over_http
-[Firebase]:          https://www.firebase.com/
