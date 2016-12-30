@@ -17,6 +17,7 @@ module.exports = {
     extensions: ['', '.ts', '.js', '.styl', '.css'],
     modulesDirectories: ['vendor', 'node_modules'],
     alias: {
+      'ottermap': `${__dirname}/src`,
       'bootstrap': 'bootstrap/css',
       'cssanimevent': 'cssanimevent/cssanimevent',
       'leaflet.style': 'leaflet/dist',

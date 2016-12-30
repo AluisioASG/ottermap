@@ -2,7 +2,7 @@ import * as L from "leaflet"
 import {User} from "../data/model"
 import map from "../map"
 import {trimIndent} from "../util/strings"
-import * as markerSvg from "!!raw-loader!./marker.svg"
+import * as markerSvg from "!!raw-loader!ottermap/img/marker.svg"
 
 
 function mdLink(href: string, text: string): string {
