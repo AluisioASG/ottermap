@@ -28,12 +28,17 @@ class SearchControl extends L.Control.Search {
   }
 
   onAdd(): HTMLDivElement {
-    const marker = super.onAdd.apply(this, arguments) as HTMLDivElement
-    marker.setAttribute("aria-haspopup", "true")
-    ;($sel(marker, ".search-input")! as HTMLInputElement).type = "search"
-    const cancel = $sel(marker, ".search-cancel")!
+    const container = super.onAdd.apply(this, arguments) as HTMLDivElement
+    // Tell screen readers that the search button has a popup.
+    container.setAttribute("aria-haspopup", "true")
+    // Specialize the search input field's type.
+    ;($sel(container, ".search-input")! as HTMLInputElement).type = "search"
+    // Remove the cancel icon; let the browser handle it.
+    const cancel = $sel(container, ".search-cancel")!
     cancel.parentNode!.removeChild(cancel)
-    return marker
+    // Better describe the button.
+    ;($sel(container, ".search-button")! as HTMLAnchorElement).title = "Locate OTTer"
+    return container
   }
 }
 

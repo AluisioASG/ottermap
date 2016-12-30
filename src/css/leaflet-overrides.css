@@ -42,8 +42,7 @@
 	height: 30px;
 }
 .leaflet-control-search .search-button, .leaflet-control-search .search-button:hover {
-	background-image: url('~leaflet-search/images/search-icon.png');
-}
-.leaflet-touch .leaflet-control-search .search-button, .leaflet-control-search .search-button:hover {
-	background-position: 4px 4px;
+	background-image: url('~ottermap/img/marker.svg');
+	background-size: 59%;
+	background-position: center;
 }
