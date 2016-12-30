@@ -9,3 +9,9 @@ indent_size = 2
 
 [*.d.ts]
 indent_size = 4
+
+[*.css]
+indent_style = tab
+
+[*.html]
+indent_style = tab
