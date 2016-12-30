@@ -14,7 +14,7 @@
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
-    "lib": ["es5", "es2015.promise", "dom"],
+    "lib": ["es5", "es2015.promise", "es2015.collection", "dom"],
     "sourceMap": true,
 
     "alwaysStrict": true,

@@ -18,6 +18,9 @@ const TILE_PROVIDERS = [
 /** Tile provider to be used if the user hasn't selected one before. */
 const DEFAULT_TILE_PROVIDER = "Esri.WorldImagery"
 
+/** Map of tile layers to their names (for persistence). */
+const tileLayerNames: WeakMap<L.TileLayer, string> = new WeakMap()
+
 
 /**
  * Instantiate a tile layer given a provider ID.
@@ -25,7 +28,7 @@ const DEFAULT_TILE_PROVIDER = "Esri.WorldImagery"
 function getLayerProvided(provider: string) {
   try {
     const layer = L.tileLayer.provider(provider)
-    layer._ottmap_layer_provider = provider
+    tileLayerNames.set(layer, provider)
     return layer
   } catch (err) { // PROVIDER_NOT_FOUND
     let errmsg = err.toString()
@@ -56,7 +59,7 @@ function adjustWithinRange(value: number, min: number, max: number): number {
 
 // Remember the last base layer selected by the user.
 map.addEventListener("baselayerchange", (event: L.LeafletLayerEvent) => {
-  localStorage["last tile provider"] = event.layer._ottmap_layer_provider
+  localStorage["last tile provider"] = tileLayerNames.get(event.layer)
 })
 const initialProvider = localStorage["last tile provider"] || DEFAULT_TILE_PROVIDER
 // Load the tile provider last selected by the user if it's not loaded by
