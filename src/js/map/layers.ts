@@ -1,5 +1,6 @@
 import * as L from "leaflet"
 import "leaflet-providers"
+import clamp = require("lodash.clamp")
 import map from "../map"
 import {show as showMessageBar} from "../messagebar"
 import {trimIndent} from "../util/strings"
@@ -49,13 +50,6 @@ function providerIdToLabel(provider: string): string {
   return provider.replace(/\./g, ": ").replace(/([a-z])([A-Z])/g, "$1 $2")
 }
 
-/**
- * Make sure a given number is within the given bounds.
- */
-function adjustWithinRange(value: number, min: number, max: number): number {
-  return Math.min(Math.max(value, min), max)
-}
-
 
 // Remember the last base layer selected by the user.
 map.addEventListener("baselayerchange", (event: L.LeafletLayerEvent) => {
@@ -80,7 +74,7 @@ for (const provider of TILE_PROVIDERS) {
     // Add the layer to the map if it's the default one.
     map.addLayer(layer)
     // Adjust the map's zoom level if necessary.
-    map.setZoom(adjustWithinRange(map.getZoom(), layer.options.minZoom, layer.options.maxZoom))
+    map.setZoom(clamp(map.getZoom(), layer.options.minZoom, layer.options.maxZoom))
   }
 }
 // Add to the map and layer control any overlays the user has specified.
