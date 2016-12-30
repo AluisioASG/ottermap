@@ -44,14 +44,14 @@ The first line sets the address of a remote database, which depends on the backe
 
 Now that we're all set, let's build the map proper.  Run
 
-    npm start
+    npm run build
 
-and once it finishes, fire up a web server into the `build` directory.  Ta-da!
+and once it finishes, fire up a web server into the `build` directory.  Alternatively, `npm start` will start a server at port 8080 with live-reloading enabled.
 
 You can also pass options to Webpack separating them with a `--`, for example:
 
-    npm start -- --watch  # watch for and rebuild on changes
-    npm start -- -p  # production/optimization mode
+    npm build -- --watch  # watch for and rebuild on changes
+    npm build -- -p  # production/optimization mode
 
 
 [OTT]:               http://forums.xkcd.com/viewtopic.php?t=101043
