@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@types/geojson@0.0.31":
+  version "0.0.31"
+  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-0.0.31.tgz#ad8d4cb76f7bf13c59babc5bed77f2dd2c4175bc"
+
+"@types/leaflet@^1.0.41":
+  version "1.0.41"
+  resolved "https://registry.yarnpkg.com/@types/leaflet/-/leaflet-1.0.41.tgz#0d783bc02fa44d3a90e689e42183a2ed4c494a44"
+  dependencies:
+    "@types/geojson" "0.0.31"
+
 "@types/lodash.clamp@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/lodash.clamp/-/lodash.clamp-4.0.0.tgz#7d1ba70a5a2f8fc060b0bd28b9bf7b18fa69dc7a"

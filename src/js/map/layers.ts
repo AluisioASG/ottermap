@@ -1,4 +1,4 @@
-import * as L from "leaflet"
+import L = require("leaflet")
 import "leaflet-providers"
 import clamp = require("lodash.clamp")
 import map from "../map"
@@ -20,7 +20,7 @@ const TILE_PROVIDERS = [
 const DEFAULT_TILE_PROVIDER = "Esri.WorldImagery"
 
 /** Map of tile layers to their names (for persistence). */
-const tileLayerNames: WeakMap<L.TileLayer, string> = new WeakMap()
+const tileLayerNames: WeakMap<L.Layer, string> = new WeakMap()
 
 
 /**
@@ -52,7 +52,7 @@ function providerIdToLabel(provider: string): string {
 
 
 // Remember the last base layer selected by the user.
-map.addEventListener("baselayerchange", (event: L.LeafletLayerEvent) => {
+map.addEventListener("baselayerchange", (event: L.LayerEvent) => {
   localStorage["last tile provider"] = tileLayerNames.get(event.layer)
 })
 const initialProvider = localStorage["last tile provider"] || DEFAULT_TILE_PROVIDER
@@ -73,8 +73,9 @@ for (const provider of TILE_PROVIDERS) {
   if (provider === initialProvider) {
     // Add the layer to the map if it's the default one.
     map.addLayer(layer)
+    const layerOptions = (layer as any).options
     // Adjust the map's zoom level if necessary.
-    map.setZoom(clamp(map.getZoom(), layer.options.minZoom, layer.options.maxZoom))
+    map.setZoom(clamp(map.getZoom(), layerOptions.minZoom, layerOptions.maxZoom))
   }
 }
 // Add to the map and layer control any overlays the user has specified.

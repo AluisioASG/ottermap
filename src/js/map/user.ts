@@ -1,4 +1,4 @@
-import * as L from "leaflet"
+import L = require("leaflet")
 import {GeoSearchControl, OpenStreetMapProvider} from "leaflet-geosearch"
 import map from "../map"
 import {$sel, $addClass} from "../util/dom"
@@ -39,7 +39,7 @@ export function placeUserMarker(title: string): L.Marker {
     draggable: true,
     title: title,
   }).addTo(map)
-  map.addEventListener("click", (event: L.LeafletLocationEvent) => marker.setLatLng(event.latlng))
+  map.addEventListener("click", (event: L.LocationEvent) => marker.setLatLng(event.latlng))
   return marker
 }
 

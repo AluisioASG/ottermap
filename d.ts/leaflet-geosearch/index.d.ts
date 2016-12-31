@@ -2,7 +2,7 @@
 // Project: https://github.com/smeijer/leaflet-geosearch
 // Definitions by: Aluísio Augusto Silva Gonçalves <https://github.com/AluisioASG>
 
-import * as L from "leaflet"
+import L = require("leaflet")
 export as namespace GeoSearch
 
 
@@ -27,12 +27,20 @@ export interface Result {
 }
 
 
-export class GeoSearchControl extends L.Control {
+export class GeoSearchControl implements L.Control {
     constructor(options: GeoSearchControlOptions)
+    getPosition(): L.ControlPosition
+    setPosition(position: L.ControlPosition): this
+    getContainer(): HTMLElement
+    addTo(map: L.Map): this
+    remove(): this
+    onAdd(map: L.Map): HTMLElement
+    onRemove(map: L.Map): void
 }
 
 export interface GeoSearchControlOptions {
     provider: Provider
+    position?: L.ControlPosition
     style?: "bar" | "button"
     autoComplete?: boolean
     autoCompleteDelay?: number

@@ -1,8 +1,11 @@
-import * as L from "leaflet"
+import L = require("leaflet")
+/// <reference type="leaflet-ottermap" />
 import {User} from "../data/model"
 import map from "../map"
 import {trimIndent} from "../util/strings"
-import * as markerSvg from "!!raw-loader!ottermap/img/marker.svg"
+// https://github.com/TypeStrong/ts-loader#loading-other-resources-and-code-splitting
+// tslint:disable-next-line:no-var-requires
+const markerSvg: string = require("!!raw-loader!ottermap/img/marker.svg")
 
 
 function mdLink(href: string, text: string): string {

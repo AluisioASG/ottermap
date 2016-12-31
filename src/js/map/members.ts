@@ -1,4 +1,4 @@
-import * as L from "leaflet"
+import L = require("leaflet")
 import "leaflet-markercluster"
 import "leaflet-search"
 import {users} from "../data"
@@ -13,7 +13,7 @@ const SEARCH_RESULT_ZOOM_LEVEL = 10
 
 
 // Fetch all members and add a layer for them.
-const membersLayer = new L.MarkerClusterGroup()
+const membersLayer = L.markerClusterGroup()
 map.addLayer(membersLayer)
 // tslint:disable-next-line:arrow-parens
 users.addEventListener("useradd", ({detail: user}) => {
@@ -24,7 +24,7 @@ users.addEventListener("useradd", ({detail: user}) => {
 
 // Tweak and add the search control.
 class SearchControl extends L.Control.Search {
-  constructor(options: any) {
+  constructor(options: L.SearchOptions) {
     super(options)
   }
 

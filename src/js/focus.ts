@@ -13,7 +13,7 @@ window.addEventListener("hashchange", () => {
   if (!targetUser) return
   const user = users.select(user => user.username === targetUser)[0]
   if (user != null) {
-    map.setView(user.location, FOCUS_ZOOM_LEVEL)
+    map.setView(user.location!, FOCUS_ZOOM_LEVEL)
   }
 })
 

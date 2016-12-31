@@ -1,4 +1,4 @@
-import * as L from "leaflet"
+import L = require("leaflet")
 import * as events from "../util/events"
 
 
@@ -37,7 +37,13 @@ export class User extends events.PausableEventTarget {
     // Normalize the location into Leaflet's `LatLng` object (note
     // that the constructor form doesn't support all the different
     // representations).
-    const normalizedNewLocation = L.latLng(newLocation)
+    function isLatLngLiteral(latlng: L.LatLngExpression): latlng is L.LatLngLiteral {
+      return "lat" in newLocation && "lng" in newLocation
+    }
+    const normalizedNewLocation =
+      isLatLngLiteral(newLocation)
+        ? L.latLng(newLocation.lat, newLocation.lng)
+        : L.latLng(newLocation)
     if (this.location == null || !normalizedNewLocation.equals(this.location)) {
       this.updateProperty("location", normalizedNewLocation, "locationchange")
     }
