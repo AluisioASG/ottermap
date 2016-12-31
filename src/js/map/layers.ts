@@ -65,7 +65,7 @@ if (!~TILE_PROVIDERS.indexOf(initialProvider)) {
 // Create and populate the layer selection control.  Usually we'd use
 // `L.Control.Layers.Provided` supplied by `leaflet-providers`, but we need
 // to record the provider's name so we can save and restore it later.
-const layerControl = new L.Control.Layers()
+const layerControl = L.control.layers().addTo(map)
 for (const provider of TILE_PROVIDERS) {
   const layer = getLayerProvided(provider)
   if (!layer) continue
@@ -86,5 +86,3 @@ if (localStorage["overlay providers"]) {
     layerControl.addOverlay(layer, providerIdToLabel(provider))
   }
 }
-// Add the control to the map.
-layerControl.addTo(map)
