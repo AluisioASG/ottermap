@@ -21,7 +21,7 @@ function installDepsCmd() {
 desc('Build Leaflet')
 task('build-leaflet', ['fetchdeps-leaflet'], {async: true}, () => {
   console.log('.. Building Leaflet ..')
-  LeafletBuild.build(pushdAsync('vendor/leaflet'), 'mvspju5')
+  LeafletBuild.build(pushdAsync('vendor/leaflet'), '2us2ved')
 })
 
 desc('Build Leaflet.markercluster')

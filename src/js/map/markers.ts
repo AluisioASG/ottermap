@@ -49,10 +49,7 @@ function slugify(s: string): string {
 function buildPopup(username: string): L.Popup {
   const htmlUsername = htmlify(username)
   const avatarUrl = `http://upperattic.at/Time/api/avatar/img/${slugify(username)}/`
-  return new L.Popup({
-    closeButton: false,
-    closeOnClick: true,
-  }).setContent(trimIndent(`
+  return L.popup({closeButton: false}).setContent(trimIndent(`
     <figure class="avatar">
       <img src="${avatarUrl}" alt="${htmlUsername}'s avatar">
       <figcaption class="text-center">${htmlUsername}</figcaption>

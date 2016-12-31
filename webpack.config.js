@@ -21,6 +21,7 @@ module.exports = {
       'bootstrap': 'bootstrap/css',
       'cssanimevent': 'cssanimevent/cssanimevent',
       'leaflet.style': 'leaflet/dist',
+      'leaflet-markercluster$': 'leaflet-markercluster/dist/leaflet.markercluster-src',
     },
   },
 

@@ -45,7 +45,7 @@ class SearchControl extends L.Control.Search {
 
 export default new SearchControl({
   layer: membersLayer,
-  circleLocation: false,
+  marker: false,
   initial: false,
   zoom: SEARCH_RESULT_ZOOM_LEVEL,
 }).addTo(map)
