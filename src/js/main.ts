@@ -1,3 +1,6 @@
+import OfflineRuntime = require("offline-plugin/runtime")
+OfflineRuntime.install()
+
 import "./ui"
 import "./forms"
 import "./map"

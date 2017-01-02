@@ -2,6 +2,7 @@ const {gitDescribeSync} = require('git-describe')
 const webpack = require('webpack')
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const OfflinePlugin = require('offline-plugin')
 
 
 module.exports = {
@@ -44,7 +45,8 @@ module.exports = {
       excludeChunks: ['css-only'],
       packageVersion: version(),
     }),
-    new ExtractTextWebpackPlugin('css/[name].css')
+    new ExtractTextWebpackPlugin('css/[name].css'),
+    new OfflinePlugin(),
   ],
 }
 

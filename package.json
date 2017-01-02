@@ -29,6 +29,7 @@
     "lodash.clamp": "^4.0.3",
     "lodash.debounce": "^4.0.8",
     "nodent-runtime": "^3.0.3",
+    "offline-plugin": "^4.5.3",
     "picomodal": "^3.0.0",
     "pouchdb": "^6.1.0",
     "raw-loader": "^0.5.1",
