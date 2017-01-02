@@ -47,7 +47,7 @@ function getLayerProvided(provider: string) {
  * Convert a provider ID into a human-readable name.
  */
 function providerIdToLabel(provider: string): string {
-  return provider.replace(/\./g, ": ").replace(/([a-z])([A-Z])/g, "$1 $2")
+  return provider.replace(/\./g, ": ").replace(/([a-z])([A-Z0-9])/g, "$1 $2")
 }
 
 
