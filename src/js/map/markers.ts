@@ -5,7 +5,7 @@ import map from "../map"
 import {trimIndent} from "../util/strings"
 // https://github.com/TypeStrong/ts-loader#loading-other-resources-and-code-splitting
 // tslint:disable-next-line:no-var-requires
-const markerSvg: string = require("!!raw-loader!ottermap/img/marker.svg")
+const markerSvg: string = require("!!raw-loader!svgo-loader?{\"plugins\":[{\"removeTitle\":true}]}!ottermap/img/marker.svg")
 
 
 function mdLink(href: string, text: string): string {
