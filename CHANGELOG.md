@@ -1,3 +1,9 @@
+# 9.0.0
+* Added resource caching through application caches and service workers
+* Updated dependencies (in particular, Leaflet 1.0)
+* Switched to PouchDB as only supported database backend
+* Replaced programming language (LiveScript → TypeScript), dependency manager (Git → npm) and build process (Jake+RequireJS → Webpack)
+
 # 8.0.1
 * Updated dependencies and build process
 
