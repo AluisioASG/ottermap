@@ -1,15 +1,8 @@
 # Build artifacts
 /build/
-/dist/
 
 # Third-party components
 /node_modules/
 
-# Editor and others files
-*~
-*.swp
-.fuse_hidden*
-npm-debug.log
-
-# User configuration
-/build-config.ls
+# Logs
+*.log

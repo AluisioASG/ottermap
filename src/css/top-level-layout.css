@@ -1,0 +1,35 @@
+#messagebar {
+	position: fixed;
+	width: 100%;
+	height: 50px;
+	padding: 0 4.5px;
+	z-index: 9000;
+	transition: opacity 1.325s ease;
+	/* For Safari and Android. */
+	-webkit-transition: opacity 1.325s ease;
+}
+
+#messagebar.mb-hide {
+	opacity: 0;
+}
+
+#messagebar p {
+	height: 41px; /* #messagebar.height - (margin-{top,bottom} = 9px) */
+	line-height: 41px;
+	margin: 4.5px 0;
+	overflow: auto;
+}
+
+#map {
+	top: 50px;
+}
+
+#noscript-msg {
+	/* Center the “no JavaScript” message across the viewport.
+	   http://www.w3.org/Style/Examples/007/center.en.html#viewport3 */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}

@@ -1,0 +1,27 @@
+/* Define the Bootstrap container so we don't need to pull in the whole
+   grid system. */
+
+.container {
+	padding-right: 5px;
+	padding-left: 5px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media (min-width: 768px) {
+	.container {
+		padding-right: 15px;
+		padding-left: 15px;
+		width: 750px;
+	}
+}
+@media (min-width: 992px) {
+	.container {
+		width: 970px;
+	}
+}
+@media (min-width: 1200px) {
+	.container {
+		width: 1170px;
+	}
+}

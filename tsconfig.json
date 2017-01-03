@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "typeRoots": ["./d.ts"],
+    "baseUrl": "src/js",
+    "outDir": "build/js",
+    "paths": {
+      "*": [
+        "*",
+        "../../d.ts/*",
+        "../../vendor/*"
+      ]
+    },
+
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": ["es5", "es2015.promise", "es2015.collection", "dom"],
+    "sourceMap": true,
+
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "exclude": [
+    "build",
+    "node_modules",
+    "vendor"
+  ]
+}

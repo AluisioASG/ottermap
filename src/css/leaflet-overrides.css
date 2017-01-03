@@ -1,0 +1,46 @@
+.leaflet-control-layers-toggle {
+	background-image: url('~leaflet.style/images/layers.png');
+}
+.leaflet-retina .leaflet-control-layers-toggle {
+	background-image: url('~leaflet.style/images/layers-2x.png');
+}
+.leaflet-popup-content {
+	margin: auto;
+	width: auto !important;
+}
+
+/* Hide the CSS-made icon in the geosearch button. */
+.leaflet-control-geosearch a.leaflet-bar-part:before, .leaflet-control-geosearch a.leaflet-bar-part::after {
+	border: none;
+	transform: none;
+}
+
+.leaflet-control-search {
+	background-color: #fff;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+	border-radius: 4px;
+}
+.leaflet-touch .leaflet-control-search {
+	background-color: #f4f4f4;
+	box-shadow: none;
+	border: 2px solid rgba(0, 0, 0, 0.2);
+}
+.leaflet-control-search.search-load .search-input {
+	background-image: url('~leaflet-search/images/loader.gif');
+}
+.leaflet-control-search .search-input {
+	height: 24px;
+}
+.leaflet-control-search .search-button {
+	width: 26px;
+	height: 26px;
+}
+.leaflet-touch .leaflet-control-search .search-button {
+	width: 30px;
+	height: 30px;
+}
+.leaflet-control-search .search-button, .leaflet-control-search .search-button:hover {
+	background-image: url('~ottermap/img/marker.svg');
+	background-size: 59%;
+	background-position: center;
+}

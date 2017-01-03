@@ -2,37 +2,10 @@
 	path = vendor/leaflet
 	url = https://github.com/Leaflet/Leaflet.git
 	ignore = dirty
-[submodule "Leaflet.GeoSearch"]
-	path = vendor/leaflet-geosearch
-	url = https://github.com/smeijer/L.GeoSearch.git
 [submodule "Leaflet.markercluster"]
 	path = vendor/leaflet-markercluster
 	url = https://github.com/Leaflet/Leaflet.markercluster.git
 	ignore = dirty
-[submodule "Leaflet-providers"]
-	path = vendor/leaflet-providers
-	url = https://github.com/leaflet-extras/leaflet-providers.git
-[submodule "Leaflet.Control.Search"]
-	path = vendor/leaflet-search
-	url = https://github.com/stefanocudini/leaflet-search.git
-[submodule "RequireJS"]
-	path = vendor/requirejs
-	url = https://github.com/jrburke/requirejs.git
-[submodule "RequireJS text"]
-	path = vendor/requirejs-text
-	url = https://github.com/requirejs/text.git
-[submodule "RequireJS domReady"]
-	path = vendor/requirejs-domready
-	url = https://github.com/requirejs/domReady.git
-[submodule "almond"]
-	path = vendor/almond
-	url = https://github.com/jrburke/almond.git
 [submodule "CSSAnimEvent"]
 	path = vendor/cssanimevent
 	url = https://github.com/magnetikonline/cssanimevent.git
-[submodule "Firebase Web Client"]
-	path = vendor/firebase
-	url = https://github.com/firebase/firebase-bower.git
-[submodule "PicoModal"]
-	path = vendor/picomodal
-	url = https://github.com/Nycto/PicoModal.git
