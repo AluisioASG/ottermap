@@ -1,7 +1,1 @@
-* -text -diff
-
-/.git* text diff
-/CNAME text diff
-
-*.html text
-*.svg text
+* text=auto
